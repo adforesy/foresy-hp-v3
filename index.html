@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foresy（フォレジー）| 福岡発の広告代理店</title>
+<meta name="description" content="Google広告・LINEヤフー広告の運用から、LP制作・計測設計・レポート自動化まで。福岡発の広告代理店 Foresy が、あなたのデジタル施策をワンストップで支援します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════
+   RESET & ROOT
+═══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-primary:    #F5F3EE;
+  --bg-secondary:  #EDEAE3;
+  --bg-tertiary:   #E5E1D8;
+  --bg-dark:       #1A1A18;
+  --text-primary:  #1A1A18;
+  --text-secondary:#5C5B56;
+  --text-muted:    #9B9991;
+  --forest:        #4A7A5A;
+  --sage:          #7A9E87;
+  --mist:          #C8D9CC;
+  --cta:           #C96B3A;
+  --cta-hover:     #B05C2E;
+  --font-sans:  'DM Sans', sans-serif;
+  --font-mono:  'DM Mono', monospace;
+  --font-jp:    'Noto Sans JP', sans-serif;
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring:cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-jp);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════════
+   SVG GRAIN FILTER (shared)
+═══════════════════════════════════════════════ */
+.grain-overlay {
+  position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* ═══════════════════════════════════════════════
+   KEYFRAMES
+═══════════════════════════════════════════════ */
+@keyframes fadeUp   { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn   { from { opacity:0; }                            to { opacity:1; } }
+@keyframes drawLine { to   { stroke-dashoffset: 0; } }
+@keyframes slideRight { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+@keyframes countUp  { from { opacity:0; transform:scale(0.88); } to { opacity:1; transform:scale(1); } }
+@keyframes orbPulse { 0%,100% { transform: translateY(0px) scale(1); } 50% { transform: translateY(-6px) scale(1.02); } }
+@keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes rotateSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes lineGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* ═══════════════════════════════════════════════
+   REVEAL SYSTEM (scroll triggered)
+═══════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.reveal.in-view { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+
+/* ═══════════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════════ */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(245,243,238,0.88);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid rgba(200,217,204,0.5);
+  height: 60px;
+  display: flex; align-items: center;
+  padding: 0 40px;
+  animation: fadeIn 0.4s ease both;
+}
+.nav-inner {
+  max-width: 1200px; width: 100%; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-sans); font-weight: 400; font-size: 18px;
+  color: var(--text-primary); text-decoration: none; letter-spacing: -0.02em;
+}
+.nav-logo-mark {
+  width: 28px; height: 28px; background: var(--forest);
+  border-radius: 6px; display: flex; align-items: center; justify-content: center;
+  transition: transform 0.3s var(--ease-spring);
+}
+.nav-logo:hover .nav-logo-mark { transform: rotate(-8deg) scale(1.08); }
+.nav-links { display: flex; gap: 28px; }
+.nav-links a {
+  font-family: var(--font-sans); font-size: 14px; color: var(--text-secondary);
+  text-decoration: none; position: relative; padding-bottom: 2px;
+  transition: color 200ms;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: -2px; left: 0; width: 100%; height: 1px;
+  background: var(--text-primary);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 250ms var(--ease-out);
+}
+.nav-links a:hover { color: var(--text-primary); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+.nav-cta {
+  background: var(--cta); color: white; border: none;
+  border-radius: 6px; padding: 8px 18px;
+  font-family: var(--font-sans); font-size: 13px; font-weight: 400;
+  cursor: pointer; text-decoration: none; display: inline-block;
+  transition: background 200ms, transform 200ms var(--ease-spring), box-shadow 200ms;
+}
+.nav-cta:hover {
+  background: var(--cta-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(201,107,58,0.28);
+}
+
+/* ═══════════════════════════════════════════════
+   SHARED UTILS
+═══════════════════════════════════════════════ */
+.section-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.tag-label {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em;
+  color: var(--sage); text-transform: uppercase;
+}
+.section-title {
+  font-family: var(--font-sans); font-weight: 300; font-size: clamp(26px,3vw,38px);
+  letter-spacing: -0.025em; color: var(--text-primary); line-height: 1.2;
+}
+
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+#hero {
+  position: relative;
+  background: var(--bg-primary);
+  padding: 100px 40px 88px;
+  overflow: hidden;
+}
+
+/* Dot grid pattern background */
+#hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(200,217,204,0.55) 1px, transparent 1px);
+  background-size: 30px 30px;
+  mask-image: radial-gradient(ellipse 80% 90% at 60% 40%, transparent 0%, black 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 90% at 60% 40%, transparent 0%, black 100%);
+  pointer-events: none;
+}
+
+/* Soft accent gradient */
+#hero::after {
+  content: '';
+  position: absolute;
+  top: -120px; right: -80px;
+  width: 480px; height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,107,58,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: relative; z-index: 2;
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+
+.hero-tag {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em;
+  color: var(--sage); margin-bottom: 22px; display: flex; align-items: center; gap: 8px;
+  opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.1s both;
+}
+.hero-tag::before {
+  content: '';
+  display: block; width: 20px; height: 1px; background: var(--sage);
+}
+
+.hero-h1 {
+  font-family: var(--font-sans); font-weight: 300;
+  font-size: clamp(38px, 5vw, 68px); letter-spacing: -0.03em;
+  color: var(--text-primary); line-height: 1.12; margin-bottom: 22px;
+  opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.2s both;
+}
+.hero-h1 em {
+  font-style: italic; font-weight: 200;
+  color: var(--forest);
+}
+
+.hero-sub {
+  font-family: var(--font-jp); font-size: 15px; line-height: 1.95;
+  color: var(--text-secondary); margin-bottom: 36px; max-width: 440px;
+  opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.32s both;
+}
+
+.hero-ctas {
+  display: flex; gap: 20px; align-items: center;
+  opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.44s both;
+}
+
+.btn-primary {
+  background: var(--cta); color: white; border: none;
+  border-radius: 6px; padding: 13px 26px;
+  font-family: var(--font-jp); font-size: 14px; font-weight: 400;
+  cursor: pointer; text-decoration: none; display: inline-block;
+  transition: background 200ms, transform 200ms var(--ease-spring), box-shadow 200ms;
+}
+.btn-primary:hover {
+  background: var(--cta-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201,107,58,0.3);
+}
+
+.btn-ghost {
+  font-family: var(--font-jp); font-size: 14px; color: var(--text-secondary);
+  text-decoration: none; position: relative; padding-bottom: 2px;
+  transition: color 200ms;
+}
+.btn-ghost::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 0; width: 100%; height: 1px;
+  background: var(--text-secondary);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 250ms var(--ease-out);
+}
+.btn-ghost:hover { color: var(--text-primary); }
+.btn-ghost:hover::after { transform: scaleX(1); }
+
+.hero-svg-wrap {
+  opacity: 0; animation: fadeIn 0.7s var(--ease-out) 0.55s both;
+  display: flex; justify-content: center; position: relative;
+}
+
+#hero-chart .line-main   { stroke-dasharray: 620; stroke-dashoffset: 620; animation: drawLine 2.2s var(--ease-out) 0.9s forwards; }
+#hero-chart .line-accent { stroke-dasharray: 320; stroke-dashoffset: 320; animation: drawLine 1.8s var(--ease-out) 1.3s forwards; }
+#hero-chart .area-fill   { opacity: 0; animation: fadeIn 0.8s ease 2s forwards; }
+
+/* ═══════════════════════════════════════════════
+   TICKER / BADGES
+═══════════════════════════════════════════════ */
+#badges {
+  background: var(--bg-dark);
+  padding: 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 22s linear infinite;
+  padding: 18px 0;
+}
+.ticker-track:hover { animation-play-state: paused; }
+.ticker-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 0 40px; white-space: nowrap;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+.ticker-icon {
+  width: 32px; height: 32px; border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.ticker-text {
+  font-family: var(--font-mono); font-size: 11px;
+  color: rgba(245,243,238,0.55); letter-spacing: 0.08em;
+}
+.ticker-status-active {
+  font-family: var(--font-mono); font-size: 10px; color: var(--sage);
+  background: rgba(122,158,135,0.12); border: 1px solid rgba(122,158,135,0.3);
+  border-radius: 4px; padding: 2px 8px; letter-spacing: 0.06em;
+}
+.ticker-status-soon {
+  font-family: var(--font-mono); font-size: 10px;
+  color: rgba(245,243,238,0.3);
+  border: 1px dashed rgba(255,255,255,0.1);
+  border-radius: 4px; padding: 2px 8px; letter-spacing: 0.06em;
+}
+
+/* ═══════════════════════════════════════════════
+   STATS
+═══════════════════════════════════════════════ */
+#stats {
+  background: var(--bg-primary);
+  padding: 80px 40px;
+  position: relative;
+}
+#stats::before {
+  content: '';
+  position: absolute; bottom: 0; left: 40px; right: 40px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--mist), transparent);
+}
+.stats-grid {
+  max-width: 1000px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.stat-item {
+  padding: 40px 32px;
+  border-right: 1px solid var(--mist);
+  text-align: center; position: relative;
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--font-sans); font-weight: 200; font-size: clamp(44px, 5vw, 60px);
+  color: var(--text-primary); line-height: 1; display: block; margin-bottom: 10px;
+  letter-spacing: -0.04em;
+}
+.stat-label {
+  font-family: var(--font-jp); font-size: 12px; color: var(--text-secondary);
+  line-height: 1.6;
+}
+.stat-accent {
+  display: block; width: 20px; height: 2px; background: var(--forest);
+  margin: 12px auto 0; border-radius: 1px;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.6s var(--ease-out) 0.3s;
+}
+.stat-item.in-view .stat-accent { transform: scaleX(1); }
+
+/* ═══════════════════════════════════════════════
+   USE CASES
+═══════════════════════════════════════════════ */
+#usecases {
+  background: var(--bg-secondary);
+  padding: 96px 40px;
+  position: relative; overflow: hidden;
+}
+
+/* Subtle diagonal line pattern */
+#usecases::before {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 20px,
+    rgba(200,217,204,0.18) 20px,
+    rgba(200,217,204,0.18) 21px
+  );
+  mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
+}
+
+.usecases-header { margin-bottom: 44px; position: relative; }
+.tabs {
+  display: flex; gap: 0;
+  border: 1px solid var(--mist); border-radius: 8px;
+  overflow: hidden; width: fit-content; margin-bottom: 36px;
+  background: var(--bg-primary);
+}
+.tab-btn {
+  padding: 10px 26px; border: none; background: none; cursor: pointer;
+  font-family: var(--font-jp); font-size: 14px; color: var(--text-secondary);
+  transition: all 200ms; border-right: 1px solid var(--mist);
+  position: relative; overflow: hidden;
+}
+.tab-btn:last-child { border-right: none; }
+.tab-btn.active { background: var(--text-primary); color: white; }
+
+.tab-content {
+  background: var(--bg-primary); border: 1px solid var(--mist); border-radius: 12px;
+  padding: 40px; display: none; position: relative;
+}
+.tab-content.active { display: block; }
+.usecase-challenge {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em;
+  color: var(--sage); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+}
+.usecase-challenge::before { content: ''; display: block; width: 16px; height: 1px; background: var(--sage); }
+.usecase-title {
+  font-family: var(--font-jp); font-size: 21px; font-weight: 400;
+  color: var(--text-primary); margin-bottom: 14px; letter-spacing: -0.01em;
+  line-height: 1.5;
+}
+.usecase-text { font-family: var(--font-jp); font-size: 14px; color: var(--text-secondary); line-height: 1.9; max-width: 640px; }
+.usecase-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--forest); font-size: 14px; text-decoration: none;
+  margin-top: 20px; font-family: var(--font-jp);
+  transition: gap 200ms var(--ease-out);
+}
+.usecase-link:hover { gap: 10px; }
+
+/* ═══════════════════════════════════════════════
+   SERVICES
+═══════════════════════════════════════════════ */
+#services {
+  background: var(--bg-primary);
+  padding: 96px 40px;
+}
+.services-header { margin-bottom: 52px; }
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--mist); border: 1px solid var(--mist); border-radius: 12px;
+  overflow: hidden;
+}
+.service-card {
+  background: var(--bg-primary);
+  padding: 36px 32px;
+  transition: background 250ms, transform 250ms var(--ease-out);
+  position: relative; overflow: hidden;
+}
+.service-card::before {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(to right, var(--forest), var(--sage));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 350ms var(--ease-out);
+}
+.service-card:hover { background: var(--bg-secondary); }
+.service-card:hover::before { transform: scaleX(1); }
+
+.service-icon { margin-bottom: 24px; }
+.service-num {
+  font-family: var(--font-mono); font-size: 11px; color: var(--mist);
+  letter-spacing: 0.08em; margin-bottom: 10px; display: block;
+  transition: color 250ms;
+}
+.service-card:hover .service-num { color: var(--sage); }
+.service-title {
+  font-family: var(--font-sans); font-weight: 400; font-size: 18px;
+  color: var(--text-primary); margin-bottom: 12px; letter-spacing: -0.01em;
+}
+.service-desc {
+  font-family: var(--font-jp); font-size: 14px; color: var(--text-secondary);
+  line-height: 1.85; margin-bottom: 20px;
+}
+.service-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--forest); font-size: 14px; text-decoration: none;
+  font-family: var(--font-jp);
+  transition: gap 200ms var(--ease-out);
+}
+.service-link:hover { gap: 10px; }
+
+/* ═══════════════════════════════════════════════
+   SWITCH BANNER
+═══════════════════════════════════════════════ */
+#switch-banner {
+  background: var(--bg-dark);
+  padding: 0 40px;
+  height: 110px;
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+}
+#switch-banner::before {
+  content: '乗り換え';
+  position: absolute; right: 120px;
+  font-family: var(--font-sans); font-weight: 200;
+  font-size: 200px; letter-spacing: -0.05em;
+  color: rgba(255,255,255,0.018);
+  line-height: 1; pointer-events: none;
+  white-space: nowrap;
+}
+.switch-inner {
+  max-width: 1200px; margin: 0 auto; width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  position: relative; z-index: 1;
+}
+.switch-text { font-family: var(--font-jp); font-size: 18px; font-weight: 300; color: white; }
+.switch-btn {
+  border: 1px solid rgba(255,255,255,0.5); background: none; color: white;
+  border-radius: 6px; padding: 10px 22px;
+  font-family: var(--font-jp); font-size: 14px; cursor: pointer;
+  text-decoration: none; display: inline-block; white-space: nowrap;
+  transition: background 200ms, border-color 200ms, transform 200ms var(--ease-spring);
+}
+.switch-btn:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.8);
+  transform: translateY(-1px);
+}
+
+/* ═══════════════════════════════════════════════
+   WHY FORESY
+═══════════════════════════════════════════════ */
+#why {
+  background: var(--bg-secondary);
+  padding: 100px 40px;
+  position: relative; overflow: hidden;
+}
+
+/* Large background numeral */
+.why-bg-num {
+  position: absolute; right: -40px; top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-sans); font-weight: 200;
+  font-size: 400px; letter-spacing: -0.06em;
+  color: rgba(74,122,90,0.04);
+  line-height: 1; pointer-events: none; user-select: none;
+  transition: opacity 0.5s;
+}
+
+.why-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.5fr; gap: 100px; align-items: start;
+}
+.why-sticky {
+  position: sticky; top: 88px;
+}
+.why-title {
+  font-family: var(--font-sans); font-weight: 200; font-size: clamp(26px,3vw,40px);
+  color: var(--text-primary); line-height: 1.2; letter-spacing: -0.025em;
+  margin-bottom: 24px;
+}
+.why-subtitle {
+  font-family: var(--font-jp); font-size: 14px; color: var(--text-muted);
+  line-height: 1.8;
+}
+.why-items { display: flex; flex-direction: column; }
+.why-item {
+  padding: 32px 0; border-bottom: 1px solid var(--mist);
+  display: grid; grid-template-columns: 48px 1fr; gap: 20px; align-items: start;
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+.why-item.visible { opacity: 1; transform: translateY(0); }
+.why-item:last-child { border-bottom: none; }
+.why-num-badge {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--mist);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 11px; color: var(--sage);
+  flex-shrink: 0; margin-top: 3px;
+  transition: background 300ms, border-color 300ms;
+}
+.why-item.visible .why-num-badge { background: var(--forest); border-color: var(--forest); color: white; }
+.why-item-title {
+  font-family: var(--font-jp); font-size: 17px; font-weight: 400;
+  color: var(--text-primary); margin-bottom: 8px; line-height: 1.5;
+}
+.why-item-desc { font-family: var(--font-jp); font-size: 14px; color: var(--text-secondary); line-height: 1.85; }
+
+/* ═══════════════════════════════════════════════
+   WORKS
+═══════════════════════════════════════════════ */
+#works {
+  background: var(--bg-primary);
+  padding: 96px 40px;
+}
+.works-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 44px;
+}
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--mist);
+  border: 1px solid var(--mist); border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 36px;
+}
+.work-card {
+  background: var(--bg-secondary);
+  overflow: hidden;
+  transition: background 250ms;
+  cursor: pointer;
+}
+.work-card:hover { background: var(--bg-tertiary); }
+.work-thumb {
+  height: 190px; background: var(--bg-tertiary);
+  position: relative; overflow: hidden;
+}
+.work-card:hover .work-thumb { filter: brightness(0.97); }
+.work-info { padding: 20px 24px 24px; }
+.work-num {
+  font-family: var(--font-mono); font-size: 10px; color: var(--sage);
+  display: block; margin-bottom: 6px; letter-spacing: 0.08em;
+}
+.work-title {
+  font-family: var(--font-jp); font-size: 15px; color: var(--text-primary);
+  margin-bottom: 10px; line-height: 1.5; letter-spacing: -0.01em;
+}
+.work-tag {
+  display: inline-block; font-family: var(--font-mono); font-size: 10px;
+  background: rgba(200,217,204,0.4); color: var(--forest); border-radius: 4px;
+  padding: 3px 9px; letter-spacing: 0.04em;
+}
+.works-cta { text-align: center; }
+.works-cta a {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--forest); font-size: 14px; text-decoration: none;
+  font-family: var(--font-jp);
+  transition: gap 200ms var(--ease-out);
+}
+.works-cta a:hover { gap: 10px; }
+
+/* ═══════════════════════════════════════════════
+   ABOUT PREVIEW
+═══════════════════════════════════════════════ */
+#about-preview {
+  background: var(--bg-secondary);
+  padding: 100px 40px;
+  position: relative; overflow: hidden;
+}
+
+/* Subtle warm gradient overlay */
+#about-preview::before {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 600px; height: 500px;
+  background: radial-gradient(ellipse at 80% 100%, rgba(201,107,58,0.05) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.about-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  position: relative; z-index: 1;
+}
+.about-tag {
+  font-family: var(--font-mono); font-size: 11px; color: var(--sage);
+  letter-spacing: 0.14em; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;
+}
+.about-tag::before { content: ''; display: block; width: 16px; height: 1px; background: var(--sage); }
+.about-title {
+  font-family: var(--font-sans); font-weight: 300;
+  font-size: clamp(22px, 2.8vw, 34px);
+  letter-spacing: -0.025em; color: var(--text-primary);
+  line-height: 1.35; margin-bottom: 20px;
+}
+.about-desc {
+  font-family: var(--font-jp); font-size: 14px; color: var(--text-secondary);
+  line-height: 1.95; margin-bottom: 28px;
+}
+.about-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--forest); text-decoration: none; font-size: 14px;
+  font-family: var(--font-jp);
+  transition: gap 200ms var(--ease-out);
+}
+.about-link:hover { gap: 10px; }
+
+/* About illustration wrapper */
+.about-illust {
+  display: flex; justify-content: center; align-items: center;
+}
+.about-illust svg {
+  animation: orbPulse 6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* ═══════════════════════════════════════════════
+   FAQ
+═══════════════════════════════════════════════ */
+#faq {
+  background: var(--bg-primary);
+  padding: 96px 40px;
+}
+.faq-max { max-width: 760px; margin: 0 auto; }
+.faq-header { margin-bottom: 44px; }
+.faq-item { border-bottom: 1px solid var(--mist); }
+.faq-item:first-of-type { border-top: 1px solid var(--mist); }
+.faq-q {
+  width: 100%; background: none; border: none; cursor: pointer;
+  text-align: left; padding: 22px 0;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-jp); font-size: 15px; color: var(--text-primary);
+  gap: 20px; transition: color 200ms;
+}
+.faq-q:hover { color: var(--forest); }
+.faq-icon {
+  font-size: 18px; color: var(--sage); transition: transform 280ms var(--ease-out);
+  font-family: var(--font-mono); flex-shrink: 0;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); color: var(--forest); }
+.faq-a {
+  font-family: var(--font-jp); font-size: 14px; color: var(--text-secondary);
+  line-height: 1.95; overflow: hidden; max-height: 0;
+  transition: max-height 0.4s var(--ease-out), padding 0.4s;
+  padding-bottom: 0;
+}
+.faq-item.open .faq-a { max-height: 300px; padding-bottom: 22px; }
+.faq-more { text-align: center; margin-top: 36px; }
+.faq-more a {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--forest); text-decoration: none; font-size: 14px;
+  font-family: var(--font-jp);
+  transition: gap 200ms var(--ease-out);
+}
+.faq-more a:hover { gap: 10px; }
+
+/* ═══════════════════════════════════════════════
+   FOOTER CTA
+═══════════════════════════════════════════════ */
+#footer-cta {
+  background: var(--bg-dark);
+  padding: 100px 40px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+#footer-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat; opacity: 0.04; pointer-events: none;
+}
+#footer-cta::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,107,58,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.footer-cta-inner { position: relative; z-index: 1; }
+.footer-cta-eyebrow {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em;
+  color: rgba(200,217,204,0.6); margin-bottom: 24px; display: block;
+}
+.footer-cta-text {
+  font-family: var(--font-sans); font-weight: 200;
+  font-size: clamp(28px,4.5vw,56px); color: white;
+  letter-spacing: -0.03em; margin-bottom: 40px; line-height: 1.15;
+}
+.footer-cta-text em { font-style: italic; color: rgba(201,107,58,0.9); }
+
+.btn-cta-large {
+  background: var(--cta); color: white; border: none;
+  border-radius: 8px; padding: 16px 36px;
+  font-family: var(--font-jp); font-size: 16px;
+  cursor: pointer; text-decoration: none; display: inline-block;
+  transition: background 200ms, transform 200ms var(--ease-spring), box-shadow 200ms;
+}
+.btn-cta-large:hover {
+  background: var(--cta-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(201,107,58,0.35);
+}
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+footer {
+  background: var(--bg-dark);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 52px 40px 32px;
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 40px;
+}
+.footer-logo {
+  font-family: var(--font-sans); font-size: 20px; color: white;
+  font-weight: 300; margin-bottom: 14px; letter-spacing: -0.025em;
+  display: flex; align-items: center; gap: 8px;
+}
+.footer-logo-mark {
+  width: 26px; height: 26px; background: var(--forest); border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+}
+.footer-info { font-family: var(--font-jp); font-size: 13px; color: rgba(245,243,238,0.45); line-height: 1.9; }
+.footer-col-title {
+  font-family: var(--font-mono); font-size: 10px; color: var(--sage);
+  letter-spacing: 0.1em; margin-bottom: 18px; text-transform: uppercase;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a {
+  font-family: var(--font-jp); font-size: 14px;
+  color: rgba(245,243,238,0.55); text-decoration: none;
+  transition: color 200ms;
+}
+.footer-links a:hover { color: white; }
+.footer-bottom {
+  max-width: 1200px; margin: 40px auto 0;
+  padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.07);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copy { font-family: var(--font-mono); font-size: 11px; color: rgba(245,243,238,0.35); }
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .works-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+
+  #hero { padding: 64px 20px 52px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-svg-wrap { display: none; }
+  .hero-h1 { font-size: clamp(32px,8vw,48px); }
+
+  #badges .ticker-item { padding: 0 24px; }
+
+  #stats { padding: 60px 20px; }
+  .stats-grid { grid-template-columns: repeat(2,1fr); }
+  .stat-item { padding: 28px 16px; }
+
+  #usecases, #services { padding: 72px 20px; }
+  .section-inner { padding: 0 20px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .service-card { padding: 28px 24px; }
+
+  #switch-banner { height: auto; padding: 28px 20px; }
+  .switch-inner { flex-direction: column; gap: 18px; text-align: center; }
+
+  #why { padding: 72px 20px; }
+  .why-grid { grid-template-columns: 1fr; gap: 36px; }
+  .why-sticky { position: static; }
+
+  #works { padding: 72px 20px; }
+  .works-grid { grid-template-columns: 1fr; }
+  .works-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+
+  #about-preview { padding: 72px 20px; }
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .about-illust { order: -1; }
+
+  #faq { padding: 72px 20px; }
+  #footer-cta { padding: 72px 20px; }
+  footer { padding: 44px 20px 28px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2 7C2 4.24 4.24 2 7 2s5 2.24 5 5-2.24 5-5 5c-1.4 0-2.66-.56-3.58-1.46" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          <circle cx="7" cy="7" r="1.5" fill="white"/>
+        </svg>
+      </div>
+      Foresy
+    </a>
+    <div class="nav-links">
+      <a href="services.html">サービス</a>
+      <a href="works.html">実績</a>
+      <a href="about.html">会社概要</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <a href="#footer-cta" class="nav-cta">無料相談</a>
+  </div>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="hero-tag">FORESY · 福岡発の広告代理店</span>
+      <h1 class="hero-h1">広告費を、<em>ちゃんと</em><br>成果に変える。</h1>
+      <p class="hero-sub">
+        Google広告・LINEヤフー広告の運用から、LP制作・計測設計・レポート自動化まで。<br>
+        福岡発の広告代理店 Foresy が、あなたのデジタル施策をワンストップで支援します。
+      </p>
+      <div class="hero-ctas">
+        <a href="#footer-cta" class="btn-primary">無料で相談する</a>
+        <a href="services.html" class="btn-ghost">サービスを見る →</a>
+      </div>
+    </div>
+    <div class="hero-svg-wrap">
+      <svg id="hero-chart" width="440" height="320" viewBox="0 0 440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Grid lines -->
+        <line x1="60" y1="40" x2="60" y2="270" stroke="#C8D9CC" stroke-width="1"/>
+        <line x1="60" y1="270" x2="400" y2="270" stroke="#C8D9CC" stroke-width="1"/>
+        <line x1="60" y1="200" x2="400" y2="200" stroke="#E5E1D8" stroke-width="1" stroke-dasharray="4 4"/>
+        <line x1="60" y1="140" x2="400" y2="140" stroke="#E5E1D8" stroke-width="1" stroke-dasharray="4 4"/>
+        <line x1="60" y1="80"  x2="400" y2="80"  stroke="#E5E1D8" stroke-width="1" stroke-dasharray="4 4"/>
+        <!-- Y-axis labels -->
+        <text x="50" y="274" font-family="DM Mono" font-size="10" fill="#9B9991" text-anchor="end">0</text>
+        <text x="50" y="204" font-family="DM Mono" font-size="10" fill="#9B9991" text-anchor="end">50</text>
+        <text x="50" y="144" font-family="DM Mono" font-size="10" fill="#9B9991" text-anchor="end">100</text>
+        <text x="50" y="84"  font-family="DM Mono" font-size="10" fill="#9B9991" text-anchor="end">150</text>
+        <!-- X-axis labels -->
+        <text x="100" y="286" font-family="DM Mono" font-size="10" fill="#9B9991" text-anchor="middle">1月</text>
+        <text x="160" y="286" font-family="DM Mono" font-size="10" fill="#9B9991" text-anchor="middle">2月</text>
+        <text x="220" y="286" font-family="DM Mono" font-size="10" fill="#9B9991" text-anchor="middle">3月</text>
+        <text x="280" y="286" font-family="DM Mono" font-size="10" fill="#9B9991" text-anchor="middle">4月</text>
+        <text x="340" y="286" font-family="DM Mono" font-size="10" fill="#9B9991" text-anchor="middle">5月</text>
+        <text x="400" y="286" font-family="DM Mono" font-size="10" fill="#9B9991" text-anchor="middle">6月</text>
+        <!-- Area fill -->
+        <polygon class="area-fill" points="100,240 160,220 220,190 280,155 340,110 400,70 400,270 100,270" fill="rgba(74,122,90,0.06)"/>
+        <!-- Main line ROAS -->
+        <polyline class="line-main"
+          points="100,240 160,220 220,190 280,155 340,110 400,70"
+          stroke="#1A1A18" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <!-- Accent line CV -->
+        <polyline class="line-accent"
+          points="100,258 160,250 220,240 280,215 340,190 400,160"
+          stroke="#4A7A5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <!-- Data points -->
+        <circle cx="400" cy="70"  r="5" fill="#1A1A18"/>
+        <circle cx="400" cy="160" r="4" fill="#4A7A5A"/>
+        <!-- Callout -->
+        <rect x="300" y="46" width="120" height="40" rx="6" fill="white" stroke="#C8D9CC" stroke-width="1"/>
+        <text x="312" y="63"  font-family="DM Mono" font-size="9" fill="#9B9991">ROAS</text>
+        <text x="312" y="79" font-family="DM Sans" font-size="16" font-weight="200" fill="#1A1A18">+180%</text>
+        <!-- Legend -->
+        <rect x="65" y="42" width="14" height="2" fill="#1A1A18" rx="1"/>
+        <text x="84" y="47" font-family="DM Mono" font-size="9" fill="#5C5B56">ROAS</text>
+        <rect x="120" y="42" width="14" height="2" fill="#4A7A5A" rx="1"/>
+        <text x="139" y="47" font-family="DM Mono" font-size="9" fill="#5C5B56">CV数</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BADGES TICKER ─────────────────────────── -->
+<section id="badges" aria-label="認定資格バッジ">
+  <div class="ticker-track">
+    <!-- Set 1 -->
+    <div class="ticker-item">
+      <div class="ticker-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18"><text x="2" y="14" font-size="12" font-family="Arial" fill="#4285F4">G</text></svg>
+      </div>
+      <span class="ticker-text">GOOGLE 広告の測定認定資格</span>
+      <span class="ticker-status-active">CERTIFIED</span>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18"><text x="2" y="14" font-size="10" font-family="DM Mono" fill="rgba(245,243,238,0.35)">DS</text></svg>
+      </div>
+      <span class="ticker-text">GOOGLE データスタジオ認定</span>
+      <span class="ticker-status-soon">COMING SOON</span>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18"><text x="2" y="14" font-size="11" font-family="DM Mono" fill="rgba(245,243,238,0.35)">Y!</text></svg>
+      </div>
+      <span class="ticker-text">YAHOO! 広告認定資格</span>
+      <span class="ticker-status-soon">COMING SOON</span>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18"><text x="1" y="14" font-size="10" font-family="DM Mono" fill="rgba(245,243,238,0.35)">GA</text></svg>
+      </div>
+      <span class="ticker-text">GOOGLE ANALYTICS 個人認定資格</span>
+      <span class="ticker-status-soon">COMING SOON</span>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18"><text x="2" y="14" font-size="9" font-family="DM Mono" fill="#7A9E87">LINE</text></svg>
+      </div>
+      <span class="ticker-text">LINE ヤフー カスタマーサクセス 経験</span>
+      <span class="ticker-status-active">VERIFIED</span>
+    </div>
+    <!-- Set 2 (duplicate for seamless loop) -->
+    <div class="ticker-item">
+      <div class="ticker-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18"><text x="2" y="14" font-size="12" font-family="Arial" fill="#4285F4">G</text></svg>
+      </div>
+      <span class="ticker-text">GOOGLE 広告の測定認定資格</span>
+      <span class="ticker-status-active">CERTIFIED</span>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18"><text x="2" y="14" font-size="10" font-family="DM Mono" fill="rgba(245,243,238,0.35)">DS</text></svg>
+      </div>
+      <span class="ticker-text">GOOGLE データスタジオ認定</span>
+      <span class="ticker-status-soon">COMING SOON</span>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18"><text x="2" y="14" font-size="11" font-family="DM Mono" fill="rgba(245,243,238,0.35)">Y!</text></svg>
+      </div>
+      <span class="ticker-text">YAHOO! 広告認定資格</span>
+      <span class="ticker-status-soon">COMING SOON</span>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18"><text x="1" y="14" font-size="10" font-family="DM Mono" fill="rgba(245,243,238,0.35)">GA</text></svg>
+      </div>
+      <span class="ticker-text">GOOGLE ANALYTICS 個人認定資格</span>
+      <span class="ticker-status-soon">COMING SOON</span>
+    </div>
+    <div class="ticker-item">
+      <div class="ticker-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18"><text x="2" y="14" font-size="9" font-family="DM Mono" fill="#7A9E87">LINE</text></svg>
+      </div>
+      <span class="ticker-text">LINE ヤフー カスタマーサクセス 経験</span>
+      <span class="ticker-status-active">VERIFIED</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS ─────────────────────────────────── -->
+<section id="stats" aria-label="実績数字">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <span class="stat-num" data-target="2" data-suffix="">2</span>
+      <span class="stat-label">取り扱い<br>広告媒体</span>
+      <span class="stat-accent"></span>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <span class="stat-num" data-target="6" data-suffix="+">6+</span>
+      <span class="stat-label">対応<br>サービス種別</span>
+      <span class="stat-accent"></span>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <span class="stat-num" style="font-size:clamp(32px,4vw,48px);letter-spacing:-0.03em;" data-target="3" data-suffix="年+">3年+</span>
+      <span class="stat-label">デジタル広告<br>実務経験</span>
+      <span class="stat-accent"></span>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <span class="stat-num" style="font-size:clamp(24px,3vw,34px);letter-spacing:-0.02em;padding-top:8px;line-height:1.15;">NPS<br>改善</span>
+      <span class="stat-label">LINEヤフーCS<br>在籍時の実績</span>
+      <span class="stat-accent"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── USE CASES ─────────────────────────────── -->
+<section id="usecases">
+  <div class="section-inner">
+    <div class="usecases-header">
+      <p class="tag-label reveal" style="margin-bottom:14px;">USE CASES</p>
+      <h2 class="section-title reveal reveal-delay-1">こんなお悩みに対応します</h2>
+    </div>
+    <div class="tabs reveal reveal-delay-2">
+      <button class="tab-btn active" onclick="switchTab('ec', this)">EC・通販</button>
+      <button class="tab-btn" onclick="switchTab('local', this)">店舗・地域ビジネス</button>
+      <button class="tab-btn" onclick="switchTab('btob', this)">BtoB・リード獲得</button>
+    </div>
+    <div id="tab-ec" class="tab-content active reveal reveal-delay-3">
+      <p class="usecase-challenge">CHALLENGE</p>
+      <div class="usecase-title">「広告費はかけているのに、CPAが下がらない」</div>
+      <p class="usecase-text">健康食品・化粧品・D2C商品など、ECサイト・通販ビジネスにおける広告運用の最適化を支援します。計測設計の見直しから、入札・クリエイティブの改善まで一気通貫で対応。Looker Studioによる日次レポートで、施策の進捗をリアルタイムに共有します。</p>
+      <a href="services.html" class="usecase-link">詳しく見る →</a>
+    </div>
+    <div id="tab-local" class="tab-content">
+      <p class="usecase-challenge">CHALLENGE</p>
+      <div class="usecase-title">「エリアターゲティングが機能していない」</div>
+      <p class="usecase-text">飲食店・美容室・クリニック・リフォーム会社など、地域密着型ビジネスの集客支援を行います。Google広告のローカル施策やLINEを活用したリピーター醸成まで、店舗ならではの課題に対応します。</p>
+      <a href="services.html" class="usecase-link">詳しく見る →</a>
+    </div>
+    <div id="tab-btob" class="tab-content">
+      <p class="usecase-challenge">CHALLENGE</p>
+      <div class="usecase-title">「リードは集まるが、質が低くて商談化しない」</div>
+      <p class="usecase-text">BtoB・SaaS・士業など、リード獲得型ビジネスのCPA改善を支援します。LP構成の見直し・フォーム最適化・タグ設計の精緻化で、問い合わせの質と量を同時に改善します。</p>
+      <a href="services.html" class="usecase-link">詳しく見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ──────────────────────────────── -->
+<section id="services">
+  <div class="section-inner">
+    <div class="services-header">
+      <p class="tag-label reveal" style="margin-bottom:14px;">SERVICES</p>
+      <h2 class="section-title reveal reveal-delay-1">提供サービス</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-num">01</span>
+        <div class="service-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <rect width="40" height="40" rx="8" fill="rgba(200,217,204,0.3)"/>
+            <polyline points="8,30 16,20 22,24 30,12 36,16" stroke="#4A7A5A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="36" cy="16" r="2.5" fill="#4A7A5A"/>
+          </svg>
+        </div>
+        <div class="service-title">広告運用</div>
+        <p class="service-desc">Google広告・LINEヤフー広告の運用を計測設計・レポートまで含めてワンストップで対応。予算規模を問わず、成果にコミットします。</p>
+        <a href="services.html" class="service-link">詳しく見る →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-num">02</span>
+        <div class="service-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <rect width="40" height="40" rx="8" fill="rgba(200,217,204,0.3)"/>
+            <rect x="8" y="10" width="24" height="16" rx="2" stroke="#4A7A5A" stroke-width="1.8" fill="none"/>
+            <line x1="8"  y1="30" x2="32" y2="30" stroke="#4A7A5A" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="20" y1="26" x2="20" y2="30" stroke="#4A7A5A" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="12" y1="14" x2="28" y2="14" stroke="#4A7A5A" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="12" y1="18" x2="22" y2="18" stroke="#4A7A5A" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="service-title">制作支援</div>
+        <p class="service-desc">LP・LINE公式アカウント・チャットボット・予約フォームの制作に対応。広告との連動を前提に設計し、CVRを高める構成で仕上げます。</p>
+        <a href="services.html" class="service-link">詳しく見る →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-num">03</span>
+        <div class="service-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <rect width="40" height="40" rx="8" fill="rgba(200,217,204,0.3)"/>
+            <circle cx="20" cy="20" r="8" stroke="#4A7A5A" stroke-width="1.8" fill="none"/>
+            <line x1="20" y1="8"  x2="20" y2="12" stroke="#4A7A5A" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="20" y1="28" x2="20" y2="32" stroke="#4A7A5A" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="8"  y1="20" x2="12" y2="20" stroke="#4A7A5A" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="28" y1="20" x2="32" y2="20" stroke="#4A7A5A" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M16 20 L20 16 L24 20" stroke="#4A7A5A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="service-title">自動化・可視化</div>
+        <p class="service-desc">Looker Studio・広告スクリプトを活用したレポート自動化。小規模でも大手並みの計測体制を実現し、改善サイクルを加速させます。</p>
+        <a href="services.html" class="service-link">詳しく見る →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SWITCH BANNER ─────────────────────────── -->
+<section id="switch-banner">
+  <div class="switch-inner">
+    <p class="switch-text">他社の広告代理店からの乗り換えも、スムーズに対応します。</p>
+    <a href="services.html" class="switch-btn">詳しく見る →</a>
+  </div>
+</section>
+
+<!-- ─── WHY FORESY ────────────────────────────── -->
+<section id="why">
+  <div class="why-bg-num" aria-hidden="true">F</div>
+  <div class="why-grid">
+    <div class="why-sticky">
+      <p class="tag-label reveal" style="margin-bottom:16px;">WHY FORESY</p>
+      <h2 class="why-title reveal reveal-delay-1">なぜ Foresy が<br>選ばれるのか</h2>
+      <p class="why-subtitle reveal reveal-delay-2">媒体社と広告主、<br>両側の目線から。</p>
+    </div>
+    <div class="why-items" id="why-items">
+      <div class="why-item">
+        <div class="why-num-badge">01</div>
+        <div>
+          <div class="why-item-title">CSの視点で「報告するだけ」じゃない運用</div>
+          <p class="why-item-desc">媒体社のCS経験から、広告主が本当に求めるアクションを先読みして提案します。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num-badge">02</div>
+        <div>
+          <div class="why-item-title">広告主・媒体社双方の経験を持つ担当者</div>
+          <p class="why-item-desc">通販Web担当とLINEヤフーCS、両側の視点で運用課題を立体的に把握します。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num-badge">03</div>
+        <div>
+          <div class="why-item-title">AI・自動化で大手並みの計測体制</div>
+          <p class="why-item-desc">Looker Studio・広告スクリプトで、小規模でも精度の高い計測・改善サイクルを実現。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num-badge">04</div>
+        <div>
+          <div class="why-item-title">担当者が変わらない少数精鋭の伴走型支援</div>
+          <p class="why-item-desc">代表が直接担当。引き継ぎによる情報ロスや温度差が生まれません。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WORKS ─────────────────────────────────── -->
+<section id="works">
+  <div class="section-inner">
+    <div class="works-header">
+      <div>
+        <p class="tag-label reveal" style="margin-bottom:10px;">WORKS</p>
+        <h2 class="section-title reveal reveal-delay-1">実績紹介</h2>
+        <p class="reveal reveal-delay-2" style="font-size:13px;color:var(--text-muted);margin-top:6px;font-family:var(--font-jp);">一部の実績・制作物をご紹介します</p>
+      </div>
+    </div>
+    <div class="works-grid">
+      <div class="work-card reveal">
+        <div class="work-thumb">
+          <svg width="100%" height="100%" viewBox="0 0 400 190" preserveAspectRatio="xMidYMid slice">
+            <rect width="400" height="190" fill="#E5E1D8"/>
+            <rect x="20" y="18" width="360" height="12" rx="2" fill="#C8D9CC"/>
+            <rect x="20" y="42" width="80" height="8" rx="2" fill="#C8D9CC"/>
+            <rect x="20" y="62" width="240" height="80" rx="4" fill="white" stroke="#C8D9CC"/>
+            <polyline points="30,128 80,98 130,108 180,78 230,88 270,68" stroke="#4A7A5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <rect x="280" y="62" width="80" height="80" rx="4" fill="white" stroke="#C8D9CC"/>
+            <text x="320" y="108" font-family="DM Sans" font-size="18" font-weight="200" fill="#1A1A18" text-anchor="middle">+142%</text>
+            <text x="320" y="123" font-family="DM Mono" font-size="8" fill="#9B9991" text-anchor="middle">ROAS</text>
+          </svg>
+        </div>
+        <div class="work-info">
+          <span class="work-num">001</span>
+          <div class="work-title">健康食品EC・Google広告運用改善</div>
+          <span class="work-tag">Google広告</span>
+        </div>
+      </div>
+      <div class="work-card reveal reveal-delay-1">
+        <div class="work-thumb">
+          <svg width="100%" height="100%" viewBox="0 0 400 190" preserveAspectRatio="xMidYMid slice">
+            <rect width="400" height="190" fill="#E5E1D8"/>
+            <rect x="20" y="18" width="200" height="130" rx="6" fill="white" stroke="#C8D9CC"/>
+            <rect x="30" y="28" width="180" height="40" rx="3" fill="#F5F3EE"/>
+            <rect x="30" y="78" width="80" height="10" rx="2" fill="#C8D9CC"/>
+            <rect x="30" y="94" width="160" height="8" rx="2" fill="#EDEAE3"/>
+            <rect x="30" y="108" width="130" height="8" rx="2" fill="#EDEAE3"/>
+            <rect x="30" y="126" width="60" height="14" rx="3" fill="#C96B3A"/>
+            <rect x="238" y="18" width="142" height="130" rx="6" fill="white" stroke="#C8D9CC"/>
+            <circle cx="309" cy="66" r="24" fill="none" stroke="#4A7A5A" stroke-width="6" stroke-dasharray="90 60"/>
+            <text x="309" y="71" font-family="DM Mono" font-size="10" fill="#1A1A18" text-anchor="middle">68%</text>
+          </svg>
+        </div>
+        <div class="work-info">
+          <span class="work-num">002</span>
+          <div class="work-title">地域サロン向けLPリニューアル＋広告連動</div>
+          <span class="work-tag">LP制作</span>
+        </div>
+      </div>
+      <div class="work-card reveal reveal-delay-2">
+        <div class="work-thumb">
+          <svg width="100%" height="100%" viewBox="0 0 400 190" preserveAspectRatio="xMidYMid slice">
+            <rect width="400" height="190" fill="#E5E1D8"/>
+            <rect x="20" y="14" width="360" height="162" rx="6" fill="white" stroke="#C8D9CC"/>
+            <rect x="30" y="24" width="100" height="8" rx="2" fill="#C8D9CC"/>
+            <rect x="30" y="44" width="340" height="1" fill="#EDEAE3"/>
+            <rect x="30" y="54" width="60" height="88" rx="3" fill="#F5F3EE" stroke="#EDEAE3"/>
+            <rect x="98" y="54" width="60" height="88" rx="3" fill="#F5F3EE" stroke="#EDEAE3"/>
+            <rect x="166" y="54" width="60" height="88" rx="3" fill="#F5F3EE" stroke="#EDEAE3"/>
+            <rect x="234" y="54" width="60" height="88" rx="3" fill="#F5F3EE" stroke="#EDEAE3"/>
+            <rect x="302" y="54" width="58" height="88" rx="3" fill="#F5F3EE" stroke="#EDEAE3"/>
+            <rect x="44" y="104" width="28" height="30" rx="2" fill="#C8D9CC"/>
+            <rect x="112" y="94"  width="28" height="40" rx="2" fill="#C8D9CC"/>
+            <rect x="180" y="84"  width="28" height="50" rx="2" fill="#4A7A5A" opacity="0.55"/>
+            <rect x="248" y="74"  width="28" height="60" rx="2" fill="#4A7A5A" opacity="0.75"/>
+            <rect x="316" y="64"  width="28" height="70" rx="2" fill="#4A7A5A"/>
+            <text x="60"  y="158" font-family="DM Mono" font-size="7" fill="#9B9991" text-anchor="middle">1月</text>
+            <text x="128" y="158" font-family="DM Mono" font-size="7" fill="#9B9991" text-anchor="middle">2月</text>
+            <text x="196" y="158" font-family="DM Mono" font-size="7" fill="#9B9991" text-anchor="middle">3月</text>
+            <text x="264" y="158" font-family="DM Mono" font-size="7" fill="#9B9991" text-anchor="middle">4月</text>
+            <text x="331" y="158" font-family="DM Mono" font-size="7" fill="#9B9991" text-anchor="middle">5月</text>
+          </svg>
+        </div>
+        <div class="work-info">
+          <span class="work-num">003</span>
+          <div class="work-title">Looker Studioによるレポート自動化</div>
+          <span class="work-tag">Looker Studio</span>
+        </div>
+      </div>
+    </div>
+    <div class="works-cta reveal">
+      <a href="works.html">実績をすべて見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT PREVIEW ─────────────────────────── -->
+<section id="about-preview">
+  <div class="about-grid">
+    <div class="reveal">
+      <span class="about-tag">ABOUT · 代表について</span>
+      <h2 class="about-title">CSの視点で、<br>伴走する代理店を<br>目指して。</h2>
+      <p class="about-desc">健康食品EC会社のWeb担当として広告運用を経験後、LINEヤフー株式会社のカスタマーサクセスとして大手広告主を支援。その両側の視点から、「報告するだけ」の代理店ではなく、成果にこだわる伴走型の支援を実現します。</p>
+      <a href="about.html" class="about-link">詳しく見る →</a>
+    </div>
+
+    <!-- Hand-drawn style abstract illustration -->
+    <div class="about-illust reveal reveal-delay-2">
+      <svg width="380" height="340" viewBox="0 0 380 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- Warm background circle — very subtle -->
+        <circle cx="190" cy="160" r="148" fill="#F0EDE6" opacity="0.6"/>
+
+        <!-- Terracotta solid circle — the focal accent -->
+        <circle cx="208" cy="86" r="38" fill="#C96B3A"/>
+
+        <!-- ── Continuous hand-drawn gestural line ── -->
+
+        <!-- Left side: loose looping, handwriting-like strokes -->
+        <path d="M14,210 C28,198 18,180 36,172 C54,164 46,148 62,142 C78,136 72,120 90,118 C106,116 100,132 116,126 C130,120 126,108 140,102"
+              stroke="#1A1A18" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+        <!-- Bridge curve rising toward circle -->
+        <path d="M140,102 C152,96 160,88 170,82 C178,77 186,72 200,68"
+              stroke="#1A1A18" stroke-width="5" stroke-linecap="round" fill="none"/>
+
+        <!-- Arc sweeping around the circle (face/head area) -->
+        <path d="M200,68 C218,62 232,70 238,84 C244,98 238,114 226,120 C214,126 200,122 192,128 C184,134 182,148 196,156 C210,164 226,158 238,146"
+              stroke="#1A1A18" stroke-width="5" stroke-linecap="round" fill="none"/>
+
+        <!-- Flow right into large body/shoulder arch -->
+        <path d="M238,146 C256,130 274,114 296,106 C316,98 340,106 352,124 C362,140 354,164 332,178 C306,194 276,190 256,210 C238,228 234,254 244,272"
+              stroke="#1A1A18" stroke-width="5" stroke-linecap="round" fill="none"/>
+
+        <!-- Small minimal face at center of circle -->
+        <!-- Face ring -->
+        <circle cx="208" cy="88" r="24" stroke="#1A1A18" stroke-width="2.5" fill="none"/>
+        <!-- Eyes — simple vertical strokes -->
+        <line x1="199" y1="83" x2="199" y2="89" stroke="#1A1A18" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="217" y1="83" x2="217" y2="89" stroke="#1A1A18" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Soft smile -->
+        <path d="M201,97 Q208,104 215,97" stroke="#1A1A18" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ───────────────────────────────────── -->
+<section id="faq">
+  <div class="faq-max">
+    <div class="faq-header">
+      <p class="tag-label reveal" style="margin-bottom:14px;">FAQ</p>
+      <h2 class="section-title reveal reveal-delay-1">よくあるご質問</h2>
+    </div>
+    <div class="faq-item reveal reveal-delay-1">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>料金はどのくらいかかりますか？</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">月額固定制で、初期費用は0円です。広告費の規模に応じたプランをご用意しております。スタートプランは月額¥〇〇,000〜、スタンダードプランは月額¥〇〇,000〜となります。詳細はサービスページの料金表をご確認ください。</div>
+    </div>
+    <div class="faq-item reveal reveal-delay-2">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>最低契約期間はありますか？</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">最低契約期間は3ヶ月からとなります。広告運用は効果が出るまでに一定の期間が必要なため、3ヶ月を基本としています。その後は1ヶ月単位での更新が可能です。</div>
+    </div>
+    <div class="faq-item reveal reveal-delay-3">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>広告アカウントの所有権はどちらになりますか？</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">広告アカウントの所有権はお客様に帰属します。Foresyは管理権限をお借りして運用を行います。契約終了後も、これまでの運用データはお客様のアカウントにすべて残ります。</div>
+    </div>
+    <div class="faq-item reveal reveal-delay-4">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>どのくらいの予算から対応できますか？</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">月間広告費10万円程度から対応可能です。少額予算でも効果的な運用ができるよう、予算規模に合わせた戦略をご提案します。</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>レポートはどのくらいの頻度で届きますか？</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Looker Studioによるダッシュボードをリアルタイムで共有します。月次の定例レポートに加え、施策実施時や数値に大きな動きがあった際は都度ご連絡します。</div>
+    </div>
+    <div class="faq-item reveal reveal-delay-1">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span>対応エリアはどこですか？</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">拠点は福岡ですが、オンラインで全国対応しています。Zoom・Google Meetでの打ち合わせを基本とし、遠方のお客様にも安心してご利用いただけます。</div>
+    </div>
+    <div class="faq-more reveal">
+      <a href="faq.html">すべての質問を見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER CTA ─────────────────────────────── -->
+<section id="footer-cta">
+  <div class="footer-cta-inner">
+    <span class="footer-cta-eyebrow">CONTACT · 無料相談受付中</span>
+    <p class="footer-cta-text">Let's grow your business<br><em>together.</em></p>
+    <a href="mailto:adforesy@gmail.com" class="btn-cta-large">無料相談はこちら</a>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">
+        <div class="footer-logo-mark">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7C2 4.24 4.24 2 7 2s5 2.24 5 5-2.24 5-5 5c-1.4 0-2.66-.56-3.58-1.46" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <circle cx="7" cy="7" r="1.5" fill="white"/>
+          </svg>
+        </div>
+        Foresy
+      </div>
+      <p class="footer-info">
+        福岡県福岡市<br>
+        adforesy@gmail.com<br>
+        <span style="margin-top:4px;display:block;font-size:11px;color:rgba(245,243,238,0.28);">FUKUOKA-BASED AD AGENCY</span>
+      </p>
+    </div>
+    <div>
+      <div class="footer-col-title">PAGES</div>
+      <ul class="footer-links">
+        <li><a href="services.html">サービス</a></li>
+        <li><a href="works.html">実績</a></li>
+        <li><a href="about.html">会社概要</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">CONTACT</div>
+      <ul class="footer-links">
+        <li><a href="mailto:adforesy@gmail.com">adforesy@gmail.com</a></li>
+        <li><a href="#footer-cta">無料相談はこちら</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2024 Foresy. All rights reserved.</span>
+    <span class="footer-copy">福岡発の広告代理店</span>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════ -->
+<script>
+/* ── Tab switching ── */
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* ── FAQ accordion ── */
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+/* ── Unified IntersectionObserver ── */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+
+    const el = entry.target;
+
+    /* Generic reveal */
+    if (el.classList.contains('reveal')) {
+      el.classList.add('in-view');
+    }
+
+    /* Stat item accent line trigger */
+    if (el.classList.contains('stat-item')) {
+      el.classList.add('in-view');
+    }
+
+    /* Why items stagger */
+    if (el.id === 'why-items') {
+      const items = el.querySelectorAll('.why-item');
+      items.forEach((item, i) => {
+        setTimeout(() => item.classList.add('visible'), i * 120);
+      });
+      io.unobserve(el);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+/* Observe all reveal elements */
+document.querySelectorAll('.reveal, .stat-item').forEach(el => io.observe(el));
+document.getElementById('why-items') && io.observe(document.getElementById('why-items'));
+
+/* ── Page-load stagger for non-hero sections ── */
+/* Hero elements are handled by CSS animation */
+
+/* ── Magnetic button effect (subtle) ── */
+document.querySelectorAll('.btn-primary, .btn-cta-large, .nav-cta').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const rect = btn.getBoundingClientRect();
+    const cx = rect.left + rect.width  / 2;
+    const cy = rect.top  + rect.height / 2;
+    const dx = (e.clientX - cx) * 0.18;
+    const dy = (e.clientY - cy) * 0.18;
+    btn.style.transform = `translate(${dx}px, ${dy}px) translateY(-1px)`;
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = '';
+  });
+});
+
+/* ── Why section: update background numeral on item visibility ── */
+const whyItems = document.querySelectorAll('.why-item');
+const whyBgNum = document.querySelector('.why-bg-num');
+const whyObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && whyBgNum) {
+      const num = entry.target.querySelector('.why-num-badge');
+      if (num) whyBgNum.textContent = num.textContent;
+    }
+  });
+}, { threshold: 0.6 });
+whyItems.forEach(el => whyObserver.observe(el));
+
+/* ── Nav scroll state ── */
+const nav = document.querySelector('nav');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (y > 80) {
+    nav.style.borderBottomColor = 'rgba(200,217,204,0.7)';
+  } else {
+    nav.style.borderBottomColor = 'rgba(200,217,204,0.5)';
+  }
+  lastScroll = y;
+}, { passive: true });
+</script>
+</body>
+</html>
