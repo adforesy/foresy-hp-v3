@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>実績 | Foresy（フォレジー）</title>
+<meta name="description" content="Foresyの広告運用・LP制作・Looker Studio導入の実績一覧です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500&family=DM+Mono:wght@400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg-primary:#F5F3EE;--bg-secondary:#EDEAE3;--bg-tertiary:#E5E1D8;--bg-dark:#1A1A18;--text-primary:#1A1A18;--text-secondary:#5C5B56;--text-muted:#9B9991;--forest:#4A7A5A;--sage:#7A9E87;--mist:#C8D9CC;--cta:#C96B3A;--cta-hover:#B05C2E;--font-sans:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace;--font-jp:'Noto Sans JP',sans-serif;--ease-out:cubic-bezier(0.16,1,0.3,1);}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-jp);background:var(--bg-primary);color:var(--text-primary);line-height:1.8;-webkit-font-smoothing:antialiased;}
+nav{position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--mist);height:60px;display:flex;align-items:center;padding:0 40px;}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{display:flex;align-items:center;gap:8px;font-family:var(--font-sans);font-size:18px;color:var(--text-primary);text-decoration:none;letter-spacing:-0.02em;}
+.nav-logo-mark{width:28px;height:28px;background:var(--forest);border-radius:6px;display:flex;align-items:center;justify-content:center;}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{font-family:var(--font-sans);font-size:14px;color:var(--text-secondary);text-decoration:none;transition:color 150ms;}
+.nav-links a:hover,.nav-links a.active{color:var(--text-primary);}
+.nav-cta{background:var(--cta);color:white;border:none;border-radius:6px;padding:8px 18px;font-family:var(--font-sans);font-size:13px;cursor:pointer;transition:background 150ms;text-decoration:none;display:inline-block;}
+.nav-cta:hover{background:var(--cta-hover);}
+.page-hero{background:var(--bg-primary);padding:80px 40px 64px;border-bottom:1px solid var(--mist);}
+.page-hero-inner{max-width:1200px;margin:0 auto;}
+.tag-label{font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;color:var(--sage);text-transform:uppercase;}
+.page-hero h1{font-family:var(--font-sans);font-weight:300;font-size:clamp(36px,5vw,60px);letter-spacing:-0.02em;color:var(--text-primary);line-height:1.1;margin-bottom:16px;}
+.page-hero p{font-family:var(--font-jp);font-size:15px;color:var(--text-secondary);line-height:1.9;max-width:560px;}
+.works-main{padding:60px 40px;}
+.works-inner{max-width:1200px;margin:0 auto;}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px;}
+.filter-btn{padding:7px 16px;border:1px solid var(--mist);border-radius:999px;background:none;font-family:var(--font-mono);font-size:11px;color:var(--text-muted);cursor:pointer;transition:all 150ms;letter-spacing:0.04em;}
+.filter-btn:hover{border-color:var(--forest);color:var(--forest);}
+.filter-btn.active{background:var(--text-primary);border-color:var(--text-primary);color:white;}
+.works-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.work-card{background:var(--bg-secondary);border:1px solid var(--mist);border-radius:12px;overflow:hidden;cursor:pointer;transition:transform 250ms var(--ease-out),box-shadow 250ms var(--ease-out);}
+.work-card:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(0,0,0,0.1);}
+.work-card.hidden{display:none;}
+.work-thumb{height:220px;background:var(--bg-tertiary);position:relative;overflow:hidden;}
+.work-thumb-overlay{position:absolute;inset:0;background:rgba(26,26,24,0);transition:background 250ms;display:flex;align-items:center;justify-content:center;}
+.work-card:hover .work-thumb-overlay{background:rgba(26,26,24,0.05);}
+.work-info{padding:22px 26px;}
+.work-num{font-family:var(--font-mono);font-size:11px;color:var(--sage);display:block;margin-bottom:6px;}
+.work-title{font-family:var(--font-jp);font-size:17px;color:var(--text-primary);margin-bottom:8px;font-weight:400;}
+.work-desc{font-family:var(--font-jp);font-size:13px;color:var(--text-secondary);line-height:1.8;margin-bottom:10px;}
+.work-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;background:var(--mist);color:var(--forest);border-radius:4px;padding:2px 8px;letter-spacing:0.04em;margin-right:6px;}
+@media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}.page-hero{padding:48px 20px 40px;}.works-main{padding:40px 20px;}.works-grid{grid-template-columns:1fr;}}
+
+.nav-right{display:flex;align-items:center;gap:12px;}
+.nav-qr-btn{width:36px;height:36px;border-radius:6px;border:1px solid var(--mist);background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 200ms;}
+.nav-qr-btn:hover{background:var(--bg-secondary);}
+.nav-qr-panel{position:absolute;top:68px;right:40px;z-index:200;background:white;border:1px solid var(--mist);border-radius:10px;padding:20px;box-shadow:0 8px 32px rgba(0,0,0,0.12);display:none;flex-direction:column;align-items:center;gap:10px;min-width:160px;}
+.nav-qr-panel.open{display:flex;}
+.nav-qr-label{font-family:var(--font-mono);font-size:10px;color:var(--sage);letter-spacing:0.08em;text-align:center;}
+</style>
+</head>
+<body>
+<nav style="position:relative;">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M5 4 L5 14 M5 4 L13 4 M5 9 L11 9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="5" r="2" fill="#C96B3A"/></svg></div>
+      Foresy
+    </a>
+    <div class="nav-links">
+      <a href="services.html">サービス</a>
+      <a href="works.html" class="active">実績</a>
+      <a href="about.html">会社概要</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-qr-btn" onclick="toggleQR()" aria-label="LINE QRコード"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#5C5B56" stroke-width="1.4" fill="none"/><rect x="4" y="4" width="2" height="2" fill="#5C5B56"/><rect x="10" y="2" width="6" height="6" rx="1" stroke="#5C5B56" stroke-width="1.4" fill="none"/><rect x="12" y="4" width="2" height="2" fill="#5C5B56"/><rect x="2" y="10" width="6" height="6" rx="1" stroke="#5C5B56" stroke-width="1.4" fill="none"/><rect x="4" y="12" width="2" height="2" fill="#5C5B56"/><rect x="10" y="10" width="2" height="2" fill="#5C5B56"/><rect x="14" y="10" width="2" height="2" fill="#5C5B56"/><rect x="12" y="12" width="4" height="4" rx="0.5" fill="#5C5B56"/><rect x="10" y="14" width="2" height="2" fill="#5C5B56"/></svg></button>
+      <div class="nav-qr-panel" id="qr-panel"><svg width="110" height="110" viewBox="0 0 120 120" fill="none"><rect width="120" height="120" fill="white"/><rect x="4" y="4" width="36" height="36" rx="3" fill="#1A1A18"/><rect x="10" y="10" width="24" height="24" rx="2" fill="white"/><rect x="14" y="14" width="16" height="16" rx="1" fill="#1A1A18"/><rect x="80" y="4" width="36" height="36" rx="3" fill="#1A1A18"/><rect x="86" y="10" width="24" height="24" rx="2" fill="white"/><rect x="90" y="14" width="16" height="16" rx="1" fill="#1A1A18"/><rect x="4" y="80" width="36" height="36" rx="3" fill="#1A1A18"/><rect x="10" y="86" width="24" height="24" rx="2" fill="white"/><rect x="14" y="90" width="16" height="16" rx="1" fill="#1A1A18"/><rect x="46" y="4" width="6" height="6" fill="#1A1A18"/><rect x="56" y="4" width="6" height="6" fill="#1A1A18"/><rect x="66" y="4" width="6" height="6" fill="#1A1A18"/><rect x="46" y="14" width="6" height="6" fill="#1A1A18"/><rect x="66" y="14" width="6" height="6" fill="#1A1A18"/><rect x="46" y="24" width="16" height="6" fill="#1A1A18"/><rect x="76" y="46" width="6" height="36" fill="#1A1A18"/><rect x="86" y="46" width="16" height="6" fill="#1A1A18"/><rect x="96" y="56" width="6" height="16" fill="#1A1A18"/></svg><span class="nav-qr-label">LINE 公式アカウント<br>友だち追加はこちら</span></div>
+      <a href="contact.html" class="nav-cta">無料相談</a>
+    </div>
+  </div>
+</nav>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="tag-label" style="margin-bottom:14px;">WORKS</p>
+    <h1>実績・制作物</h1>
+    <p>これまでの支援・制作事例を一部ご紹介します。具体的な数値や詳細はお問い合わせください。</p>
+  </div>
+</div>
+<div class="works-main">
+  <div class="works-inner">
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterWorks('all',this)">すべて</button>
+      <button class="filter-btn" onclick="filterWorks('google',this)">Google広告</button>
+      <button class="filter-btn" onclick="filterWorks('yahoo',this)">LINEヤフー広告</button>
+      <button class="filter-btn" onclick="filterWorks('line',this)">LINE公式</button>
+      <button class="filter-btn" onclick="filterWorks('lp',this)">LP制作</button>
+      <button class="filter-btn" onclick="filterWorks('looker',this)">Looker Studio</button>
+    </div>
+    <div class="works-grid" id="works-grid">
+
+      <div class="work-card" data-cat="google">
+        <div class="work-thumb">
+          <svg width="100%" height="100%" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice">
+            <rect width="560" height="220" fill="#E5E1D8"/>
+            <rect x="20" y="20" width="520" height="180" rx="6" fill="white" stroke="#C8D9CC"/>
+            <rect x="30" y="30" width="140" height="10" rx="3" fill="#EDEAE3"/>
+            <polyline points="60,170 120,145 180,130 240,105 300,85 360,65 420,48 480,36" stroke="#1A1A18" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <polygon points="60,170 120,145 180,130 240,105 300,85 360,65 420,48 480,36 480,190 60,190" fill="rgba(74,122,90,0.07)"/>
+            <rect x="380" y="40" width="120" height="36" rx="5" fill="white" stroke="#C8D9CC"/>
+            <text x="392" y="53" font-family="DM Mono" font-size="8" fill="#9B9991">ROAS</text>
+            <text x="392" y="68" font-family="DM Sans" font-size="14" font-weight="200" fill="#1A1A18">+142%</text>
+          </svg>
+          <div class="work-thumb-overlay"></div>
+        </div>
+        <div class="work-info">
+          <span class="work-num">001</span>
+          <div class="work-title">健康食品EC・Google広告運用改善</div>
+          <p class="work-desc">配信構造の見直しとコンバージョン計測の再設計により、ROAS 142%改善・CPA 35%削減を実現。</p>
+          <span class="work-tag">Google広告</span>
+        </div>
+      </div>
+
+      <div class="work-card" data-cat="lp">
+        <div class="work-thumb">
+          <svg width="100%" height="100%" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice">
+            <rect width="560" height="220" fill="#E5E1D8"/>
+            <rect x="20" y="20" width="520" height="180" rx="6" fill="white" stroke="#C8D9CC"/>
+            <rect x="20" y="20" width="520" height="28" rx="6" fill="#F5F3EE"/>
+            <rect x="20" y="36" width="520" height="12" fill="#F5F3EE"/>
+            <circle cx="36" cy="34" r="4" fill="#E5E1D8"/><circle cx="50" cy="34" r="4" fill="#E5E1D8"/><circle cx="64" cy="34" r="4" fill="#E5E1D8"/>
+            <rect x="30" y="60" width="500" height="48" rx="3" fill="#F5F3EE"/>
+            <rect x="42" y="70" width="200" height="10" rx="3" fill="#EDEAE3"/>
+            <rect x="42" y="86" width="140" height="8" rx="3" fill="#EDEAE3"/>
+            <rect x="420" y="70" width="80" height="24" rx="4" fill="#C96B3A"/>
+            <rect x="30" y="120" width="240" height="60" rx="3" fill="#F5F3EE"/>
+            <rect x="30" y="120" width="240" height="60" rx="3" stroke="#EDEAE3"/>
+            <rect x="280" y="120" width="250" height="60" rx="3" fill="#F5F3EE" stroke="#EDEAE3"/>
+          </svg>
+          <div class="work-thumb-overlay"></div>
+        </div>
+        <div class="work-info">
+          <span class="work-num">002</span>
+          <div class="work-title">地域サロン向けLPリニューアル</div>
+          <p class="work-desc">ファーストビューの改善とフォーム最適化でCVR 68%向上。広告との連動を前提に構成を設計。</p>
+          <span class="work-tag">LP制作</span>
+        </div>
+      </div>
+
+      <div class="work-card" data-cat="looker">
+        <div class="work-thumb">
+          <svg width="100%" height="100%" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice">
+            <rect width="560" height="220" fill="#E5E1D8"/>
+            <rect x="20" y="20" width="520" height="180" rx="6" fill="white" stroke="#C8D9CC"/>
+            <rect x="30" y="30" width="90" height="8" rx="3" fill="#EDEAE3"/>
+            <rect x="30" y="48" width="120" height="52" rx="4" fill="#F5F3EE" stroke="#EDEAE3"/>
+            <text x="44" y="66" font-family="DM Mono" font-size="8" fill="#9B9991">IMPRESSIONS</text>
+            <text x="44" y="84" font-family="DM Sans" font-size="14" font-weight="200" fill="#1A1A18">48.2K</text>
+            <text x="44" y="95" font-family="DM Mono" font-size="7" fill="#4A7A5A">↑ 12%</text>
+            <rect x="160" y="48" width="120" height="52" rx="4" fill="#F5F3EE" stroke="#EDEAE3"/>
+            <text x="174" y="66" font-family="DM Mono" font-size="8" fill="#9B9991">CONVERSIONS</text>
+            <text x="174" y="84" font-family="DM Sans" font-size="14" font-weight="200" fill="#1A1A18">72</text>
+            <text x="174" y="95" font-family="DM Mono" font-size="7" fill="#4A7A5A">↑ 24%</text>
+            <rect x="290" y="48" width="120" height="52" rx="4" fill="#F5F3EE" stroke="#EDEAE3"/>
+            <text x="304" y="66" font-family="DM Mono" font-size="8" fill="#9B9991">COST/CV</text>
+            <text x="304" y="84" font-family="DM Sans" font-size="14" font-weight="200" fill="#C96B3A">¥1,840</text>
+            <text x="304" y="95" font-family="DM Mono" font-size="7" fill="#4A7A5A">↓ 18%</text>
+            <rect x="30" y="112" width="380" height="70" rx="4" fill="#F5F3EE" stroke="#EDEAE3"/>
+            <polyline points="44,166 90,155 136,145 182,132 228,120 274,108 320,100 366,92 400,86" stroke="#4A7A5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <div class="work-thumb-overlay"></div>
+        </div>
+        <div class="work-info">
+          <span class="work-num">003</span>
+          <div class="work-title">EC事業者向けLooker Studioダッシュボード</div>
+          <p class="work-desc">手動Excelレポートを自動化。複数媒体を一元管理し、毎月の作業時間を約4時間削減。</p>
+          <span class="work-tag">Looker Studio</span>
+        </div>
+      </div>
+
+      <div class="work-card" data-cat="yahoo">
+        <div class="work-thumb">
+          <svg width="100%" height="100%" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice">
+            <rect width="560" height="220" fill="#E5E1D8"/>
+            <rect x="20" y="20" width="520" height="180" rx="6" fill="white" stroke="#C8D9CC"/>
+            <rect x="30" y="30" width="100" height="10" rx="3" fill="#EDEAE3"/>
+            <rect x="30" y="52" width="60" height="120" rx="3" fill="#C8D9CC" opacity="0.4"/>
+            <rect x="100" y="72" width="60" height="100" rx="3" fill="#C8D9CC" opacity="0.6"/>
+            <rect x="170" y="60" width="60" height="112" rx="3" fill="#7A9E87" opacity="0.6"/>
+            <rect x="240" y="44" width="60" height="128" rx="3" fill="#4A7A5A" opacity="0.7"/>
+            <rect x="310" y="36" width="60" height="136" rx="3" fill="#4A7A5A" opacity="0.85"/>
+            <rect x="380" y="28" width="60" height="144" rx="3" fill="#4A7A5A"/>
+            <rect x="30" y="174" width="60" height="10" rx="3" fill="#EDEAE3"/>
+            <rect x="100" y="174" width="60" height="10" rx="3" fill="#EDEAE3"/>
+            <rect x="170" y="174" width="60" height="10" rx="3" fill="#EDEAE3"/>
+          </svg>
+          <div class="work-thumb-overlay"></div>
+        </div>
+        <div class="work-info">
+          <span class="work-num">004</span>
+          <div class="work-title">BtoB企業のYahoo!広告リード改善</div>
+          <p class="work-desc">ターゲティング見直しと入札戦略変更でCPA 28%改善。月間リード数を1.4倍に増加。</p>
+          <span class="work-tag">LINEヤフー広告</span>
+        </div>
+      </div>
+
+      <div class="work-card" data-cat="line">
+        <div class="work-thumb">
+          <svg width="100%" height="100%" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice">
+            <rect width="560" height="220" fill="#E5E1D8"/>
+            <rect x="160" y="20" width="240" height="180" rx="12" fill="white" stroke="#C8D9CC"/>
+            <rect x="160" y="20" width="240" height="40" rx="12" fill="#06C755"/>
+            <rect x="160" y="48" width="240" height="12" fill="#06C755"/>
+            <text x="280" y="46" font-family="DM Mono" font-size="10" fill="white" text-anchor="middle">LINE 公式アカウント</text>
+            <rect x="172" y="72" width="160" height="32" rx="12" fill="#F5F3EE"/>
+            <rect x="180" y="80" width="80" height="8" rx="3" fill="#EDEAE3"/>
+            <rect x="180" y="92" width="60" height="7" rx="3" fill="#EDEAE3"/>
+            <rect x="220" y="120" width="140" height="32" rx="12" fill="#06C755"/>
+            <text x="290" y="140" font-family="DM Mono" font-size="9" fill="white" text-anchor="middle">ご予約はこちら</text>
+            <rect x="172" y="164" width="80" height="24" rx="4" fill="#F5F3EE" stroke="#EDEAE3"/>
+            <text x="212" y="180" font-family="DM Mono" font-size="8" fill="#9B9991" text-anchor="middle">クーポン</text>
+            <rect x="264" y="164" width="80" height="24" rx="4" fill="#F5F3EE" stroke="#EDEAE3"/>
+            <text x="304" y="180" font-family="DM Mono" font-size="8" fill="#9B9991" text-anchor="middle">メニュー</text>
+          </svg>
+          <div class="work-thumb-overlay"></div>
+        </div>
+        <div class="work-info">
+          <span class="work-num">005</span>
+          <div class="work-title">美容室向けLINE公式アカウント構築</div>
+          <p class="work-desc">友だち追加〜予約〜リピート来店の導線を設計。配信リッチメニューでリピート率向上に貢献。</p>
+          <span class="work-tag">LINE公式</span>
+        </div>
+      </div>
+
+      <div class="work-card" data-cat="google looker">
+        <div class="work-thumb">
+          <svg width="100%" height="100%" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice">
+            <rect width="560" height="220" fill="#E5E1D8"/>
+            <rect x="20" y="20" width="520" height="180" rx="6" fill="white" stroke="#C8D9CC"/>
+            <line x1="20" y1="64" x2="540" y2="64" stroke="#EDEAE3"/>
+            <rect x="30" y="30" width="120" height="8" rx="3" fill="#EDEAE3"/>
+            <rect x="30" y="74" width="500" height="36" rx="3" fill="#F5F3EE"/>
+            <rect x="38" y="84" width="80" height="8" rx="3" fill="#C8D9CC"/>
+            <rect x="200" y="84" width="80" height="8" rx="3" fill="#EDEAE3"/>
+            <rect x="380" y="84" width="60" height="8" rx="3" fill="#EDEAE3"/>
+            <rect x="460" y="82" width="60" height="12" rx="3" fill="#4A7A5A" opacity="0.3"/>
+            <rect x="30" y="118" width="500" height="32" rx="3" fill="none"/>
+            <rect x="38" y="128" width="80" height="8" rx="3" fill="#EDEAE3"/>
+            <rect x="200" y="128" width="80" height="8" rx="3" fill="#EDEAE3"/>
+            <rect x="380" y="128" width="60" height="8" rx="3" fill="#EDEAE3"/>
+            <rect x="30" y="158" width="500" height="32" rx="3" fill="#F5F3EE"/>
+            <rect x="38" y="168" width="80" height="8" rx="3" fill="#EDEAE3"/>
+          </svg>
+          <div class="work-thumb-overlay"></div>
+        </div>
+        <div class="work-info">
+          <span class="work-num">006</span>
+          <div class="work-title">通販会社・計測設計フルリニューアル</div>
+          <p class="work-desc">GA4移行時の計測欠損をゼロにする設計で実施。Google広告とのデータ連携も同時に最適化。</p>
+          <span class="work-tag">Google広告</span>
+          <span class="work-tag">Looker Studio</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<section style="background:#1A1A18;padding:72px 40px;text-align:center;"><p style="font-family:'DM Sans',sans-serif;font-weight:200;font-size:clamp(24px,3.5vw,44px);color:white;letter-spacing:-0.02em;margin-bottom:32px;line-height:1.2;">まずは気軽に、話してみませんか。</p><a href="contact.html" style="background:#C96B3A;color:white;border:none;border-radius:6px;padding:14px 32px;font-size:16px;cursor:pointer;text-decoration:none;display:inline-block;">無料相談はこちら（0円）</a></section>
+<footer style="background:#1A1A18;border-top:1px solid rgba(255,255,255,0.07);padding:40px 40px 28px;"><div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;"><div><div style="font-size:18px;color:white;font-weight:300;margin-bottom:14px;display:flex;align-items:center;gap:8px;"><div style="width:26px;height:26px;background:#4A7A5A;border-radius:5px;display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M5 4 L5 14 M5 4 L13 4 M5 9 L11 9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="5" r="2" fill="#C96B3A"/></svg></div>Foresy</div><p style="font-size:13px;color:rgba(245,243,238,0.45);line-height:1.9;">福岡県福岡市<br>adforesy@gmail.com</p></div><div><div style="font-size:10px;color:#7A9E87;letter-spacing:0.1em;margin-bottom:18px;text-transform:uppercase;">PAGES</div><ul style="list-style:none;"><li style="margin-bottom:10px;"><a href="services.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">サービス</a></li><li style="margin-bottom:10px;"><a href="works.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">実績</a></li><li style="margin-bottom:10px;"><a href="about.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">会社概要</a></li><li><a href="faq.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">FAQ</a></li></ul></div><div><div style="font-size:10px;color:#7A9E87;letter-spacing:0.1em;margin-bottom:18px;text-transform:uppercase;">CONTACT</div><ul style="list-style:none;"><li style="margin-bottom:10px;"><a href="mailto:adforesy@gmail.com" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">adforesy@gmail.com</a></li><li><a href="contact.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">お問い合わせ・無料相談</a></li></ul></div></div><div style="max-width:1200px;margin:28px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;"><span style="font-size:11px;color:rgba(245,243,238,0.35);">&copy; 2024 Foresy. All rights reserved.</span><span style="font-size:11px;color:rgba(245,243,238,0.35);">福岡発の広告代理店</span></div></footer>
+<script>
+function filterWorks(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.work-card').forEach(card => {
+    const cats = card.dataset.cat || '';
+    if (cat === 'all' || cats.includes(cat)) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+}
+</script>
+<script>
+function toggleQR(){document.getElementById('qr-panel').classList.toggle('open');}
+document.addEventListener('click',(e)=>{if(!e.target.closest('.nav-qr-btn')&&!e.target.closest('#qr-panel')){var p=document.getElementById('qr-panel');if(p)p.classList.remove('open');}});
+</script>
+</body>
+</html>

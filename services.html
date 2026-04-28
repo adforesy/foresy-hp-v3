@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サービス | Foresy（フォレジー）</title>
+<meta name="description" content="Google広告・LINEヤフー広告の運用、LP制作、Looker Studioによるレポート自動化。Foresyのサービス詳細・制作フロー・料金表をご覧ください。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500&family=DM+Mono:wght@400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg-primary:#F5F3EE; --bg-secondary:#EDEAE3; --bg-tertiary:#E5E1D8; --bg-dark:#1A1A18;
+  --text-primary:#1A1A18; --text-secondary:#5C5B56; --text-muted:#9B9991; --text-inverse:#F5F3EE;
+  --forest:#4A7A5A; --sage:#7A9E87; --mist:#C8D9CC; --cta:#C96B3A; --cta-hover:#B05C2E;
+  --font-sans:'DM Sans',sans-serif; --font-mono:'DM Mono',monospace; --font-jp:'Noto Sans JP',sans-serif;
+  --ease-out:cubic-bezier(0.16,1,0.3,1);
+}
+html { scroll-behavior: smooth; }
+body { font-family:var(--font-jp); background:var(--bg-primary); color:var(--text-primary); line-height:1.8; -webkit-font-smoothing:antialiased; }
+nav { position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--mist);height:60px;display:flex;align-items:center;padding:0 40px; }
+.nav-inner { max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between; }
+.nav-logo { display:flex;align-items:center;gap:8px;font-family:var(--font-sans);font-weight:400;font-size:18px;color:var(--text-primary);text-decoration:none;letter-spacing:-0.02em; }
+.nav-logo-mark { width:28px;height:28px;background:var(--forest);border-radius:6px;display:flex;align-items:center;justify-content:center; }
+.nav-links { display:flex;gap:28px; }
+.nav-links a { font-family:var(--font-sans);font-size:14px;color:var(--text-secondary);text-decoration:none;transition:color 150ms; }
+.nav-links a:hover, .nav-links a.active { color:var(--text-primary); }
+.nav-cta { background:var(--cta);color:white;border:none;border-radius:6px;padding:8px 18px;font-family:var(--font-sans);font-size:13px;cursor:pointer;transition:background 150ms;text-decoration:none;display:inline-block; }
+.nav-cta:hover { background:var(--cta-hover); }
+.section-inner { max-width:1200px;margin:0 auto;padding:0 40px; }
+.tag-label { font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;color:var(--sage);text-transform:uppercase; }
+.section-title { font-family:var(--font-sans);font-weight:300;font-size:clamp(28px,3vw,40px);letter-spacing:-0.02em;color:var(--text-primary);line-height:1.2; }
+.btn-primary { background:var(--cta);color:white;border:none;border-radius:6px;padding:12px 24px;font-family:var(--font-jp);font-size:14px;cursor:pointer;transition:background 150ms;text-decoration:none;display:inline-block; }
+.btn-primary:hover { background:var(--cta-hover); }
+
+/* PAGE HERO */
+.page-hero { background:var(--bg-primary);padding:80px 40px 64px;border-bottom:1px solid var(--mist); }
+.page-hero-inner { max-width:1200px;margin:0 auto; }
+.page-hero h1 { font-family:var(--font-sans);font-weight:300;font-size:clamp(36px,5vw,60px);letter-spacing:-0.02em;color:var(--text-primary);line-height:1.1;margin-bottom:16px; }
+.page-hero p { font-family:var(--font-jp);font-size:15px;color:var(--text-secondary);line-height:1.9;max-width:560px; }
+
+/* SERVICE DETAIL */
+.service-detail { padding:80px 40px; }
+.service-detail:nth-child(even) { background:var(--bg-secondary); }
+.service-detail-grid { max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:start; }
+.service-detail-grid.reverse { direction:rtl; }
+.service-detail-grid.reverse > * { direction:ltr; }
+.service-meta { }
+.service-num { font-family:var(--font-mono);font-size:12px;color:var(--sage);display:block;margin-bottom:12px; }
+.service-name { font-family:var(--font-sans);font-weight:300;font-size:clamp(24px,2.5vw,36px);letter-spacing:-0.02em;color:var(--text-primary);margin-bottom:16px;line-height:1.2; }
+.service-body { font-family:var(--font-jp);font-size:14px;color:var(--text-secondary);line-height:1.9;margin-bottom:24px; }
+.service-points { list-style:none; }
+.service-points li { font-family:var(--font-jp);font-size:14px;color:var(--text-secondary);padding:8px 0;border-bottom:1px solid var(--mist);display:flex;align-items:flex-start;gap:10px; }
+.service-points li::before { content:'';width:6px;height:6px;background:var(--forest);border-radius:50%;margin-top:8px;flex-shrink:0; }
+.service-visual { background:var(--bg-tertiary);border-radius:12px;overflow:hidden; }
+
+/* FLOW */
+.flow-section { background:var(--bg-secondary);padding:80px 40px; }
+.flow-steps { max-width:900px;margin:40px auto 0;position:relative; }
+.flow-steps::before { content:'';position:absolute;left:23px;top:0;bottom:0;width:1px;background:var(--mist); }
+.flow-step { display:flex;gap:24px;margin-bottom:32px;position:relative;z-index:1; }
+.flow-step:last-child { margin-bottom:0; }
+.flow-step-num { width:48px;height:48px;border-radius:50%;background:var(--bg-primary);border:1px solid var(--mist);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:12px;color:var(--sage);flex-shrink:0; }
+.flow-step-content { padding-top:8px; }
+.flow-step-title { font-family:var(--font-jp);font-size:16px;font-weight:400;color:var(--text-primary);margin-bottom:4px; }
+.flow-step-desc { font-family:var(--font-jp);font-size:14px;color:var(--text-secondary);line-height:1.8; }
+
+/* PRICING */
+.pricing-section { background:var(--bg-primary);padding:80px 40px; }
+.pricing-table { max-width:900px;margin:40px auto 0;border:1px solid var(--mist);border-radius:12px;overflow:hidden; }
+.pricing-row { display:grid;grid-template-columns:1.5fr 1fr 2fr 140px;align-items:center;padding:28px 32px;border-bottom:1px solid var(--mist);background:var(--bg-primary); }
+.pricing-row:last-child { border-bottom:none; }
+.pricing-row.recommended { background:var(--bg-secondary); }
+.pricing-row.header { background:var(--bg-tertiary);padding:14px 32px; }
+.pricing-row-label { font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase; }
+.pricing-plan { font-family:var(--font-sans);font-size:18px;font-weight:400;color:var(--text-primary); }
+.pricing-badge { display:inline-block;font-family:var(--font-mono);font-size:9px;background:var(--cta);color:white;border-radius:4px;padding:2px 7px;margin-left:8px;letter-spacing:0.06em; }
+.pricing-price { font-family:var(--font-sans);font-weight:200;font-size:28px;color:var(--text-primary); }
+.pricing-price span { font-size:12px;font-weight:400;color:var(--text-muted); }
+.pricing-desc { font-family:var(--font-jp);font-size:13px;color:var(--text-secondary);line-height:1.7; }
+.pricing-btn { text-align:right; }
+.btn-outline { border:1px solid var(--mist);background:none;border-radius:6px;padding:10px 18px;font-family:var(--font-jp);font-size:13px;color:var(--text-secondary);cursor:pointer;transition:all 150ms;text-decoration:none;display:inline-block; }
+.btn-outline:hover { border-color:var(--forest);color:var(--forest); }
+.pricing-note { max-width:900px;margin:16px auto 0;font-family:var(--font-jp);font-size:13px;color:var(--text-muted);line-height:1.8; }
+
+@media(max-width:768px){
+  nav{padding:0 20px;} .nav-links{display:none;}
+  .page-hero{padding:48px 20px 40px;}
+  .service-detail{padding:60px 20px;}
+  .service-detail-grid{grid-template-columns:1fr;gap:32px;}
+  .service-detail-grid.reverse{direction:ltr;}
+  .flow-section,.pricing-section{padding:60px 20px;}
+  .pricing-row{grid-template-columns:1fr 1fr;gap:12px;}
+  .pricing-row.header{display:none;}
+  .pricing-btn{grid-column:1/-1;}
+}
+
+.nav-right{display:flex;align-items:center;gap:12px;}
+.nav-qr-btn{width:36px;height:36px;border-radius:6px;border:1px solid var(--mist);background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 200ms;}
+.nav-qr-btn:hover{background:var(--bg-secondary);}
+.nav-qr-panel{position:absolute;top:68px;right:40px;z-index:200;background:white;border:1px solid var(--mist);border-radius:10px;padding:20px;box-shadow:0 8px 32px rgba(0,0,0,0.12);display:none;flex-direction:column;align-items:center;gap:10px;min-width:160px;}
+.nav-qr-panel.open{display:flex;}
+.nav-qr-label{font-family:var(--font-mono);font-size:10px;color:var(--sage);letter-spacing:0.08em;text-align:center;}
+</style>
+</head>
+<body>
+<nav style="position:relative;">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M5 4 L5 14 M5 4 L13 4 M5 9 L11 9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="5" r="2" fill="#C96B3A"/></svg></div>
+      Foresy
+    </a>
+    <div class="nav-links">
+      <a href="services.html" class="active">サービス</a>
+      <a href="works.html">実績</a>
+      <a href="about.html">会社概要</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-qr-btn" onclick="toggleQR()" aria-label="LINE QRコード"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#5C5B56" stroke-width="1.4" fill="none"/><rect x="4" y="4" width="2" height="2" fill="#5C5B56"/><rect x="10" y="2" width="6" height="6" rx="1" stroke="#5C5B56" stroke-width="1.4" fill="none"/><rect x="12" y="4" width="2" height="2" fill="#5C5B56"/><rect x="2" y="10" width="6" height="6" rx="1" stroke="#5C5B56" stroke-width="1.4" fill="none"/><rect x="4" y="12" width="2" height="2" fill="#5C5B56"/><rect x="10" y="10" width="2" height="2" fill="#5C5B56"/><rect x="14" y="10" width="2" height="2" fill="#5C5B56"/><rect x="12" y="12" width="4" height="4" rx="0.5" fill="#5C5B56"/><rect x="10" y="14" width="2" height="2" fill="#5C5B56"/></svg></button>
+      <div class="nav-qr-panel" id="qr-panel"><svg width="110" height="110" viewBox="0 0 120 120" fill="none"><rect width="120" height="120" fill="white"/><rect x="4" y="4" width="36" height="36" rx="3" fill="#1A1A18"/><rect x="10" y="10" width="24" height="24" rx="2" fill="white"/><rect x="14" y="14" width="16" height="16" rx="1" fill="#1A1A18"/><rect x="80" y="4" width="36" height="36" rx="3" fill="#1A1A18"/><rect x="86" y="10" width="24" height="24" rx="2" fill="white"/><rect x="90" y="14" width="16" height="16" rx="1" fill="#1A1A18"/><rect x="4" y="80" width="36" height="36" rx="3" fill="#1A1A18"/><rect x="10" y="86" width="24" height="24" rx="2" fill="white"/><rect x="14" y="90" width="16" height="16" rx="1" fill="#1A1A18"/><rect x="46" y="4" width="6" height="6" fill="#1A1A18"/><rect x="56" y="4" width="6" height="6" fill="#1A1A18"/><rect x="66" y="4" width="6" height="6" fill="#1A1A18"/><rect x="46" y="14" width="6" height="6" fill="#1A1A18"/><rect x="66" y="14" width="6" height="6" fill="#1A1A18"/><rect x="46" y="24" width="16" height="6" fill="#1A1A18"/><rect x="76" y="46" width="6" height="36" fill="#1A1A18"/><rect x="86" y="46" width="16" height="6" fill="#1A1A18"/><rect x="96" y="56" width="6" height="16" fill="#1A1A18"/></svg><span class="nav-qr-label">LINE 公式アカウント<br>友だち追加はこちら</span></div>
+      <a href="contact.html" class="nav-cta">無料相談</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="tag-label" style="margin-bottom:14px;">SERVICES</p>
+    <h1>成果から逆算する、<br>広告支援。</h1>
+    <p>運用・制作・計測・自動化をワンストップで提供。小規模でも大手と同じ精度で、PDCAを回し続けます。</p>
+  </div>
+</div>
+
+<!-- SERVICE 1 -->
+<div class="service-detail">
+  <div class="service-detail-grid">
+    <div class="service-meta">
+      <span class="service-num">SERVICE 01</span>
+      <h2 class="service-name">広告運用</h2>
+      <p class="service-body">Google広告・LINEヤフー広告の運用を、計測設計からレポートまで一気通貫で対応します。「広告費をかけているのに成果が出ない」という課題に、媒体社と広告主両側の経験で応えます。</p>
+      <ul class="service-points">
+        <li>Google 検索・ディスプレイ・P-MAX広告</li>
+        <li>LINEヤフー広告（Yahoo!検索・ディスプレイ）</li>
+        <li>コンバージョン計測設計・タグ実装</li>
+        <li>入札戦略・キーワード・クリエイティブ最適化</li>
+        <li>月次レポート + Looker Studio ダッシュボード</li>
+      </ul>
+    </div>
+    <div class="service-visual">
+      <svg width="100%" viewBox="0 0 480 320" fill="none">
+        <rect width="480" height="320" fill="#E5E1D8"/>
+        <rect x="24" y="24" width="432" height="272" rx="8" fill="white" stroke="#C8D9CC"/>
+        <rect x="36" y="36" width="120" height="10" rx="3" fill="#EDEAE3"/>
+        <rect x="36" y="56" width="408" height="1" fill="#EDEAE3"/>
+        <!-- Chart area -->
+        <rect x="36" y="66" width="280" height="180" rx="4" fill="#FAFAF8"/>
+        <line x1="36" y1="206" x2="316" y2="206" stroke="#EDEAE3" stroke-width="1"/>
+        <line x1="36" y1="176" x2="316" y2="176" stroke="#EDEAE3" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="36" y1="146" x2="316" y2="146" stroke="#EDEAE3" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="36" y1="116" x2="316" y2="116" stroke="#EDEAE3" stroke-width="1" stroke-dasharray="3 3"/>
+        <polyline points="56,196 100,185 144,170 188,148 232,126 276,96" stroke="#1A1A18" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <polygon points="56,196 100,185 144,170 188,148 232,126 276,96 276,206 56,206" fill="rgba(74,122,90,0.07)"/>
+        <polyline points="56,202 100,196 144,192 188,184 232,175 276,162" stroke="#4A7A5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="276" cy="96" r="4" fill="#1A1A18"/>
+        <circle cx="276" cy="162" r="3.5" fill="#4A7A5A"/>
+        <!-- KPI cards -->
+        <rect x="328" y="66" width="112" height="54" rx="6" fill="#F5F3EE" stroke="#C8D9CC"/>
+        <text x="340" y="86" font-family="DM Mono" font-size="9" fill="#9B9991">ROAS</text>
+        <text x="340" y="106" font-family="DM Sans" font-size="18" font-weight="200" fill="#1A1A18">280%</text>
+        <rect x="328" y="130" width="112" height="54" rx="6" fill="#F5F3EE" stroke="#C8D9CC"/>
+        <text x="340" y="150" font-family="DM Mono" font-size="9" fill="#9B9991">CPA</text>
+        <text x="340" y="170" font-family="DM Sans" font-size="18" font-weight="200" fill="#4A7A5A">¥1,840</text>
+        <rect x="328" y="194" width="112" height="54" rx="6" fill="#F5F3EE" stroke="#C8D9CC"/>
+        <text x="340" y="214" font-family="DM Mono" font-size="9" fill="#9B9991">CVR</text>
+        <text x="340" y="234" font-family="DM Sans" font-size="18" font-weight="200" fill="#1A1A18">3.8%</text>
+        <rect x="36" y="258" width="80" height="22" rx="3" fill="#EDEAE3"/>
+        <rect x="124" y="258" width="80" height="22" rx="3" fill="#EDEAE3"/>
+        <rect x="212" y="258" width="80" height="22" rx="3" fill="#EDEAE3"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE 2 -->
+<div class="service-detail" style="background:var(--bg-secondary)">
+  <div class="service-detail-grid reverse">
+    <div class="service-visual">
+      <svg width="100%" viewBox="0 0 480 320" fill="none">
+        <rect width="480" height="320" fill="#EDEAE3"/>
+        <!-- Browser frame -->
+        <rect x="24" y="24" width="432" height="272" rx="8" fill="white" stroke="#C8D9CC"/>
+        <rect x="24" y="24" width="432" height="32" rx="8" fill="#F5F3EE"/>
+        <rect x="24" y="44" width="432" height="12" fill="#F5F3EE"/>
+        <circle cx="42" cy="40" r="5" fill="#E5E1D8"/>
+        <circle cx="58" cy="40" r="5" fill="#E5E1D8"/>
+        <circle cx="74" cy="40" r="5" fill="#E5E1D8"/>
+        <rect x="100" y="33" width="280" height="14" rx="7" fill="white" stroke="#C8D9CC"/>
+        <!-- LP Layout -->
+        <rect x="36" y="68" width="408" height="52" rx="4" fill="#F5F3EE"/>
+        <rect x="52" y="78" width="160" height="10" rx="3" fill="#EDEAE3"/>
+        <rect x="52" y="94" width="120" height="8" rx="3" fill="#EDEAE3"/>
+        <rect x="340" y="80" width="80" height="24" rx="4" fill="#C96B3A"/>
+        <rect x="36" y="132" width="192" height="100" rx="4" fill="#F5F3EE"/>
+        <rect x="52" y="144" width="80" height="8" rx="3" fill="#C8D9CC"/>
+        <rect x="52" y="158" width="160" height="6" rx="3" fill="#EDEAE3"/>
+        <rect x="52" y="170" width="140" height="6" rx="3" fill="#EDEAE3"/>
+        <rect x="52" y="182" width="150" height="6" rx="3" fill="#EDEAE3"/>
+        <rect x="52" y="200" width="60" height="20" rx="4" fill="#4A7A5A"/>
+        <rect x="244" y="132" width="200" height="100" rx="4" fill="#F5F3EE"/>
+        <rect x="252" y="144" width="80" height="8" rx="3" fill="#C8D9CC"/>
+        <rect x="252" y="160" width="180" height="48" rx="4" fill="white" stroke="#C8D9CC"/>
+        <rect x="260" y="172" width="80" height="6" rx="2" fill="#EDEAE3"/>
+        <rect x="260" y="184" width="100" height="6" rx="2" fill="#EDEAE3"/>
+        <rect x="252" y="216" width="100" height="6" rx="2" fill="#EDEAE3"/>
+      </svg>
+    </div>
+    <div class="service-meta">
+      <span class="service-num">SERVICE 02</span>
+      <h2 class="service-name">制作支援</h2>
+      <p class="service-body">LP・LINE公式アカウント・チャットボット・予約フォームの制作に対応。広告との連動を前提に設計し、CVRを高める構成と導線で仕上げます。</p>
+      <ul class="service-points">
+        <li>ランディングページ（LP）設計・制作</li>
+        <li>LINE公式アカウント設計・構築</li>
+        <li>チャットボット・問い合わせフォーム制作</li>
+        <li>予約フォーム・CRM連携</li>
+        <li>広告クリエイティブ（バナー・動画構成案）</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE 3 -->
+<div class="service-detail">
+  <div class="service-detail-grid">
+    <div class="service-meta">
+      <span class="service-num">SERVICE 03</span>
+      <h2 class="service-name">自動化・可視化</h2>
+      <p class="service-body">Looker Studio・広告スクリプトを活用したレポート自動化と計測体制の構築。手作業レポートの削減と、意思決定のスピードアップを実現します。</p>
+      <ul class="service-points">
+        <li>Looker Studio ダッシュボード構築・共有</li>
+        <li>Google広告スクリプト実装（入札・アラート）</li>
+        <li>GA4 / GTM 計測設計・実装</li>
+        <li>月次レポート自動化（スプレッドシート連携）</li>
+        <li>BigQuery・データポータル連携（オプション）</li>
+      </ul>
+    </div>
+    <div class="service-visual">
+      <svg width="100%" viewBox="0 0 480 320" fill="none">
+        <rect width="480" height="320" fill="#E5E1D8"/>
+        <rect x="24" y="24" width="432" height="272" rx="8" fill="white" stroke="#C8D9CC"/>
+        <rect x="24" y="24" width="432" height="28" rx="8" fill="#F5F3EE"/>
+        <rect x="24" y="40" width="432" height="12" fill="#F5F3EE"/>
+        <text x="36" y="42" font-family="DM Mono" font-size="8" fill="#9B9991">Looker Studio  ·  Foresy Dashboard</text>
+        <!-- Dashboard grid -->
+        <rect x="36" y="64" width="90" height="60" rx="4" fill="#F5F3EE" stroke="#EDEAE3"/>
+        <text x="44" y="78" font-family="DM Mono" font-size="7" fill="#9B9991">IMPRESSIONS</text>
+        <text x="44" y="96" font-family="DM Sans" font-size="16" font-weight="200" fill="#1A1A18">48.2K</text>
+        <text x="44" y="110" font-family="DM Mono" font-size="7" fill="#4A7A5A">↑ 12%</text>
+        <rect x="136" y="64" width="90" height="60" rx="4" fill="#F5F3EE" stroke="#EDEAE3"/>
+        <text x="144" y="78" font-family="DM Mono" font-size="7" fill="#9B9991">CLICKS</text>
+        <text x="144" y="96" font-family="DM Sans" font-size="16" font-weight="200" fill="#1A1A18">1,840</text>
+        <text x="144" y="110" font-family="DM Mono" font-size="7" fill="#4A7A5A">↑ 8%</text>
+        <rect x="236" y="64" width="90" height="60" rx="4" fill="#F5F3EE" stroke="#EDEAE3"/>
+        <text x="244" y="78" font-family="DM Mono" font-size="7" fill="#9B9991">CONVERSIONS</text>
+        <text x="244" y="96" font-family="DM Sans" font-size="16" font-weight="200" fill="#1A1A18">72</text>
+        <text x="244" y="110" font-family="DM Mono" font-size="7" fill="#4A7A5A">↑ 24%</text>
+        <rect x="336" y="64" width="108" height="60" rx="4" fill="#F5F3EE" stroke="#EDEAE3"/>
+        <text x="344" y="78" font-family="DM Mono" font-size="7" fill="#9B9991">COST/CV</text>
+        <text x="344" y="96" font-family="DM Sans" font-size="16" font-weight="200" fill="#C96B3A">¥1,840</text>
+        <text x="344" y="110" font-family="DM Mono" font-size="7" fill="#4A7A5A">↓ 18%</text>
+        <!-- Chart -->
+        <rect x="36" y="136" width="284" height="140" rx="4" fill="#F5F3EE" stroke="#EDEAE3"/>
+        <text x="48" y="152" font-family="DM Mono" font-size="8" fill="#9B9991">DAILY CONVERSIONS</text>
+        <polyline points="48,256 78,248 108,240 138,232 168,218 198,210 228,198 258,185 288,170 308,158" stroke="#4A7A5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <polygon points="48,256 78,248 108,240 138,232 168,218 198,210 228,198 258,185 288,170 308,158 308,266 48,266" fill="rgba(74,122,90,0.07)"/>
+        <!-- Donut -->
+        <rect x="332" y="136" width="112" height="140" rx="4" fill="#F5F3EE" stroke="#EDEAE3"/>
+        <text x="344" y="152" font-family="DM Mono" font-size="8" fill="#9B9991">CHANNEL MIX</text>
+        <circle cx="388" cy="214" r="32" fill="none" stroke="#EDEAE3" stroke-width="10"/>
+        <circle cx="388" cy="214" r="32" fill="none" stroke="#4A7A5A" stroke-width="10" stroke-dasharray="120 81" stroke-dashoffset="-20"/>
+        <circle cx="388" cy="214" r="32" fill="none" stroke="#C8D9CC" stroke-width="10" stroke-dasharray="60 141" stroke-dashoffset="-140"/>
+        <text x="388" y="219" font-family="DM Mono" font-size="9" fill="#1A1A18" text-anchor="middle">60%</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- FLOW -->
+<div class="flow-section">
+  <div class="section-inner">
+    <p class="tag-label" style="margin-bottom:12px;">PROCESS</p>
+    <h2 class="section-title">制作・支援フロー</h2>
+    <div class="flow-steps">
+      <div class="flow-step"><div class="flow-step-num">01</div><div class="flow-step-content"><div class="flow-step-title">無料相談・ヒアリング</div><p class="flow-step-desc">現状の課題・目標・予算・媒体環境などをヒアリング。オンライン30分〜対応します。</p></div></div>
+      <div class="flow-step"><div class="flow-step-num">02</div><div class="flow-step-content"><div class="flow-step-title">現状分析・アカウント診断</div><p class="flow-step-desc">既存の広告アカウント・計測設定・LPを診断。課題を特定し、改善の優先順位を整理します。</p></div></div>
+      <div class="flow-step"><div class="flow-step-num">03</div><div class="flow-step-content"><div class="flow-step-title">提案・見積もり</div><p class="flow-step-desc">診断結果をもとに施策提案書と料金見積もりをご提示。ご納得いただいてから契約です。</p></div></div>
+      <div class="flow-step"><div class="flow-step-num">04</div><div class="flow-step-content"><div class="flow-step-title">契約・初期設定</div><p class="flow-step-desc">計測設計・タグ実装・アカウント構造の整備など、初期設定を丁寧に行います。</p></div></div>
+      <div class="flow-step"><div class="flow-step-num">05</div><div class="flow-step-content"><div class="flow-step-title">運用開始・計測体制構築</div><p class="flow-step-desc">Looker Studioダッシュボードを共有し、運用を開始。初月は特に密にコミュニケーションを取ります。</p></div></div>
+      <div class="flow-step"><div class="flow-step-num">06</div><div class="flow-step-content"><div class="flow-step-title">定例レポート・改善提案</div><p class="flow-step-desc">月次の定例MTGで数値を振り返り、翌月の施策を合意します。突発的な相談も随時対応。</p></div></div>
+      <div class="flow-step"><div class="flow-step-num">07</div><div class="flow-step-content"><div class="flow-step-title">施策実施・テスト</div><p class="flow-step-desc">クリエイティブテスト・LP改善・入札調整など、仮説検証サイクルを継続的に回します。</p></div></div>
+      <div class="flow-step"><div class="flow-step-num">08</div><div class="flow-step-content"><div class="flow-step-title">継続・拡張</div><p class="flow-step-desc">成果が出たら予算拡張・媒体追加・自動化強化など、次のステージへのステップアップを提案します。</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="pricing-section">
+  <div class="section-inner">
+    <p class="tag-label" style="margin-bottom:12px;">PRICING</p>
+    <h2 class="section-title">料金プラン</h2>
+    <div class="pricing-table">
+      <div class="pricing-row header">
+        <span class="pricing-row-label">プラン</span>
+        <span class="pricing-row-label">月額料金</span>
+        <span class="pricing-row-label">こんな方に</span>
+        <span></span>
+      </div>
+      <div class="pricing-row">
+        <div>
+          <div class="pricing-plan">スタート</div>
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);margin-top:4px;">初期費用 0円</div>
+        </div>
+        <div class="pricing-price">応相談<span> /月</span></div>
+        <div class="pricing-desc">広告費〜30万円。はじめてデジタル広告に取り組む方・スモールスタートをご希望の方に。</div>
+        <div class="pricing-btn"><a href="contact.html" class="btn-outline">相談する</a></div>
+      </div>
+      <div class="pricing-row recommended">
+        <div>
+          <div class="pricing-plan">スタンダード<span class="pricing-badge">おすすめ</span></div>
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);margin-top:4px;">初期費用 0円</div>
+        </div>
+        <div class="pricing-price">応相談<span> /月</span></div>
+        <div class="pricing-desc">広告費30〜100万円。本格的に広告運用を強化したい方・計測体制も整えたい方に。</div>
+        <div class="pricing-btn"><a href="contact.html" class="btn-primary">相談する</a></div>
+      </div>
+      <div class="pricing-row">
+        <div>
+          <div class="pricing-plan">カスタム</div>
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);margin-top:4px;">初期費用 0円</div>
+        </div>
+        <div class="pricing-price" style="font-size:20px;">応相談</div>
+        <div class="pricing-desc">広告費100万円超。制作・自動化・複数媒体を込みでご依頼の方・本格的な体制を構築したい方に。</div>
+        <div class="pricing-btn"><a href="contact.html" class="btn-outline">相談する</a></div>
+      </div>
+    </div>
+    <p class="pricing-note">※ 料金は広告費規模・業種・依頼内容により変動します。まずはお気軽にご相談ください。<br>※ 広告費の手数料制・定額制いずれにも対応可能です。</p>
+  </div>
+</div>
+
+<!-- FOOTER CTA -->
+<section style="background:#1A1A18;padding:72px 40px;text-align:center;"><p style="font-family:'DM Sans',sans-serif;font-weight:200;font-size:clamp(24px,3.5vw,44px);color:white;letter-spacing:-0.02em;margin-bottom:32px;line-height:1.2;">まずは気軽に、話してみませんか。</p><a href="contact.html" style="background:#C96B3A;color:white;border:none;border-radius:6px;padding:14px 32px;font-size:16px;cursor:pointer;text-decoration:none;display:inline-block;">無料相談はこちら（0円）</a></section>
+<footer style="background:#1A1A18;border-top:1px solid rgba(255,255,255,0.07);padding:40px 40px 28px;"><div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;"><div><div style="font-size:18px;color:white;font-weight:300;margin-bottom:14px;display:flex;align-items:center;gap:8px;"><div style="width:26px;height:26px;background:#4A7A5A;border-radius:5px;display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M5 4 L5 14 M5 4 L13 4 M5 9 L11 9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="5" r="2" fill="#C96B3A"/></svg></div>Foresy</div><p style="font-size:13px;color:rgba(245,243,238,0.45);line-height:1.9;">福岡県福岡市<br>adforesy@gmail.com</p></div><div><div style="font-size:10px;color:#7A9E87;letter-spacing:0.1em;margin-bottom:18px;text-transform:uppercase;">PAGES</div><ul style="list-style:none;"><li style="margin-bottom:10px;"><a href="services.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">サービス</a></li><li style="margin-bottom:10px;"><a href="works.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">実績</a></li><li style="margin-bottom:10px;"><a href="about.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">会社概要</a></li><li><a href="faq.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">FAQ</a></li></ul></div><div><div style="font-size:10px;color:#7A9E87;letter-spacing:0.1em;margin-bottom:18px;text-transform:uppercase;">CONTACT</div><ul style="list-style:none;"><li style="margin-bottom:10px;"><a href="mailto:adforesy@gmail.com" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">adforesy@gmail.com</a></li><li><a href="contact.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">お問い合わせ・無料相談</a></li></ul></div></div><div style="max-width:1200px;margin:28px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;"><span style="font-size:11px;color:rgba(245,243,238,0.35);">&copy; 2024 Foresy. All rights reserved.</span><span style="font-size:11px;color:rgba(245,243,238,0.35);">福岡発の広告代理店</span></div></footer>
+<script>
+function toggleQR(){document.getElementById('qr-panel').classList.toggle('open');}
+document.addEventListener('click',(e)=>{if(!e.target.closest('.nav-qr-btn')&&!e.target.closest('#qr-panel')){var p=document.getElementById('qr-panel');if(p)p.classList.remove('open');}});
+</script>
+</body>
+</html>

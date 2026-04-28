@@ -128,6 +128,31 @@ nav {
 .nav-links a:hover { color: var(--text-primary); }
 .nav-links a:hover::after { transform: scaleX(1); }
 
+.nav-right { display: flex; align-items: center; gap: 12px; }
+
+/* QRボタン */
+.nav-qr-btn {
+  width: 36px; height: 36px; border-radius: 6px; border: 1px solid var(--mist);
+  background: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background 200ms, border-color 200ms;
+  position: relative;
+}
+.nav-qr-btn:hover { background: var(--bg-secondary); border-color: var(--sage); }
+
+/* QRポップアップ */
+.nav-qr-panel {
+  position: absolute; top: 68px; right: 40px; z-index: 200;
+  background: white; border: 1px solid var(--mist); border-radius: 10px;
+  padding: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  display: none; flex-direction: column; align-items: center; gap: 10px;
+  min-width: 160px;
+}
+.nav-qr-panel.open { display: flex; }
+.nav-qr-label {
+  font-family: var(--font-mono); font-size: 10px; color: var(--sage);
+  letter-spacing: 0.08em; text-align: center;
+}
+
 .nav-cta {
   background: var(--cta); color: white; border: none;
   border-radius: 6px; padding: 8px 18px;
@@ -209,8 +234,9 @@ nav {
   opacity: 0; animation: fadeUp 0.6s var(--ease-out) 0.2s both;
 }
 .hero-h1 em {
-  font-style: italic; font-weight: 200;
-  color: var(--forest);
+  font-style: normal; font-weight: 400;
+  color: var(--cta);
+  letter-spacing: -0.01em;
 }
 
 .hero-sub {
@@ -262,27 +288,25 @@ nav {
 #hero-chart .area-fill   { opacity: 0; animation: fadeIn 0.8s ease 2s forwards; }
 
 /* ═══════════════════════════════════════════════
-   TICKER / BADGES
+   BADGES (静止)
 ═══════════════════════════════════════════════ */
 #badges {
   background: var(--bg-dark);
-  padding: 0;
-  overflow: hidden;
+  padding: 18px 40px;
   border-top: 1px solid rgba(255,255,255,0.06);
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-.ticker-track {
-  display: flex;
-  width: max-content;
-  animation: marqueeScroll 22s linear infinite;
-  padding: 18px 0;
+.badges-static {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 0;
 }
-.ticker-track:hover { animation-play-state: paused; }
 .ticker-item {
   display: flex; align-items: center; gap: 10px;
-  padding: 0 40px; white-space: nowrap;
+  padding: 6px 28px; white-space: nowrap;
   border-right: 1px solid rgba(255,255,255,0.08);
 }
+.ticker-item:last-child { border-right: none; }
 .ticker-icon {
   width: 32px; height: 32px; border-radius: 6px;
   border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.06);
@@ -853,13 +877,14 @@ footer {
 <body>
 
 <!-- ─── NAV ─────────────────────────────────── -->
-<nav>
+<nav style="position:relative;">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
       <div class="nav-logo-mark">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <path d="M2 7C2 4.24 4.24 2 7 2s5 2.24 5 5-2.24 5-5 5c-1.4 0-2.66-.56-3.58-1.46" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-          <circle cx="7" cy="7" r="1.5" fill="white"/>
+        <!-- Foresy アイコン: F + テラコッタアクセント -->
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M5 4 L5 14 M5 4 L13 4 M5 9 L11 9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="14" cy="5" r="2" fill="#C96B3A"/>
         </svg>
       </div>
       Foresy
@@ -870,7 +895,71 @@ footer {
       <a href="about.html">会社概要</a>
       <a href="faq.html">FAQ</a>
     </div>
-    <a href="#footer-cta" class="nav-cta">無料相談</a>
+    <div class="nav-right">
+      <!-- LINE QRコードボタン -->
+      <button class="nav-qr-btn" onclick="toggleQR()" aria-label="LINE QRコード">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <rect x="2" y="2" width="6" height="6" rx="1" stroke="#5C5B56" stroke-width="1.4" fill="none"/>
+          <rect x="4" y="4" width="2" height="2" fill="#5C5B56"/>
+          <rect x="10" y="2" width="6" height="6" rx="1" stroke="#5C5B56" stroke-width="1.4" fill="none"/>
+          <rect x="12" y="4" width="2" height="2" fill="#5C5B56"/>
+          <rect x="2" y="10" width="6" height="6" rx="1" stroke="#5C5B56" stroke-width="1.4" fill="none"/>
+          <rect x="4" y="12" width="2" height="2" fill="#5C5B56"/>
+          <rect x="10" y="10" width="2" height="2" fill="#5C5B56"/>
+          <rect x="14" y="10" width="2" height="2" fill="#5C5B56"/>
+          <rect x="12" y="12" width="4" height="4" rx="0.5" fill="#5C5B56"/>
+          <rect x="10" y="14" width="2" height="2" fill="#5C5B56"/>
+        </svg>
+      </button>
+      <!-- QRパネル -->
+      <div class="nav-qr-panel" id="qr-panel">
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+          <!-- QRコードプレースホルダー -->
+          <rect width="120" height="120" fill="white"/>
+          <rect x="4" y="4" width="36" height="36" rx="3" fill="#1A1A18"/>
+          <rect x="10" y="10" width="24" height="24" rx="2" fill="white"/>
+          <rect x="14" y="14" width="16" height="16" rx="1" fill="#1A1A18"/>
+          <rect x="80" y="4" width="36" height="36" rx="3" fill="#1A1A18"/>
+          <rect x="86" y="10" width="24" height="24" rx="2" fill="white"/>
+          <rect x="90" y="14" width="16" height="16" rx="1" fill="#1A1A18"/>
+          <rect x="4" y="80" width="36" height="36" rx="3" fill="#1A1A18"/>
+          <rect x="10" y="86" width="24" height="24" rx="2" fill="white"/>
+          <rect x="14" y="90" width="16" height="16" rx="1" fill="#1A1A18"/>
+          <rect x="46" y="4" width="6" height="6" fill="#1A1A18"/>
+          <rect x="56" y="4" width="6" height="6" fill="#1A1A18"/>
+          <rect x="66" y="4" width="6" height="6" fill="#1A1A18"/>
+          <rect x="46" y="14" width="6" height="6" fill="#1A1A18"/>
+          <rect x="66" y="14" width="6" height="6" fill="#1A1A18"/>
+          <rect x="46" y="24" width="16" height="6" fill="#1A1A18"/>
+          <rect x="46" y="46" width="6" height="6" fill="#1A1A18"/>
+          <rect x="56" y="46" width="16" height="6" fill="#1A1A18"/>
+          <rect x="4" y="46" width="6" height="6" fill="#1A1A18"/>
+          <rect x="14" y="46" width="16" height="6" fill="#1A1A18"/>
+          <rect x="4" y="56" width="16" height="6" fill="#1A1A18"/>
+          <rect x="46" y="56" width="6" height="26" fill="#1A1A18"/>
+          <rect x="56" y="66" width="6" height="6" fill="#1A1A18"/>
+          <rect x="66" y="56" width="6" height="6" fill="#1A1A18"/>
+          <rect x="76" y="46" width="6" height="36" fill="#1A1A18"/>
+          <rect x="86" y="46" width="16" height="6" fill="#1A1A18"/>
+          <rect x="96" y="56" width="6" height="16" fill="#1A1A18"/>
+          <rect x="86" y="66" width="6" height="6" fill="#1A1A18"/>
+          <rect x="106" y="46" width="10" height="6" fill="#1A1A18"/>
+          <rect x="26" y="56" width="6" height="16" fill="#1A1A18"/>
+          <rect x="56" y="76" width="6" height="6" fill="#1A1A18"/>
+          <rect x="66" y="76" width="16" height="6" fill="#1A1A18"/>
+          <rect x="86" y="76" width="6" height="6" fill="#1A1A18"/>
+          <rect x="96" y="76" width="20" height="6" fill="#1A1A18"/>
+          <rect x="56" y="86" width="16" height="6" fill="#1A1A18"/>
+          <rect x="86" y="86" width="6" height="16" fill="#1A1A18"/>
+          <rect x="96" y="96" width="6" height="6" fill="#1A1A18"/>
+          <rect x="106" y="86" width="10" height="6" fill="#1A1A18"/>
+          <rect x="56" y="96" width="6" height="16" fill="#1A1A18"/>
+          <rect x="66" y="106" width="16" height="6" fill="#1A1A18"/>
+        </svg>
+        <span class="nav-qr-label">LINE 公式アカウント<br>友だち追加はこちら</span>
+      </div>
+      <a href="contact.html" class="nav-cta">無料相談</a>
+    </div>
   </div>
 </nav>
 
@@ -885,7 +974,7 @@ footer {
         福岡発の広告代理店 Foresy が、あなたのデジタル施策をワンストップで支援します。
       </p>
       <div class="hero-ctas">
-        <a href="#footer-cta" class="btn-primary">無料で相談する</a>
+        <a href="contact.html" class="btn-primary">無料で相談する</a>
         <a href="services.html" class="btn-ghost">サービスを見る →</a>
       </div>
     </div>
@@ -936,46 +1025,9 @@ footer {
   </div>
 </section>
 
-<!-- ─── BADGES TICKER ─────────────────────────── -->
+<!-- ─── BADGES (静止) ──────────────────────────── -->
 <section id="badges" aria-label="認定資格バッジ">
-  <div class="ticker-track">
-    <!-- Set 1 -->
-    <div class="ticker-item">
-      <div class="ticker-icon">
-        <svg width="18" height="18" viewBox="0 0 18 18"><text x="2" y="14" font-size="12" font-family="Arial" fill="#4285F4">G</text></svg>
-      </div>
-      <span class="ticker-text">GOOGLE 広告の測定認定資格</span>
-      <span class="ticker-status-active">CERTIFIED</span>
-    </div>
-    <div class="ticker-item">
-      <div class="ticker-icon">
-        <svg width="18" height="18" viewBox="0 0 18 18"><text x="2" y="14" font-size="10" font-family="DM Mono" fill="rgba(245,243,238,0.35)">DS</text></svg>
-      </div>
-      <span class="ticker-text">GOOGLE データスタジオ認定</span>
-      <span class="ticker-status-soon">COMING SOON</span>
-    </div>
-    <div class="ticker-item">
-      <div class="ticker-icon">
-        <svg width="18" height="18" viewBox="0 0 18 18"><text x="2" y="14" font-size="11" font-family="DM Mono" fill="rgba(245,243,238,0.35)">Y!</text></svg>
-      </div>
-      <span class="ticker-text">YAHOO! 広告認定資格</span>
-      <span class="ticker-status-soon">COMING SOON</span>
-    </div>
-    <div class="ticker-item">
-      <div class="ticker-icon">
-        <svg width="18" height="18" viewBox="0 0 18 18"><text x="1" y="14" font-size="10" font-family="DM Mono" fill="rgba(245,243,238,0.35)">GA</text></svg>
-      </div>
-      <span class="ticker-text">GOOGLE ANALYTICS 個人認定資格</span>
-      <span class="ticker-status-soon">COMING SOON</span>
-    </div>
-    <div class="ticker-item">
-      <div class="ticker-icon">
-        <svg width="18" height="18" viewBox="0 0 18 18"><text x="2" y="14" font-size="9" font-family="DM Mono" fill="#7A9E87">LINE</text></svg>
-      </div>
-      <span class="ticker-text">LINE ヤフー カスタマーサクセス 経験</span>
-      <span class="ticker-status-active">VERIFIED</span>
-    </div>
-    <!-- Set 2 (duplicate for seamless loop) -->
+  <div class="badges-static">
     <div class="ticker-item">
       <div class="ticker-icon">
         <svg width="18" height="18" viewBox="0 0 18 18"><text x="2" y="14" font-size="12" font-family="Arial" fill="#4285F4">G</text></svg>
@@ -1380,8 +1432,8 @@ footer {
 <section id="footer-cta">
   <div class="footer-cta-inner">
     <span class="footer-cta-eyebrow">CONTACT · 無料相談受付中</span>
-    <p class="footer-cta-text">Let's grow your business<br><em>together.</em></p>
-    <a href="mailto:adforesy@gmail.com" class="btn-cta-large">無料相談はこちら</a>
+    <p class="footer-cta-text">まずは気軽に、<br><em>話してみませんか。</em></p>
+    <a href="contact.html" class="btn-cta-large">無料相談はこちら（0円）</a>
   </div>
 </section>
 
@@ -1391,9 +1443,9 @@ footer {
     <div>
       <div class="footer-logo">
         <div class="footer-logo-mark">
-          <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-            <path d="M2 7C2 4.24 4.24 2 7 2s5 2.24 5 5-2.24 5-5 5c-1.4 0-2.66-.56-3.58-1.46" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-            <circle cx="7" cy="7" r="1.5" fill="white"/>
+          <svg width="14" height="14" viewBox="0 0 18 18" fill="none">
+            <path d="M5 4 L5 14 M5 4 L13 4 M5 9 L11 9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="14" cy="5" r="2" fill="#C96B3A"/>
           </svg>
         </div>
         Foresy
@@ -1417,7 +1469,7 @@ footer {
       <div class="footer-col-title">CONTACT</div>
       <ul class="footer-links">
         <li><a href="mailto:adforesy@gmail.com">adforesy@gmail.com</a></li>
-        <li><a href="#footer-cta">無料相談はこちら</a></li>
+        <li><a href="contact.html">お問い合わせ・無料相談</a></li>
       </ul>
     </div>
   </div>
@@ -1431,6 +1483,17 @@ footer {
      JAVASCRIPT
 ═══════════════════════════════════════════════ -->
 <script>
+/* ── QRパネル開閉 ── */
+function toggleQR() {
+  const panel = document.getElementById('qr-panel');
+  panel.classList.toggle('open');
+}
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.nav-qr-btn') && !e.target.closest('#qr-panel')) {
+    document.getElementById('qr-panel')?.classList.remove('open');
+  }
+});
+
 /* ── Tab switching ── */
 function switchTab(id, btn) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>よくある質問 | Foresy（フォレジー）</title>
+<meta name="description" content="Foresyへのよくある質問をカテゴリ別にまとめています。料金・契約・運用・対応エリアなど。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500&family=DM+Mono:wght@400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg-primary:#F5F3EE;--bg-secondary:#EDEAE3;--bg-tertiary:#E5E1D8;--bg-dark:#1A1A18;--text-primary:#1A1A18;--text-secondary:#5C5B56;--text-muted:#9B9991;--forest:#4A7A5A;--sage:#7A9E87;--mist:#C8D9CC;--cta:#C96B3A;--cta-hover:#B05C2E;--font-sans:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace;--font-jp:'Noto Sans JP',sans-serif;--ease-out:cubic-bezier(0.16,1,0.3,1);}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-jp);background:var(--bg-primary);color:var(--text-primary);line-height:1.8;-webkit-font-smoothing:antialiased;}
+nav{position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--mist);height:60px;display:flex;align-items:center;padding:0 40px;}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{display:flex;align-items:center;gap:8px;font-family:var(--font-sans);font-size:18px;color:var(--text-primary);text-decoration:none;letter-spacing:-0.02em;}
+.nav-logo-mark{width:28px;height:28px;background:var(--forest);border-radius:6px;display:flex;align-items:center;justify-content:center;}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{font-family:var(--font-sans);font-size:14px;color:var(--text-secondary);text-decoration:none;transition:color 150ms;}
+.nav-links a:hover,.nav-links a.active{color:var(--text-primary);}
+.nav-cta{background:var(--cta);color:white;border:none;border-radius:6px;padding:8px 18px;font-family:var(--font-sans);font-size:13px;cursor:pointer;transition:background 150ms;text-decoration:none;display:inline-block;}
+.nav-cta:hover{background:var(--cta-hover);}
+.tag-label{font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;color:var(--sage);text-transform:uppercase;}
+.page-hero{background:var(--bg-primary);padding:80px 40px 64px;border-bottom:1px solid var(--mist);}
+.page-hero-inner{max-width:1200px;margin:0 auto;}
+.page-hero h1{font-family:var(--font-sans);font-weight:300;font-size:clamp(36px,5vw,60px);letter-spacing:-0.02em;color:var(--text-primary);line-height:1.1;margin-bottom:16px;}
+.page-hero p{font-family:var(--font-jp);font-size:15px;color:var(--text-secondary);line-height:1.9;max-width:560px;}
+.faq-main{padding:72px 40px;}
+.faq-layout{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:200px 1fr;gap:64px;align-items:start;}
+.faq-sidenav{position:sticky;top:80px;}
+.faq-sidenav-title{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;}
+.faq-sidenav a{display:block;font-family:var(--font-jp);font-size:13px;color:var(--text-secondary);text-decoration:none;padding:8px 12px;border-radius:6px;transition:all 150ms;margin-bottom:4px;}
+.faq-sidenav a:hover,.faq-sidenav a.active{background:var(--bg-secondary);color:var(--text-primary);}
+.faq-group{margin-bottom:60px;}
+.faq-group:last-child{margin-bottom:0;}
+.faq-group-label{font-family:var(--font-mono);font-size:11px;color:var(--sage);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.faq-group-label::after{content:'';flex:1;height:1px;background:var(--mist);}
+.faq-item{border-bottom:1px solid var(--mist);}
+.faq-item:first-of-type{border-top:1px solid var(--mist);}
+.faq-q{width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:20px 0;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-jp);font-size:15px;color:var(--text-primary);gap:16px;}
+.faq-icon{font-family:var(--font-mono);font-size:16px;color:var(--sage);transition:transform 200ms;flex-shrink:0;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-a{font-family:var(--font-jp);font-size:14px;color:var(--text-secondary);line-height:1.9;padding:0 0 20px;display:none;max-width:640px;}
+.faq-item.open .faq-a{display:block;}
+@media(max-width:768px){
+  nav{padding:0 20px;}.nav-links{display:none;}
+  .page-hero{padding:48px 20px 40px;}
+  .faq-main{padding:48px 20px;}
+  .faq-layout{grid-template-columns:1fr;gap:32px;}
+  .faq-sidenav{position:static;display:flex;gap:8px;flex-wrap:wrap;}
+  .faq-sidenav-title{display:none;}
+  .faq-sidenav a{padding:6px 14px;border:1px solid var(--mist);border-radius:999px;font-size:12px;}
+}
+
+.nav-right{display:flex;align-items:center;gap:12px;}
+.nav-qr-btn{width:36px;height:36px;border-radius:6px;border:1px solid var(--mist);background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 200ms;}
+.nav-qr-btn:hover{background:var(--bg-secondary);}
+.nav-qr-panel{position:absolute;top:68px;right:40px;z-index:200;background:white;border:1px solid var(--mist);border-radius:10px;padding:20px;box-shadow:0 8px 32px rgba(0,0,0,0.12);display:none;flex-direction:column;align-items:center;gap:10px;min-width:160px;}
+.nav-qr-panel.open{display:flex;}
+.nav-qr-label{font-family:var(--font-mono);font-size:10px;color:var(--sage);letter-spacing:0.08em;text-align:center;}
+</style>
+</head>
+<body>
+<nav style="position:relative;">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M5 4 L5 14 M5 4 L13 4 M5 9 L11 9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="5" r="2" fill="#C96B3A"/></svg></div>
+      Foresy
+    </a>
+    <div class="nav-links">
+      <a href="services.html">サービス</a>
+      <a href="works.html">実績</a>
+      <a href="about.html">会社概要</a>
+      <a href="faq.html" class="active">FAQ</a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-qr-btn" onclick="toggleQR()" aria-label="LINE QRコード"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#5C5B56" stroke-width="1.4" fill="none"/><rect x="4" y="4" width="2" height="2" fill="#5C5B56"/><rect x="10" y="2" width="6" height="6" rx="1" stroke="#5C5B56" stroke-width="1.4" fill="none"/><rect x="12" y="4" width="2" height="2" fill="#5C5B56"/><rect x="2" y="10" width="6" height="6" rx="1" stroke="#5C5B56" stroke-width="1.4" fill="none"/><rect x="4" y="12" width="2" height="2" fill="#5C5B56"/><rect x="10" y="10" width="2" height="2" fill="#5C5B56"/><rect x="14" y="10" width="2" height="2" fill="#5C5B56"/><rect x="12" y="12" width="4" height="4" rx="0.5" fill="#5C5B56"/><rect x="10" y="14" width="2" height="2" fill="#5C5B56"/></svg></button>
+      <div class="nav-qr-panel" id="qr-panel"><svg width="110" height="110" viewBox="0 0 120 120" fill="none"><rect width="120" height="120" fill="white"/><rect x="4" y="4" width="36" height="36" rx="3" fill="#1A1A18"/><rect x="10" y="10" width="24" height="24" rx="2" fill="white"/><rect x="14" y="14" width="16" height="16" rx="1" fill="#1A1A18"/><rect x="80" y="4" width="36" height="36" rx="3" fill="#1A1A18"/><rect x="86" y="10" width="24" height="24" rx="2" fill="white"/><rect x="90" y="14" width="16" height="16" rx="1" fill="#1A1A18"/><rect x="4" y="80" width="36" height="36" rx="3" fill="#1A1A18"/><rect x="10" y="86" width="24" height="24" rx="2" fill="white"/><rect x="14" y="90" width="16" height="16" rx="1" fill="#1A1A18"/><rect x="46" y="4" width="6" height="6" fill="#1A1A18"/><rect x="56" y="4" width="6" height="6" fill="#1A1A18"/><rect x="66" y="4" width="6" height="6" fill="#1A1A18"/><rect x="46" y="14" width="6" height="6" fill="#1A1A18"/><rect x="66" y="14" width="6" height="6" fill="#1A1A18"/><rect x="46" y="24" width="16" height="6" fill="#1A1A18"/><rect x="76" y="46" width="6" height="36" fill="#1A1A18"/><rect x="86" y="46" width="16" height="6" fill="#1A1A18"/><rect x="96" y="56" width="6" height="16" fill="#1A1A18"/></svg><span class="nav-qr-label">LINE 公式アカウント<br>友だち追加はこちら</span></div>
+      <a href="contact.html" class="nav-cta">無料相談</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="tag-label" style="margin-bottom:14px;">FAQ</p>
+    <h1>よくある<br>ご質問</h1>
+    <p>お問い合わせ前に、よくいただく質問をまとめました。解決しない場合はお気軽にご連絡ください。</p>
+  </div>
+</div>
+
+<div class="faq-main">
+  <div class="faq-layout">
+    <nav class="faq-sidenav">
+      <div class="faq-sidenav-title">カテゴリ</div>
+      <a href="#sec-price" class="active" onclick="setActive(this)">料金</a>
+      <a href="#sec-contract" onclick="setActive(this)">契約</a>
+      <a href="#sec-ops" onclick="setActive(this)">運用</a>
+      <a href="#sec-other" onclick="setActive(this)">その他</a>
+    </nav>
+    <div class="faq-content">
+
+      <div class="faq-group" id="sec-price">
+        <div class="faq-group-label">料金</div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)"><span>料金はどのくらいかかりますか？</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">月額固定制で、初期費用は0円です。広告費の規模に応じたプランをご用意しており、スタートプラン（広告費〜30万円）・スタンダードプラン（30〜100万円）・カスタムプラン（100万円超）の3種類があります。具体的な金額はご相談の上お見積もりいたします。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)"><span>初期費用はかかりますか？</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">すべてのプランで初期費用は0円です。アカウント設定・計測設計・Looker Studioダッシュボード構築なども月額料金の中で対応します。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)"><span>広告費の手数料制はありますか？</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">月額定額制・広告費に対するパーセンテージ制のいずれにも対応可能です。ご予算や運用規模に応じて最適な料金体系をご提案します。</div>
+        </div>
+      </div>
+
+      <div class="faq-group" id="sec-contract">
+        <div class="faq-group-label">契約</div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)"><span>最低契約期間はありますか？</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">最低契約期間は3ヶ月です。広告運用は効果が出るまでに一定の期間が必要なため、3ヶ月を基本としています。その後は1ヶ月単位での更新が可能です。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)"><span>広告アカウントの所有権はどちらになりますか？</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">広告アカウントの所有権はお客様に帰属します。Foresyは管理権限をお借りして運用を行います。契約終了後も、これまでの運用データはすべてお客様のアカウントに残ります。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)"><span>他社代理店からの乗り換えは可能ですか？</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">はい、他社からの乗り換えも歓迎します。現在の代理店との契約状況・アカウントの引き継ぎ方法など、スムーズに移行できるようサポートします。まずはご相談ください。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)"><span>途中解約はできますか？</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">最低契約期間（3ヶ月）経過後は、1ヶ月前のご連絡で解約可能です。解約後のデータ・アカウントはすべてお客様に引き渡しします。</div>
+        </div>
+      </div>
+
+      <div class="faq-group" id="sec-ops">
+        <div class="faq-group-label">運用</div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)"><span>どのくらいの予算から対応できますか？</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">月間広告費10万円程度から対応可能です。少額でも効果的な運用ができるよう、予算規模に合わせた戦略をご提案します。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)"><span>レポートはどのくらいの頻度で届きますか？</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">Looker Studioによるリアルタイムダッシュボードをご共有します。月次の定例レポートに加え、施策実施時・数値に大きな動きがあった際は都度ご連絡します。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)"><span>対応している広告媒体はどこですか？</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">現在はGoogle広告（検索・ディスプレイ・P-MAX）とLINEヤフー広告（Yahoo!検索・ディスプレイ）に対応しています。他媒体をご希望の場合はご相談ください。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)"><span>LP制作だけの依頼は可能ですか？</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">はい、LP制作・LINE公式構築・Looker Studio導入など、制作・ツール系のみのご依頼も承ります。広告運用とセットでなくてもご相談ください。</div>
+        </div>
+      </div>
+
+      <div class="faq-group" id="sec-other">
+        <div class="faq-group-label">その他</div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)"><span>対応エリアはどこですか？</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">拠点は福岡ですが、オンラインで全国対応しています。Zoom・Google Meetでの打ち合わせを基本とし、遠方のお客様も安心してご利用いただけます。福岡市内の場合は対面打ち合わせも可能です。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)"><span>個人事業主・フリーランスでも依頼できますか？</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">はい、個人事業主・フリーランスの方からのご依頼も歓迎します。法人格の有無は問いません。</div>
+        </div>
+        <div class="faq-item" style="border-bottom:none;">
+          <button class="faq-q" onclick="toggle(this)"><span>まず相談だけでも大丈夫ですか？</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">もちろんです。無料相談（30分〜）を随時受け付けています。「まだ始めていない」「何から相談すればいいかわからない」という方もお気軽にどうぞ。</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<section style="background:var(--bg-secondary);padding:72px 40px;text-align:center;border-top:1px solid var(--mist);">
+  <p class="tag-label" style="margin-bottom:12px;">CONTACT</p>
+  <p style="font-family:var(--font-sans);font-weight:300;font-size:clamp(22px,2.5vw,32px);color:var(--text-primary);letter-spacing:-0.02em;margin-bottom:12px;">まだ解決しない場合は、<br>直接お問い合わせください。</p>
+  <p style="font-family:var(--font-jp);font-size:14px;color:var(--text-secondary);margin-bottom:28px;">通常1〜2営業日以内にご返信します。</p>
+  <a href="contact.html" style="background:var(--cta);color:white;border:none;border-radius:6px;padding:12px 28px;font-family:var(--font-jp);font-size:15px;cursor:pointer;text-decoration:none;display:inline-block;">メールでお問い合わせ</a>
+</section>
+<footer style="background:var(--bg-dark);border-top:1px solid rgba(255,255,255,0.08);padding:40px;text-align:center;">
+  <p style="font-family:var(--font-mono);font-size:11px;color:rgba(245,243,238,0.4);">© 2024 Foresy. All rights reserved.</p>
+</footer>
+<script>
+function toggle(btn) {
+  btn.closest('.faq-item').classList.toggle('open');
+}
+function setActive(el) {
+  document.querySelectorAll('.faq-sidenav a').forEach(a => a.classList.remove('active'));
+  el.classList.add('active');
+}
+</script>
+<script>
+function toggleQR(){document.getElementById('qr-panel').classList.toggle('open');}
+document.addEventListener('click',(e)=>{if(!e.target.closest('.nav-qr-btn')&&!e.target.closest('#qr-panel')){var p=document.getElementById('qr-panel');if(p)p.classList.remove('open');}});
+</script>
+</body>
+</html>
