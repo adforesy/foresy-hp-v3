@@ -3,8 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Foresy（フォレジー）| 福岡発の広告代理店</title>
-<meta name="description" content="Google広告・LINEヤフー広告の運用から、LP制作・計測設計・レポート自動化まで。福岡発の広告代理店 Foresy が、あなたのデジタル施策をワンストップで支援します。">
+<title>Foresy（フォレジー）| 広告代理店</title>
+<meta name="description" content="Google広告・LINEヤフー広告の運用から、LP制作・計測設計・レポート自動化まで。広告代理店 Foresy が、あなたのデジタル施策をワンストップで支援します。">
+<link rel="icon" type="image/png" href="F_rogo.png">
+<meta property="og:title" content="Foresy（フォレジー）| 広告代理店">
+<meta property="og:description" content="Google広告・LINEヤフー広告の運用から、LP制作・計測設計まで。広告代理店 Foresy が、あなたのデジタル施策をワンストップで支援します。">
+<meta property="og:url" content="https://foresy-v2.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Foresy">
+<meta property="og:image" content="https://foresy-v2.vercel.app/F_rogo.png">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
@@ -64,7 +72,6 @@ body {
 @keyframes drawLine { to   { stroke-dashoffset: 0; } }
 @keyframes slideRight { from { transform: translateX(-100%); } to { transform: translateX(0); } }
 @keyframes countUp  { from { opacity:0; transform:scale(0.88); } to { opacity:1; transform:scale(1); } }
-@keyframes orbPulse { 0%,100% { transform: translateY(0px) scale(1); } 50% { transform: translateY(-6px) scale(1.02); } }
 @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes rotateSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @keyframes lineGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
@@ -106,12 +113,12 @@ nav {
   font-family: var(--font-sans); font-weight: 400; font-size: 18px;
   color: var(--text-primary); text-decoration: none; letter-spacing: -0.02em;
 }
-.nav-logo-mark {
-  width: 28px; height: 28px; background: var(--forest);
-  border-radius: 6px; display: flex; align-items: center; justify-content: center;
+.nav-logo-img {
+  height: 28px; width: auto;
+  border-radius: 4px;
   transition: transform 0.3s var(--ease-spring);
 }
-.nav-logo:hover .nav-logo-mark { transform: rotate(-8deg) scale(1.08); }
+.nav-logo:hover .nav-logo-img { transform: rotate(-8deg) scale(1.08); }
 .nav-links { display: flex; gap: 28px; }
 .nav-links a {
   font-family: var(--font-sans); font-size: 14px; color: var(--text-secondary);
@@ -162,7 +169,6 @@ nav {
 }
 .nav-cta:hover {
   background: var(--cta-hover);
-  transform: translateY(-1px);
   box-shadow: 0 4px 16px rgba(201,107,58,0.28);
 }
 
@@ -214,7 +220,8 @@ nav {
 .hero-grid {
   position: relative; z-index: 2;
   max-width: 1200px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  display: grid; grid-template-columns: 1fr 1fr;
+  column-gap: 60px; row-gap: 0; align-items: start;
 }
 
 .hero-tag {
@@ -259,7 +266,6 @@ nav {
 }
 .btn-primary:hover {
   background: var(--cta-hover);
-  transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(201,107,58,0.3);
 }
 
@@ -281,6 +287,7 @@ nav {
 .hero-svg-wrap {
   opacity: 0; animation: fadeIn 0.7s var(--ease-out) 0.55s both;
   display: flex; justify-content: center; position: relative;
+  grid-column: 2; grid-row: 1 / 3; align-self: center;
 }
 
 #hero-chart .line-main   { stroke-dasharray: 620; stroke-dashoffset: 620; animation: drawLine 2.2s var(--ease-out) 0.9s forwards; }
@@ -291,10 +298,10 @@ nav {
    BADGES (静止)
 ═══════════════════════════════════════════════ */
 #badges {
-  background: var(--bg-dark);
+  background: #C4AF97;
   padding: 18px 40px;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid rgba(90,65,45,0.12);
+  border-bottom: 1px solid rgba(90,65,45,0.12);
 }
 .badges-static {
   max-width: 1200px; margin: 0 auto;
@@ -304,28 +311,28 @@ nav {
 .ticker-item {
   display: flex; align-items: center; gap: 10px;
   padding: 6px 28px; white-space: nowrap;
-  border-right: 1px solid rgba(255,255,255,0.08);
+  border-right: 1px solid rgba(90,65,45,0.15);
 }
 .ticker-item:last-child { border-right: none; }
 .ticker-icon {
   width: 32px; height: 32px; border-radius: 6px;
-  border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(90,65,45,0.18); background: var(--bg-primary);
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
 .ticker-text {
   font-family: var(--font-mono); font-size: 11px;
-  color: rgba(245,243,238,0.55); letter-spacing: 0.08em;
+  color: rgba(45,32,22,0.75); letter-spacing: 0.08em;
 }
 .ticker-status-active {
-  font-family: var(--font-mono); font-size: 10px; color: var(--sage);
-  background: rgba(122,158,135,0.12); border: 1px solid rgba(122,158,135,0.3);
+  font-family: var(--font-mono); font-size: 10px; color: var(--forest);
+  background: rgba(74,122,90,0.15); border: 1px solid rgba(74,122,90,0.35);
   border-radius: 4px; padding: 2px 8px; letter-spacing: 0.06em;
 }
 .ticker-status-soon {
   font-family: var(--font-mono); font-size: 10px;
-  color: rgba(245,243,238,0.3);
-  border: 1px dashed rgba(255,255,255,0.1);
+  color: rgba(45,32,22,0.4);
+  border: 1px dashed rgba(90,65,45,0.2);
   border-radius: 4px; padding: 2px 8px; letter-spacing: 0.06em;
 }
 
@@ -642,7 +649,7 @@ nav {
    ABOUT PREVIEW
 ═══════════════════════════════════════════════ */
 #about-preview {
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
   padding: 100px 40px;
   position: relative; overflow: hidden;
 }
@@ -690,15 +697,14 @@ nav {
   display: flex; justify-content: center; align-items: center;
 }
 .about-illust svg {
-  animation: orbPulse 6s ease-in-out infinite;
-  transform-origin: center;
+  display: block;
 }
 
 /* ═══════════════════════════════════════════════
    FAQ
 ═══════════════════════════════════════════════ */
 #faq {
-  background: var(--bg-primary);
+  background: var(--bg-secondary);
   padding: 96px 40px;
 }
 .faq-max { max-width: 760px; margin: 0 auto; }
@@ -778,7 +784,6 @@ nav {
 }
 .btn-cta-large:hover {
   background: var(--cta-hover);
-  transform: translateY(-2px);
   box-shadow: 0 12px 32px rgba(201,107,58,0.35);
 }
 
@@ -799,9 +804,8 @@ footer {
   font-weight: 300; margin-bottom: 14px; letter-spacing: -0.025em;
   display: flex; align-items: center; gap: 8px;
 }
-.footer-logo-mark {
-  width: 26px; height: 26px; background: var(--forest); border-radius: 5px;
-  display: flex; align-items: center; justify-content: center;
+.footer-logo-img {
+  height: 26px; width: auto; border-radius: 4px;
 }
 .footer-info { font-family: var(--font-jp); font-size: 13px; color: rgba(245,243,238,0.45); line-height: 1.9; }
 .footer-col-title {
@@ -824,11 +828,147 @@ footer {
 .footer-copy { font-family: var(--font-mono); font-size: 11px; color: rgba(245,243,238,0.35); }
 
 /* ═══════════════════════════════════════════════
+   PRICING
+═══════════════════════════════════════════════ */
+#pricing {
+  background: var(--bg-secondary);
+  padding: 96px 40px;
+  position: relative; overflow: hidden;
+}
+.pricing-header { margin-bottom: 52px; }
+.pricing-header .section-title { margin: 12px 0 16px; }
+.pricing-header p {
+  font-family: var(--font-jp); font-size: 14px;
+  color: var(--text-secondary); max-width: 480px; line-height: 1.85;
+}
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--mist);
+  border: 1px solid var(--mist); border-radius: 12px;
+  overflow: hidden;
+}
+.pricing-card {
+  background: var(--bg-secondary);
+  padding: 40px 36px 44px;
+  transition: background 250ms;
+  position: relative;
+  display: flex; flex-direction: column;
+}
+.pricing-card:hover { background: var(--bg-tertiary); }
+.pricing-card.is-featured {
+  background: var(--bg-tertiary);
+  border-top: 2px solid var(--forest);
+}
+.pricing-card.is-featured:hover { background: var(--bg-tertiary); filter: brightness(0.97); }
+.pricing-badge {
+  display: inline-block;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em;
+  background: var(--forest); color: #F5F3EE;
+  border-radius: 4px; padding: 3px 10px; margin-bottom: 20px;
+}
+.pricing-plan {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em;
+  color: var(--mist); margin-bottom: 10px;
+}
+.pricing-card:hover .pricing-plan,
+.pricing-card.is-featured .pricing-plan { color: var(--sage); }
+.pricing-name {
+  font-family: var(--font-sans); font-weight: 300;
+  font-size: clamp(20px, 2vw, 26px); letter-spacing: -0.02em;
+  color: var(--text-primary); margin-bottom: 8px; line-height: 1.2;
+}
+.pricing-desc {
+  font-family: var(--font-jp); font-size: 13px;
+  color: var(--text-secondary); line-height: 1.85; margin-bottom: 28px;
+}
+.pricing-amount {
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--mist);
+}
+.pricing-amount-label {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.pricing-amount-num {
+  font-family: var(--font-sans); font-weight: 300;
+  font-size: clamp(28px, 3vw, 36px); letter-spacing: -0.03em;
+  color: var(--text-primary); line-height: 1;
+}
+.pricing-amount-unit {
+  font-family: var(--font-jp); font-size: 13px;
+  color: var(--text-muted); margin-left: 4px;
+}
+.pricing-features {
+  list-style: none; margin-bottom: 32px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.pricing-features li {
+  font-family: var(--font-jp); font-size: 13px;
+  color: var(--text-secondary); line-height: 1.6;
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.pricing-features li::before {
+  content: '';
+  display: block; flex-shrink: 0;
+  width: 14px; height: 14px; margin-top: 2px;
+  background: var(--sage); border-radius: 50%;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  mask-size: contain; -webkit-mask-size: contain;
+  mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat;
+}
+.pricing-cta {
+  display: block; text-align: center;
+  padding: 12px 24px; border-radius: 6px; font-size: 14px;
+  font-family: var(--font-jp); text-decoration: none;
+  transition: background 200ms, transform 200ms var(--ease-spring), box-shadow 200ms;
+  border: 1px solid var(--mist); color: var(--text-secondary);
+  margin-top: auto;
+}
+.pricing-cta:hover {
+  background: var(--bg-tertiary);
+}
+.pricing-card.is-featured .pricing-cta {
+  background: var(--cta); color: white; border-color: var(--cta);
+}
+.pricing-card.is-featured .pricing-cta:hover {
+  background: var(--cta-hover);
+  box-shadow: 0 4px 16px rgba(201,107,58,0.28);
+}
+.pricing-note {
+  margin-top: 28px; text-align: center;
+  font-family: var(--font-jp); font-size: 12px;
+  color: var(--text-muted); line-height: 1.8;
+}
+
+/* ═══════════════════════════════════════════════
+   BACK TO TOP BUTTON
+═══════════════════════════════════════════════ */
+#back-to-top {
+  position: fixed; bottom: 28px; right: 28px; z-index: 90;
+  width: 44px; height: 44px;
+  background: var(--bg-dark); color: var(--bg-primary);
+  border: none; border-radius: 50%;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 16px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 300ms, transform 300ms var(--ease-spring), box-shadow 300ms;
+  box-shadow: 0 4px 16px rgba(26,26,24,0.18);
+}
+#back-to-top.visible { opacity: 1; pointer-events: auto; }
+#back-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(26,26,24,0.28);
+}
+
+/* ═══════════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════════ */
 @media (max-width: 1024px) {
   .services-grid { grid-template-columns: 1fr 1fr; }
   .works-grid { grid-template-columns: 1fr 1fr; }
+  .pricing-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 768px) {
@@ -836,11 +976,14 @@ footer {
   .nav-links { display: none; }
 
   #hero { padding: 64px 20px 52px; }
-  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .hero-svg-wrap { display: none; }
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero-svg-wrap { display: flex; grid-column: auto; grid-row: auto; align-self: auto; }
+  #hero-chart { width: 100%; height: auto; }
+  .hero-sub { margin-bottom: 0; }
   .hero-h1 { font-size: clamp(32px,8vw,48px); }
 
-  #badges .ticker-item { padding: 0 24px; }
+  #badges .ticker-item { padding: 0 16px; }
+  #badges .ticker-item:nth-child(n+4) { display: none; }
 
   #stats { padding: 60px 20px; }
   .stats-grid { grid-template-columns: repeat(2,1fr); }
@@ -862,6 +1005,10 @@ footer {
   .works-grid { grid-template-columns: 1fr; }
   .works-header { flex-direction: column; align-items: flex-start; gap: 16px; }
 
+  #pricing { padding: 72px 20px; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .pricing-card { padding: 32px 24px 36px; }
+
   #about-preview { padding: 72px 20px; }
   .about-grid { grid-template-columns: 1fr; gap: 48px; }
   .about-illust { order: -1; }
@@ -872,21 +1019,32 @@ footer {
   .footer-inner { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
 }
+
+/* ── ハンバーガーメニュー ── */
+.nav-hamburger { display:none;width:36px;height:36px;border:none;background:none;cursor:pointer;align-items:center;justify-content:center;border-radius:6px;transition:background 150ms;padding:0;flex-shrink:0; }
+.nav-hamburger:hover { background:var(--bg-secondary); }
+.nav-hamburger .bar { display:block;width:18px;height:1.5px;background:var(--text-primary);transition:all 220ms;position:relative;margin:0 auto; }
+.nav-hamburger .bar::before,.nav-hamburger .bar::after { content:'';position:absolute;left:0;width:18px;height:1.5px;background:var(--text-primary);transition:all 220ms; }
+.nav-hamburger .bar::before { top:-5px; }
+.nav-hamburger .bar::after { top:5px; }
+.nav-hamburger.open .bar { background:transparent; }
+.nav-hamburger.open .bar::before { transform:rotate(45deg);top:0; }
+.nav-hamburger.open .bar::after { transform:rotate(-45deg);top:0; }
+.nav-mobile-menu { display:none;position:fixed;top:60px;left:0;right:0;background:rgba(245,243,238,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--mist);z-index:99;padding:8px 20px 20px; }
+.nav-mobile-menu.open { display:block; }
+.nav-mobile-menu a { display:block;padding:13px 0;font-family:var(--font-jp);font-size:15px;color:var(--text-primary);text-decoration:none;border-bottom:1px solid rgba(200,217,204,0.4); }
+.nav-mobile-menu a:last-child { border-bottom:none; }
+.nav-mobile-cta { margin-top:14px;background:var(--cta)!important;color:white!important;text-align:center;border-radius:6px;padding:12px 0!important; }
+@media(max-width:768px) { .nav-hamburger{display:flex;} .nav-cta{display:none;} .nav-qr-btn{display:none;} }
 </style>
 </head>
 <body>
 
 <!-- ─── NAV ─────────────────────────────────── -->
-<nav style="position:relative;">
+<nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <div class="nav-logo-mark">
-        <!-- Foresy アイコン: F + テラコッタアクセント -->
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <path d="M5 4 L5 14 M5 4 L13 4 M5 9 L11 9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="14" cy="5" r="2" fill="#C96B3A"/>
-        </svg>
-      </div>
+      <img src="F_rogo.png" alt="Foresy" class="nav-logo-img">
       Foresy
     </a>
     <div class="nav-links">
@@ -959,24 +1117,30 @@ footer {
         <span class="nav-qr-label">LINE 公式アカウント<br>友だち追加はこちら</span>
       </div>
       <a href="contact.html" class="nav-cta">無料相談</a>
+      <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()" aria-label="メニュー"><span class="bar"></span></button>
     </div>
   </div>
 </nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="services.html">サービス</a>
+  <a href="works.html">実績</a>
+  <a href="about.html">会社概要</a>
+  <a href="faq.html">FAQ</a>
+  <a href="contact.html" class="nav-mobile-cta">無料相談（0円）</a>
+</div>
+
+<!-- ─── BACK TO TOP ──────────────────────────── -->
+<button id="back-to-top" aria-label="トップへ戻る">↑</button>
 
 <!-- ─── HERO ─────────────────────────────────── -->
 <section id="hero">
   <div class="hero-grid">
     <div>
-      <span class="hero-tag">FORESY · 福岡発の広告代理店</span>
-      <h1 class="hero-h1">広告費を、<em>ちゃんと</em><br>成果に変える。</h1>
+      <h1 class="hero-h1">広告費を<br>成果に変える</h1>
       <p class="hero-sub">
         Google広告・LINEヤフー広告の運用から、LP制作・計測設計・レポート自動化まで。<br>
         福岡発の広告代理店 Foresy が、あなたのデジタル施策をワンストップで支援します。
       </p>
-      <div class="hero-ctas">
-        <a href="contact.html" class="btn-primary">無料で相談する</a>
-        <a href="services.html" class="btn-ghost">サービスを見る →</a>
-      </div>
     </div>
     <div class="hero-svg-wrap">
       <svg id="hero-chart" width="440" height="320" viewBox="0 0 440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1022,6 +1186,10 @@ footer {
         <text x="139" y="47" font-family="DM Mono" font-size="9" fill="#5C5B56">CV数</text>
       </svg>
     </div>
+    <div class="hero-ctas">
+      <a href="contact.html" class="btn-primary">無料で相談する</a>
+      <a href="services.html" class="btn-ghost">サービスを見る →</a>
+    </div>
   </div>
 </section>
 
@@ -1037,21 +1205,21 @@ footer {
     </div>
     <div class="ticker-item">
       <div class="ticker-icon">
-        <svg width="18" height="18" viewBox="0 0 18 18"><text x="2" y="14" font-size="10" font-family="DM Mono" fill="rgba(245,243,238,0.35)">DS</text></svg>
+        <svg width="18" height="18" viewBox="0 0 18 18"><text x="2" y="14" font-size="10" font-family="DM Mono" fill="rgba(45,32,22,0.6)">DS</text></svg>
       </div>
       <span class="ticker-text">GOOGLE データスタジオ認定</span>
       <span class="ticker-status-soon">COMING SOON</span>
     </div>
     <div class="ticker-item">
       <div class="ticker-icon">
-        <svg width="18" height="18" viewBox="0 0 18 18"><text x="2" y="14" font-size="11" font-family="DM Mono" fill="rgba(245,243,238,0.35)">Y!</text></svg>
+        <svg width="18" height="18" viewBox="0 0 18 18"><text x="2" y="14" font-size="11" font-family="DM Mono" fill="rgba(45,32,22,0.6)">Y!</text></svg>
       </div>
       <span class="ticker-text">YAHOO! 広告認定資格</span>
       <span class="ticker-status-soon">COMING SOON</span>
     </div>
     <div class="ticker-item">
       <div class="ticker-icon">
-        <svg width="18" height="18" viewBox="0 0 18 18"><text x="1" y="14" font-size="10" font-family="DM Mono" fill="rgba(245,243,238,0.35)">GA</text></svg>
+        <svg width="18" height="18" viewBox="0 0 18 18"><text x="1" y="14" font-size="10" font-family="DM Mono" fill="rgba(45,32,22,0.6)">GA</text></svg>
       </div>
       <span class="ticker-text">GOOGLE ANALYTICS 個人認定資格</span>
       <span class="ticker-status-soon">COMING SOON</span>
@@ -1144,7 +1312,7 @@ footer {
         </div>
         <div class="service-title">広告運用</div>
         <p class="service-desc">Google広告・LINEヤフー広告の運用を計測設計・レポートまで含めてワンストップで対応。予算規模を問わず、成果にコミットします。</p>
-        <a href="services.html" class="service-link">詳しく見る →</a>
+        <a href="services.html#service-01" class="service-link">詳しく見る →</a>
       </div>
       <div class="service-card reveal reveal-delay-1">
         <span class="service-num">02</span>
@@ -1160,7 +1328,7 @@ footer {
         </div>
         <div class="service-title">制作支援</div>
         <p class="service-desc">LP・LINE公式アカウント・チャットボット・予約フォームの制作に対応。広告との連動を前提に設計し、CVRを高める構成で仕上げます。</p>
-        <a href="services.html" class="service-link">詳しく見る →</a>
+        <a href="services.html#service-02" class="service-link">詳しく見る →</a>
       </div>
       <div class="service-card reveal reveal-delay-2">
         <span class="service-num">03</span>
@@ -1177,7 +1345,7 @@ footer {
         </div>
         <div class="service-title">自動化・可視化</div>
         <p class="service-desc">Looker Studio・広告スクリプトを活用したレポート自動化。小規模でも大手並みの計測体制を実現し、改善サイクルを加速させます。</p>
-        <a href="services.html" class="service-link">詳しく見る →</a>
+        <a href="services.html#service-03" class="service-link">詳しく見る →</a>
       </div>
     </div>
   </div>
@@ -1193,7 +1361,6 @@ footer {
 
 <!-- ─── WHY FORESY ────────────────────────────── -->
 <section id="why">
-  <div class="why-bg-num" aria-hidden="true">F</div>
   <div class="why-grid">
     <div class="why-sticky">
       <p class="tag-label reveal" style="margin-bottom:16px;">WHY FORESY</p>
@@ -1244,23 +1411,33 @@ footer {
       </div>
     </div>
     <div class="works-grid">
-      <div class="work-card reveal">
+      <div class="work-card reveal" onclick="openSitePreview('https://foresy-lp-chiropractic.vercel.app/','さくら整骨院 LP')" style="cursor:pointer;">
         <div class="work-thumb">
           <svg width="100%" height="100%" viewBox="0 0 400 190" preserveAspectRatio="xMidYMid slice">
-            <rect width="400" height="190" fill="#E5E1D8"/>
-            <rect x="20" y="18" width="360" height="12" rx="2" fill="#C8D9CC"/>
-            <rect x="20" y="42" width="80" height="8" rx="2" fill="#C8D9CC"/>
-            <rect x="20" y="62" width="240" height="80" rx="4" fill="white" stroke="#C8D9CC"/>
-            <polyline points="30,128 80,98 130,108 180,78 230,88 270,68" stroke="#4A7A5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <rect x="280" y="62" width="80" height="80" rx="4" fill="white" stroke="#C8D9CC"/>
-            <text x="320" y="108" font-family="DM Sans" font-size="18" font-weight="200" fill="#1A1A18" text-anchor="middle">+142%</text>
-            <text x="320" y="123" font-family="DM Mono" font-size="8" fill="#9B9991" text-anchor="middle">ROAS</text>
+            <rect width="400" height="190" fill="#F0EBE3"/>
+            <rect x="0" y="0" width="400" height="28" fill="#EDEAE3"/>
+            <rect x="12" y="9" width="50" height="10" rx="2" fill="#C8D9CC"/>
+            <rect x="310" y="8" width="78" height="12" rx="4" fill="#C96B3A"/>
+            <rect x="0" y="28" width="220" height="162" fill="#F5F1EC"/>
+            <rect x="16" y="44" width="170" height="14" rx="3" fill="#5C5B56"/>
+            <rect x="16" y="64" width="140" height="8" rx="2" fill="#C8D9CC"/>
+            <rect x="16" y="78" width="110" height="8" rx="2" fill="#C8D9CC"/>
+            <rect x="16" y="100" width="100" height="20" rx="4" fill="#C96B3A"/>
+            <rect x="16" y="134" width="190" height="20" rx="3" fill="white" stroke="#C8D9CC"/>
+            <text x="26" y="147" font-family="DM Mono" font-size="8" fill="#7A9E87">★4.8</text>
+            <text x="58" y="147" font-family="DM Mono" font-size="8" fill="#9B9991">3,000名来院実績</text>
+            <rect x="220" y="28" width="180" height="162" fill="#E8E0D8"/>
+            <rect x="232" y="42" width="156" height="110" rx="5" fill="#EDEAE3"/>
+            <rect x="244" y="56" width="120" height="6" rx="2" fill="#C8D9CC"/>
+            <rect x="244" y="68" width="90" height="6" rx="2" fill="#C8D9CC"/>
+            <rect x="244" y="80" width="100" height="6" rx="2" fill="#C8D9CC"/>
+            <text x="310" y="168" font-family="DM Mono" font-size="8" fill="#7A9E87" text-anchor="middle">さくら整骨院</text>
           </svg>
         </div>
         <div class="work-info">
           <span class="work-num">001</span>
-          <div class="work-title">健康食品EC・Google広告運用改善</div>
-          <span class="work-tag">Google広告</span>
+          <div class="work-title">さくら整骨院 LP制作</div>
+          <span class="work-tag">LP制作</span>
         </div>
       </div>
       <div class="work-card reveal reveal-delay-1">
@@ -1321,6 +1498,81 @@ footer {
   </div>
 </section>
 
+<!-- ─── PRICING ───────────────────────────────── -->
+<section id="pricing">
+  <div class="section-inner">
+    <div class="pricing-header">
+      <span class="tag-label reveal">PRICING · 料金体系</span>
+      <h2 class="section-title reveal reveal-delay-1">明瞭な料金で、<br>安心してご依頼を。</h2>
+      <p class="reveal reveal-delay-2">媒体費はお客様のクレジットカード直接払い。代理店マージンを上乗せしない、透明性の高い料金体系です。</p>
+    </div>
+    <div class="pricing-grid">
+
+      <!-- ライトプラン -->
+      <div class="pricing-card reveal">
+        <p class="pricing-plan">PLAN 01</p>
+        <h3 class="pricing-name">スタート</h3>
+        <p class="pricing-desc">広告運用をはじめて試したい方、まずは小さく始めたい方に。</p>
+        <div class="pricing-amount">
+          <p class="pricing-amount-label">月額管理費（税別）</p>
+          <p class="pricing-amount-num">¥30,000<span class="pricing-amount-unit">〜 / 月</span></p>
+        </div>
+        <ul class="pricing-features">
+          <li>Google広告アカウント設定・運用</li>
+          <li>月次レポート（PDF）</li>
+          <li>月1回オンライン報告</li>
+          <li>チャットサポート</li>
+        </ul>
+        <a href="contact.html" class="pricing-cta">相談する →</a>
+      </div>
+
+      <!-- スタンダードプラン（おすすめ） -->
+      <div class="pricing-card is-featured reveal reveal-delay-1">
+        <span class="pricing-badge">RECOMMENDED</span>
+        <p class="pricing-plan">PLAN 02</p>
+        <h3 class="pricing-name">スタンダード</h3>
+        <p class="pricing-desc">運用・計測・レポートをワンストップで。成果にこだわる方に。</p>
+        <div class="pricing-amount">
+          <p class="pricing-amount-label">月額管理費（税別）</p>
+          <p class="pricing-amount-num">¥50,000<span class="pricing-amount-unit">〜 / 月</span></p>
+        </div>
+        <ul class="pricing-features">
+          <li>Google広告アカウント設定・運用</li>
+          <li>GTM / GA4 計測設計・実装</li>
+          <li>Looker Studio 自動レポート</li>
+          <li>月2回オンライン報告</li>
+          <li>チャットサポート（優先対応）</li>
+        </ul>
+        <a href="contact.html" class="pricing-cta">相談する →</a>
+      </div>
+
+      <!-- フルサポートプラン -->
+      <div class="pricing-card reveal reveal-delay-2">
+        <p class="pricing-plan">PLAN 03</p>
+        <h3 class="pricing-name">フルサポート</h3>
+        <p class="pricing-desc">LP制作から運用・分析まで、デジタル広告をまるごとお任せしたい方に。</p>
+        <div class="pricing-amount">
+          <p class="pricing-amount-label">月額管理費（税別）</p>
+          <p class="pricing-amount-num">要相談<span class="pricing-amount-unit"></span></p>
+        </div>
+        <ul class="pricing-features">
+          <li>スタンダードプランの全内容</li>
+          <li>LP制作・改善サポート</li>
+          <li>広告クリエイティブ提案</li>
+          <li>YDA / LINE広告など複数媒体対応</li>
+          <li>専任担当制・随時対応</li>
+        </ul>
+        <a href="contact.html" class="pricing-cta">相談する →</a>
+      </div>
+
+    </div>
+    <p class="pricing-note reveal">
+      ※ 初期設定費が別途かかる場合があります。詳細はお問い合わせください。<br>
+      ※ 媒体費（広告費）は含まれません。お客様のクレジットカードより直接お支払いいただきます。
+    </p>
+  </div>
+</section>
+
 <!-- ─── ABOUT PREVIEW ─────────────────────────── -->
 <section id="about-preview">
   <div class="about-grid">
@@ -1335,38 +1587,52 @@ footer {
     <div class="about-illust reveal reveal-delay-2">
       <svg width="380" height="340" viewBox="0 0 380 340" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-        <!-- Warm background circle — very subtle -->
-        <circle cx="190" cy="160" r="148" fill="#F0EDE6" opacity="0.6"/>
+        <!-- 空 — 淡いベージュ -->
+        <circle cx="190" cy="160" r="148" fill="#F0EDE6" opacity="0.55"/>
 
-        <!-- Terracotta solid circle — the focal accent -->
-        <circle cx="208" cy="86" r="38" fill="#C96B3A"/>
+        <!-- 遠景の丘 -->
+        <ellipse cx="190" cy="298" rx="190" ry="54" fill="#7A9E87" opacity="0.18"/>
 
-        <!-- ── Continuous hand-drawn gestural line ── -->
+        <!-- 地面 -->
+        <rect x="0" y="272" width="380" height="68" fill="#4A7A5A" opacity="0.12" rx="0"/>
 
-        <!-- Left side: loose looping, handwriting-like strokes -->
-        <path d="M14,210 C28,198 18,180 36,172 C54,164 46,148 62,142 C78,136 72,120 90,118 C106,116 100,132 116,126 C130,120 126,108 140,102"
-              stroke="#1A1A18" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <!-- 遠景の木々（薄い） -->
+        <!-- 木1 -->
+        <polygon points="90,220 108,272 72,272" fill="#7A9E87" opacity="0.35"/>
+        <rect x="97" y="272" width="6" height="18" fill="#7A9E87" opacity="0.25"/>
+        <!-- 木2 -->
+        <polygon points="280,215 300,272 260,272" fill="#7A9E87" opacity="0.35"/>
+        <rect x="288" y="272" width="6" height="18" fill="#7A9E87" opacity="0.25"/>
+        <!-- 木3 -->
+        <polygon points="330,228 346,272 314,272" fill="#7A9E87" opacity="0.25"/>
 
-        <!-- Bridge curve rising toward circle -->
-        <path d="M140,102 C152,96 160,88 170,82 C178,77 186,72 200,68"
-              stroke="#1A1A18" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <!-- 中景の木々 -->
+        <!-- 中央左の大木 -->
+        <polygon points="138,108 168,220 108,220" fill="#4A7A5A" opacity="0.75"/>
+        <polygon points="130,148 162,236 98,236" fill="#4A7A5A" opacity="0.55"/>
+        <rect x="130" y="220" width="10" height="52" fill="#3A5E46" opacity="0.6"/>
 
-        <!-- Arc sweeping around the circle (face/head area) -->
-        <path d="M200,68 C218,62 232,70 238,84 C244,98 238,114 226,120 C214,126 200,122 192,128 C184,134 182,148 196,156 C210,164 226,158 238,146"
-              stroke="#1A1A18" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <!-- 中央右の大木 -->
+        <polygon points="242,96 276,220 208,220" fill="#4A7A5A" opacity="0.8"/>
+        <polygon points="236,138 272,238 200,238" fill="#4A7A5A" opacity="0.58"/>
+        <rect x="234" y="220" width="10" height="52" fill="#3A5E46" opacity="0.62"/>
 
-        <!-- Flow right into large body/shoulder arch -->
-        <path d="M238,146 C256,130 274,114 296,106 C316,98 340,106 352,124 C362,140 354,164 332,178 C306,194 276,190 256,210 C238,228 234,254 244,272"
-              stroke="#1A1A18" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <!-- 最前景の小木（左） -->
+        <polygon points="54,168 76,248 32,248" fill="#3A5E46" opacity="0.7"/>
+        <rect x="60" y="248" width="8" height="30" fill="#2E4A36" opacity="0.55"/>
 
-        <!-- Small minimal face at center of circle -->
-        <!-- Face ring -->
-        <circle cx="208" cy="88" r="24" stroke="#1A1A18" stroke-width="2.5" fill="none"/>
-        <!-- Eyes — simple vertical strokes -->
-        <line x1="199" y1="83" x2="199" y2="89" stroke="#1A1A18" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="217" y1="83" x2="217" y2="89" stroke="#1A1A18" stroke-width="2.5" stroke-linecap="round"/>
-        <!-- Soft smile -->
-        <path d="M201,97 Q208,104 215,97" stroke="#1A1A18" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <!-- 最前景の小木（右） -->
+        <polygon points="318,172 342,250 294,250" fill="#3A5E46" opacity="0.68"/>
+        <rect x="324" y="250" width="8" height="28" fill="#2E4A36" opacity="0.52"/>
+
+        <!-- 霧/光のハイライト -->
+        <ellipse cx="190" cy="240" rx="120" ry="18" fill="white" opacity="0.12"/>
+
+        <!-- 細い枝のライン -->
+        <path d="M138,108 C130,88 118,72 108,58" stroke="#3A5E46" stroke-width="1.8" stroke-linecap="round" opacity="0.4"/>
+        <path d="M242,96 C250,76 260,62 272,50" stroke="#3A5E46" stroke-width="1.8" stroke-linecap="round" opacity="0.4"/>
+        <path d="M138,108 C122,98 110,96 98,100" stroke="#3A5E46" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+        <path d="M242,96 C258,86 268,86 280,92" stroke="#3A5E46" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
 
       </svg>
     </div>
@@ -1442,12 +1708,7 @@ footer {
   <div class="footer-inner">
     <div>
       <div class="footer-logo">
-        <div class="footer-logo-mark">
-          <svg width="14" height="14" viewBox="0 0 18 18" fill="none">
-            <path d="M5 4 L5 14 M5 4 L13 4 M5 9 L11 9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="14" cy="5" r="2" fill="#C96B3A"/>
-          </svg>
-        </div>
+        <img src="F_rogo.png" alt="Foresy" class="footer-logo-img">
         Foresy
       </div>
       <p class="footer-info">
@@ -1474,7 +1735,7 @@ footer {
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-copy">© 2024 Foresy. All rights reserved.</span>
+    <span class="footer-copy">© 2026 Foresy. All rights reserved.</span>
     <span class="footer-copy">福岡発の広告代理店</span>
   </div>
 </footer>
@@ -1545,33 +1806,7 @@ document.getElementById('why-items') && io.observe(document.getElementById('why-
 /* ── Page-load stagger for non-hero sections ── */
 /* Hero elements are handled by CSS animation */
 
-/* ── Magnetic button effect (subtle) ── */
-document.querySelectorAll('.btn-primary, .btn-cta-large, .nav-cta').forEach(btn => {
-  btn.addEventListener('mousemove', (e) => {
-    const rect = btn.getBoundingClientRect();
-    const cx = rect.left + rect.width  / 2;
-    const cy = rect.top  + rect.height / 2;
-    const dx = (e.clientX - cx) * 0.18;
-    const dy = (e.clientY - cy) * 0.18;
-    btn.style.transform = `translate(${dx}px, ${dy}px) translateY(-1px)`;
-  });
-  btn.addEventListener('mouseleave', () => {
-    btn.style.transform = '';
-  });
-});
 
-/* ── Why section: update background numeral on item visibility ── */
-const whyItems = document.querySelectorAll('.why-item');
-const whyBgNum = document.querySelector('.why-bg-num');
-const whyObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && whyBgNum) {
-      const num = entry.target.querySelector('.why-num-badge');
-      if (num) whyBgNum.textContent = num.textContent;
-    }
-  });
-}, { threshold: 0.6 });
-whyItems.forEach(el => whyObserver.observe(el));
 
 /* ── Nav scroll state ── */
 const nav = document.querySelector('nav');
@@ -1585,6 +1820,49 @@ window.addEventListener('scroll', () => {
   }
   lastScroll = y;
 }, { passive: true });
+
+/* ── Hamburger menu ── */
+function toggleMenu(){document.getElementById('nav-mobile-menu').classList.toggle('open');document.getElementById('nav-hamburger').classList.toggle('open');}
+document.addEventListener('click',(e)=>{if(!e.target.closest('nav')&&!e.target.closest('.nav-mobile-menu')){document.getElementById('nav-mobile-menu')?.classList.remove('open');document.getElementById('nav-hamburger')?.classList.remove('open');}});
+
+/* ── Back to top ── */
+const backToTopBtn = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+  backToTopBtn.classList.toggle('visible', window.scrollY > 400);
+}, { passive: true });
+backToTopBtn.addEventListener('click', () => {
+  document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
+});
+</script>
+
+<!-- サイトプレビューモーダル -->
+<div id="site-preview-modal" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(26,26,24,0.82);backdrop-filter:blur(6px);" onclick="closeSitePreview(event)">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:92%;max-width:1100px;height:86vh;background:white;border-radius:12px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.5);display:flex;flex-direction:column;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:44px;background:#1A1A18;flex-shrink:0;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(245,243,238,0.45);letter-spacing:0.08em;">PREVIEW</span>
+        <span id="site-preview-label" style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(245,243,238,0.8);font-weight:300;"></span>
+      </div>
+      <button onclick="closeSitePreview()" style="background:rgba(255,255,255,0.1);border:none;color:rgba(245,243,238,0.75);cursor:pointer;font-size:15px;line-height:1;padding:6px 10px;border-radius:4px;">✕</button>
+    </div>
+    <iframe id="site-preview-iframe" src="" style="width:100%;flex:1;border:none;display:block;" loading="lazy"></iframe>
+  </div>
+</div>
+<script>
+function openSitePreview(url, label) {
+  document.getElementById('site-preview-label').textContent = label || '';
+  document.getElementById('site-preview-iframe').src = url;
+  document.getElementById('site-preview-modal').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+function closeSitePreview(e) {
+  if (!e || e.target === document.getElementById('site-preview-modal')) {
+    document.getElementById('site-preview-modal').style.display = 'none';
+    document.getElementById('site-preview-iframe').src = '';
+    document.body.style.overflow = '';
+  }
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSitePreview(); });
 </script>
 </body>
 </html>

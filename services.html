@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>サービス | Foresy（フォレジー）</title>
 <meta name="description" content="Google広告・LINEヤフー広告の運用、LP制作、Looker Studioによるレポート自動化。Foresyのサービス詳細・制作フロー・料金表をご覧ください。">
+<link rel="icon" type="image/png" href="F_rogo.png">
+<meta property="og:title" content="サービス | Foresy（フォレジー）">
+<meta property="og:description" content="Google広告・LINEヤフー広告の運用、LP制作、計測設計をワンストップで提供。広告代理店 Foresy のサービス一覧。">
+<meta property="og:url" content="https://foresy-v2.vercel.app/services.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Foresy">
+<meta property="og:image" content="https://foresy-v2.vercel.app/F_rogo.png">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500&family=DM+Mono:wght@400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
@@ -22,7 +30,7 @@ body { font-family:var(--font-jp); background:var(--bg-primary); color:var(--tex
 nav { position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--mist);height:60px;display:flex;align-items:center;padding:0 40px; }
 .nav-inner { max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between; }
 .nav-logo { display:flex;align-items:center;gap:8px;font-family:var(--font-sans);font-weight:400;font-size:18px;color:var(--text-primary);text-decoration:none;letter-spacing:-0.02em; }
-.nav-logo-mark { width:28px;height:28px;background:var(--forest);border-radius:6px;display:flex;align-items:center;justify-content:center; }
+.nav-logo-img { height:28px;width:auto;border-radius:4px; }
 .nav-links { display:flex;gap:28px; }
 .nav-links a { font-family:var(--font-sans);font-size:14px;color:var(--text-secondary);text-decoration:none;transition:color 150ms; }
 .nav-links a:hover, .nav-links a.active { color:var(--text-primary); }
@@ -102,13 +110,31 @@ nav { position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdr
 .nav-qr-panel{position:absolute;top:68px;right:40px;z-index:200;background:white;border:1px solid var(--mist);border-radius:10px;padding:20px;box-shadow:0 8px 32px rgba(0,0,0,0.12);display:none;flex-direction:column;align-items:center;gap:10px;min-width:160px;}
 .nav-qr-panel.open{display:flex;}
 .nav-qr-label{font-family:var(--font-mono);font-size:10px;color:var(--sage);letter-spacing:0.08em;text-align:center;}
+.nav-hamburger{display:none;width:36px;height:36px;border:none;background:none;cursor:pointer;align-items:center;justify-content:center;border-radius:6px;transition:background 150ms;padding:0;flex-shrink:0;}
+.nav-hamburger:hover{background:var(--bg-secondary);}
+.nav-hamburger .bar{display:block;width:18px;height:1.5px;background:var(--text-primary);transition:all 220ms;position:relative;margin:0 auto;}
+.nav-hamburger .bar::before,.nav-hamburger .bar::after{content:'';position:absolute;left:0;width:18px;height:1.5px;background:var(--text-primary);transition:all 220ms;}
+.nav-hamburger .bar::before{top:-5px;}
+.nav-hamburger .bar::after{top:5px;}
+.nav-hamburger.open .bar{background:transparent;}
+.nav-hamburger.open .bar::before{transform:rotate(45deg);top:0;}
+.nav-hamburger.open .bar::after{transform:rotate(-45deg);top:0;}
+.nav-mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(245,243,238,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--mist);z-index:99;padding:8px 20px 20px;}
+.nav-mobile-menu.open{display:block;}
+.nav-mobile-menu a{display:block;padding:13px 0;font-family:var(--font-jp);font-size:15px;color:var(--text-primary);text-decoration:none;border-bottom:1px solid rgba(200,217,204,0.4);}
+.nav-mobile-menu a:last-child{border-bottom:none;}
+.nav-mobile-cta{margin-top:14px;background:var(--cta)!important;color:white!important;text-align:center;border-radius:6px;padding:12px 0!important;}
+#back-to-top{position:fixed;bottom:28px;right:28px;z-index:90;width:44px;height:44px;background:var(--bg-dark);color:var(--bg-primary);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:16px;opacity:0;pointer-events:none;transition:opacity 300ms,box-shadow 300ms;box-shadow:0 4px 16px rgba(26,26,24,0.18);}
+#back-to-top.visible{opacity:1;pointer-events:auto;}
+#back-to-top:hover{box-shadow:0 8px 24px rgba(26,26,24,0.28);}
+@media(max-width:768px){.nav-hamburger{display:flex;} .nav-cta{display:none;} .nav-qr-btn{display:none;}}
 </style>
 </head>
 <body>
-<nav style="position:relative;">
+<nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <div class="nav-logo-mark"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M5 4 L5 14 M5 4 L13 4 M5 9 L11 9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="5" r="2" fill="#C96B3A"/></svg></div>
+      <img src="F_rogo.png" alt="Foresy" class="nav-logo-img">
       Foresy
     </a>
     <div class="nav-links">
@@ -121,20 +147,28 @@ nav { position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdr
       <button class="nav-qr-btn" onclick="toggleQR()" aria-label="LINE QRコード"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#5C5B56" stroke-width="1.4" fill="none"/><rect x="4" y="4" width="2" height="2" fill="#5C5B56"/><rect x="10" y="2" width="6" height="6" rx="1" stroke="#5C5B56" stroke-width="1.4" fill="none"/><rect x="12" y="4" width="2" height="2" fill="#5C5B56"/><rect x="2" y="10" width="6" height="6" rx="1" stroke="#5C5B56" stroke-width="1.4" fill="none"/><rect x="4" y="12" width="2" height="2" fill="#5C5B56"/><rect x="10" y="10" width="2" height="2" fill="#5C5B56"/><rect x="14" y="10" width="2" height="2" fill="#5C5B56"/><rect x="12" y="12" width="4" height="4" rx="0.5" fill="#5C5B56"/><rect x="10" y="14" width="2" height="2" fill="#5C5B56"/></svg></button>
       <div class="nav-qr-panel" id="qr-panel"><svg width="110" height="110" viewBox="0 0 120 120" fill="none"><rect width="120" height="120" fill="white"/><rect x="4" y="4" width="36" height="36" rx="3" fill="#1A1A18"/><rect x="10" y="10" width="24" height="24" rx="2" fill="white"/><rect x="14" y="14" width="16" height="16" rx="1" fill="#1A1A18"/><rect x="80" y="4" width="36" height="36" rx="3" fill="#1A1A18"/><rect x="86" y="10" width="24" height="24" rx="2" fill="white"/><rect x="90" y="14" width="16" height="16" rx="1" fill="#1A1A18"/><rect x="4" y="80" width="36" height="36" rx="3" fill="#1A1A18"/><rect x="10" y="86" width="24" height="24" rx="2" fill="white"/><rect x="14" y="90" width="16" height="16" rx="1" fill="#1A1A18"/><rect x="46" y="4" width="6" height="6" fill="#1A1A18"/><rect x="56" y="4" width="6" height="6" fill="#1A1A18"/><rect x="66" y="4" width="6" height="6" fill="#1A1A18"/><rect x="46" y="14" width="6" height="6" fill="#1A1A18"/><rect x="66" y="14" width="6" height="6" fill="#1A1A18"/><rect x="46" y="24" width="16" height="6" fill="#1A1A18"/><rect x="76" y="46" width="6" height="36" fill="#1A1A18"/><rect x="86" y="46" width="16" height="6" fill="#1A1A18"/><rect x="96" y="56" width="6" height="16" fill="#1A1A18"/></svg><span class="nav-qr-label">LINE 公式アカウント<br>友だち追加はこちら</span></div>
       <a href="contact.html" class="nav-cta">無料相談</a>
+      <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()" aria-label="メニュー"><span class="bar"></span></button>
     </div>
   </div>
 </nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="services.html">サービス</a>
+  <a href="works.html">実績</a>
+  <a href="about.html">会社概要</a>
+  <a href="faq.html">FAQ</a>
+  <a href="contact.html" class="nav-mobile-cta">無料相談（0円）</a>
+</div>
 
 <div class="page-hero">
   <div class="page-hero-inner">
     <p class="tag-label" style="margin-bottom:14px;">SERVICES</p>
-    <h1>成果から逆算する、<br>広告支援。</h1>
+    <h1>成果から逆算する、<br>広告支援</h1>
     <p>運用・制作・計測・自動化をワンストップで提供。小規模でも大手と同じ精度で、PDCAを回し続けます。</p>
   </div>
 </div>
 
 <!-- SERVICE 1 -->
-<div class="service-detail">
+<div id="service-01" class="service-detail">
   <div class="service-detail-grid">
     <div class="service-meta">
       <span class="service-num">SERVICE 01</span>
@@ -171,7 +205,7 @@ nav { position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdr
         <text x="340" y="106" font-family="DM Sans" font-size="18" font-weight="200" fill="#1A1A18">280%</text>
         <rect x="328" y="130" width="112" height="54" rx="6" fill="#F5F3EE" stroke="#C8D9CC"/>
         <text x="340" y="150" font-family="DM Mono" font-size="9" fill="#9B9991">CPA</text>
-        <text x="340" y="170" font-family="DM Sans" font-size="18" font-weight="200" fill="#4A7A5A">¥1,840</text>
+        <text x="340" y="170" font-family="DM Sans" font-size="18" font-weight="200" fill="#4A7A5A">¥2,480</text>
         <rect x="328" y="194" width="112" height="54" rx="6" fill="#F5F3EE" stroke="#C8D9CC"/>
         <text x="340" y="214" font-family="DM Mono" font-size="9" fill="#9B9991">CVR</text>
         <text x="340" y="234" font-family="DM Sans" font-size="18" font-weight="200" fill="#1A1A18">3.8%</text>
@@ -184,7 +218,7 @@ nav { position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdr
 </div>
 
 <!-- SERVICE 2 -->
-<div class="service-detail" style="background:var(--bg-secondary)">
+<div id="service-02" class="service-detail" style="background:var(--bg-secondary)">
   <div class="service-detail-grid reverse">
     <div class="service-visual">
       <svg width="100%" viewBox="0 0 480 320" fill="none">
@@ -232,7 +266,7 @@ nav { position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdr
 </div>
 
 <!-- SERVICE 3 -->
-<div class="service-detail">
+<div id="service-03" class="service-detail">
   <div class="service-detail-grid">
     <div class="service-meta">
       <span class="service-num">SERVICE 03</span>
@@ -260,7 +294,7 @@ nav { position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdr
         <text x="44" y="110" font-family="DM Mono" font-size="7" fill="#4A7A5A">↑ 12%</text>
         <rect x="136" y="64" width="90" height="60" rx="4" fill="#F5F3EE" stroke="#EDEAE3"/>
         <text x="144" y="78" font-family="DM Mono" font-size="7" fill="#9B9991">CLICKS</text>
-        <text x="144" y="96" font-family="DM Sans" font-size="16" font-weight="200" fill="#1A1A18">1,840</text>
+        <text x="144" y="96" font-family="DM Sans" font-size="16" font-weight="200" fill="#1A1A18">2,340</text>
         <text x="144" y="110" font-family="DM Mono" font-size="7" fill="#4A7A5A">↑ 8%</text>
         <rect x="236" y="64" width="90" height="60" rx="4" fill="#F5F3EE" stroke="#EDEAE3"/>
         <text x="244" y="78" font-family="DM Mono" font-size="7" fill="#9B9991">CONVERSIONS</text>
@@ -268,7 +302,7 @@ nav { position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdr
         <text x="244" y="110" font-family="DM Mono" font-size="7" fill="#4A7A5A">↑ 24%</text>
         <rect x="336" y="64" width="108" height="60" rx="4" fill="#F5F3EE" stroke="#EDEAE3"/>
         <text x="344" y="78" font-family="DM Mono" font-size="7" fill="#9B9991">COST/CV</text>
-        <text x="344" y="96" font-family="DM Sans" font-size="16" font-weight="200" fill="#C96B3A">¥1,840</text>
+        <text x="344" y="96" font-family="DM Sans" font-size="16" font-weight="200" fill="#C96B3A">¥2,200</text>
         <text x="344" y="110" font-family="DM Mono" font-size="7" fill="#4A7A5A">↓ 18%</text>
         <!-- Chart -->
         <rect x="36" y="136" width="284" height="140" rx="4" fill="#F5F3EE" stroke="#EDEAE3"/>
@@ -351,10 +385,14 @@ nav { position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdr
 
 <!-- FOOTER CTA -->
 <section style="background:#1A1A18;padding:72px 40px;text-align:center;"><p style="font-family:'DM Sans',sans-serif;font-weight:200;font-size:clamp(24px,3.5vw,44px);color:white;letter-spacing:-0.02em;margin-bottom:32px;line-height:1.2;">まずは気軽に、話してみませんか。</p><a href="contact.html" style="background:#C96B3A;color:white;border:none;border-radius:6px;padding:14px 32px;font-size:16px;cursor:pointer;text-decoration:none;display:inline-block;">無料相談はこちら（0円）</a></section>
-<footer style="background:#1A1A18;border-top:1px solid rgba(255,255,255,0.07);padding:40px 40px 28px;"><div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;"><div><div style="font-size:18px;color:white;font-weight:300;margin-bottom:14px;display:flex;align-items:center;gap:8px;"><div style="width:26px;height:26px;background:#4A7A5A;border-radius:5px;display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M5 4 L5 14 M5 4 L13 4 M5 9 L11 9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="5" r="2" fill="#C96B3A"/></svg></div>Foresy</div><p style="font-size:13px;color:rgba(245,243,238,0.45);line-height:1.9;">福岡県福岡市<br>adforesy@gmail.com</p></div><div><div style="font-size:10px;color:#7A9E87;letter-spacing:0.1em;margin-bottom:18px;text-transform:uppercase;">PAGES</div><ul style="list-style:none;"><li style="margin-bottom:10px;"><a href="services.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">サービス</a></li><li style="margin-bottom:10px;"><a href="works.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">実績</a></li><li style="margin-bottom:10px;"><a href="about.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">会社概要</a></li><li><a href="faq.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">FAQ</a></li></ul></div><div><div style="font-size:10px;color:#7A9E87;letter-spacing:0.1em;margin-bottom:18px;text-transform:uppercase;">CONTACT</div><ul style="list-style:none;"><li style="margin-bottom:10px;"><a href="mailto:adforesy@gmail.com" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">adforesy@gmail.com</a></li><li><a href="contact.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">お問い合わせ・無料相談</a></li></ul></div></div><div style="max-width:1200px;margin:28px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;"><span style="font-size:11px;color:rgba(245,243,238,0.35);">&copy; 2024 Foresy. All rights reserved.</span><span style="font-size:11px;color:rgba(245,243,238,0.35);">福岡発の広告代理店</span></div></footer>
+<footer style="background:#1A1A18;border-top:1px solid rgba(255,255,255,0.07);padding:40px 40px 28px;"><div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;"><div><div style="font-size:18px;color:white;font-weight:300;margin-bottom:14px;display:flex;align-items:center;gap:8px;"><img src="F_rogo.png" alt="Foresy" style="height:26px;width:auto;border-radius:4px;vertical-align:middle;">Foresy</div><p style="font-size:13px;color:rgba(245,243,238,0.45);line-height:1.9;">福岡県福岡市<br>adforesy@gmail.com</p></div><div><div style="font-size:10px;color:#7A9E87;letter-spacing:0.1em;margin-bottom:18px;text-transform:uppercase;">PAGES</div><ul style="list-style:none;"><li style="margin-bottom:10px;"><a href="services.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">サービス</a></li><li style="margin-bottom:10px;"><a href="works.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">実績</a></li><li style="margin-bottom:10px;"><a href="about.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">会社概要</a></li><li><a href="faq.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">FAQ</a></li></ul></div><div><div style="font-size:10px;color:#7A9E87;letter-spacing:0.1em;margin-bottom:18px;text-transform:uppercase;">CONTACT</div><ul style="list-style:none;"><li style="margin-bottom:10px;"><a href="mailto:adforesy@gmail.com" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">adforesy@gmail.com</a></li><li><a href="contact.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">お問い合わせ・無料相談</a></li></ul></div></div><div style="max-width:1200px;margin:28px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;"><span style="font-size:11px;color:rgba(245,243,238,0.35);">&copy; 2024 Foresy. All rights reserved.</span><span style="font-size:11px;color:rgba(245,243,238,0.35);">福岡発の広告代理店</span></div></footer>
+<button id="back-to-top" aria-label="トップへ戻る">↑</button>
 <script>
 function toggleQR(){document.getElementById('qr-panel').classList.toggle('open');}
 document.addEventListener('click',(e)=>{if(!e.target.closest('.nav-qr-btn')&&!e.target.closest('#qr-panel')){var p=document.getElementById('qr-panel');if(p)p.classList.remove('open');}});
+function toggleMenu(){document.getElementById('nav-mobile-menu').classList.toggle('open');document.getElementById('nav-hamburger').classList.toggle('open');}
+document.addEventListener('click',(e)=>{if(!e.target.closest('nav')&&!e.target.closest('.nav-mobile-menu')){document.getElementById('nav-mobile-menu')?.classList.remove('open');document.getElementById('nav-hamburger')?.classList.remove('open');}});
+const b=document.getElementById('back-to-top');window.addEventListener('scroll',()=>{b.classList.toggle('visible',window.scrollY>400);},{passive:true});b.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});
 </script>
 </body>
 </html>
