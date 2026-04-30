@@ -99,7 +99,7 @@ nav {
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   border-bottom: 1px solid rgba(200,217,204,0.5);
-  height: 60px;
+  height: 80px;
   display: flex; align-items: center;
   padding: 0 40px;
   animation: fadeIn 0.4s ease both;
@@ -110,11 +110,11 @@ nav {
 }
 .nav-logo {
   display: flex; align-items: center; gap: 8px;
-  font-family: var(--font-sans); font-weight: 400; font-size: 18px;
+  font-family: var(--font-sans); font-weight: 400; font-size: 36px;
   color: var(--text-primary); text-decoration: none; letter-spacing: -0.02em;
 }
 .nav-logo-img {
-  height: 28px; width: auto;
+  height: 56px; width: auto;
   border-radius: 4px;
   transition: transform 0.3s var(--ease-spring);
 }
@@ -605,8 +605,8 @@ nav {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
-  background: var(--mist);
-  border: 1px solid var(--mist); border-radius: 12px;
+  background: #5C5B56;
+  border: 1px solid #5C5B56; border-radius: 12px;
   overflow: hidden;
   margin-bottom: 36px;
 }
@@ -1030,7 +1030,7 @@ footer {
 .nav-hamburger.open .bar { background:transparent; }
 .nav-hamburger.open .bar::before { transform:rotate(45deg);top:0; }
 .nav-hamburger.open .bar::after { transform:rotate(-45deg);top:0; }
-.nav-mobile-menu { display:none;position:fixed;top:60px;left:0;right:0;background:rgba(245,243,238,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--mist);z-index:99;padding:8px 20px 20px; }
+.nav-mobile-menu { display:none;position:fixed;top:80px;left:0;right:0;background:rgba(245,243,238,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--mist);z-index:99;padding:8px 20px 20px; }
 .nav-mobile-menu.open { display:block; }
 .nav-mobile-menu a { display:block;padding:13px 0;font-family:var(--font-jp);font-size:15px;color:var(--text-primary);text-decoration:none;border-bottom:1px solid rgba(200,217,204,0.4); }
 .nav-mobile-menu a:last-child { border-bottom:none; }
@@ -1139,7 +1139,7 @@ footer {
       <h1 class="hero-h1">広告費を<br>成果に変える</h1>
       <p class="hero-sub">
         Google広告・LINEヤフー広告の運用から、LP制作・計測設計・レポート自動化まで。<br>
-        福岡発の広告代理店 Foresy が、あなたのデジタル施策をワンストップで支援します。
+        広告代理店 Foresy が、あなたのデジタル施策をワンストップで支援します。
       </p>
     </div>
     <div class="hero-svg-wrap">
@@ -1736,7 +1736,7 @@ footer {
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">© 2026 Foresy. All rights reserved.</span>
-    <span class="footer-copy">福岡発の広告代理店</span>
+    <span class="footer-copy">広告代理店</span>
   </div>
 </footer>
 
