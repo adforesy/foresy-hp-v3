@@ -128,6 +128,12 @@ nav { position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdr
 #back-to-top.visible{opacity:1;pointer-events:auto;}
 #back-to-top:hover{box-shadow:0 8px 24px rgba(26,26,24,0.28);}
 @media(max-width:768px){.nav-hamburger{display:flex;} .nav-cta{display:none;} .nav-qr-btn{display:none;}}
+/* ── Reveal + Spring hover ── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(0.16,1,0.3,1),transform .65s cubic-bezier(0.16,1,0.3,1);}
+.reveal.in-view{opacity:1;transform:translateY(0);}
+.reveal-d1{transition-delay:.08s;}.reveal-d2{transition-delay:.16s;}.reveal-d3{transition-delay:.24s;}
+.btn-primary{transition:background 150ms,transform .45s cubic-bezier(0.34,1.56,0.64,1),box-shadow .45s cubic-bezier(0.34,1.56,0.64,1);}
+.btn-outline{transition:all .35s cubic-bezier(0.34,1.56,0.64,1);}
 </style>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -172,9 +178,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="page-hero">
   <div class="page-hero-inner">
-    <p class="tag-label" style="margin-bottom:14px;">SERVICES</p>
-    <h1>成果から逆算する<br>広告支援</h1>
-    <p>運用・制作・計測・自動化をワンストップで提供。小規模でも大手と同じ精度で、PDCAを回し続けます。</p>
+    <p class="tag-label reveal" style="margin-bottom:14px;">SERVICES</p>
+    <h1 class="reveal reveal-d1">成果から逆算する<br>広告支援</h1>
+    <p class="reveal reveal-d2">運用・制作・計測・自動化をワンストップで提供。小規模でも大手と同じ精度で、PDCAを回し続けます。</p>
   </div>
 </div>
 
@@ -404,6 +410,26 @@ document.addEventListener('click',(e)=>{if(!e.target.closest('.nav-qr-btn')&&!e.
 function toggleMenu(){document.getElementById('nav-mobile-menu').classList.toggle('open');document.getElementById('nav-hamburger').classList.toggle('open');}
 document.addEventListener('click',(e)=>{if(!e.target.closest('nav')&&!e.target.closest('.nav-mobile-menu')){document.getElementById('nav-mobile-menu')?.classList.remove('open');document.getElementById('nav-hamburger')?.classList.remove('open');}});
 const b=document.getElementById('back-to-top');window.addEventListener('scroll',()=>{b.classList.toggle('visible',window.scrollY>400);},{passive:true});b.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});
+
+/* ── Scroll Reveal ── */
+const revealIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (!e.isIntersecting) return; e.target.classList.add('in-view'); revealIO.unobserve(e.target); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
+
+/* ── Magnetic Buttons ── */
+document.querySelectorAll('.btn-primary,.nav-cta').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    btn.style.transition = 'none';
+    const r = btn.getBoundingClientRect();
+    btn.style.transform = `translate(${(e.clientX-r.left-r.width/2)*.2}px,${(e.clientY-r.top-r.height/2)*.2}px)`;
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transition = 'transform .5s cubic-bezier(0.34,1.56,0.64,1)';
+    btn.style.transform = '';
+    setTimeout(() => btn.style.transition = '', 500);
+  });
+});
 </script>
 </body>
 </html>

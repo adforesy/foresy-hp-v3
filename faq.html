@@ -86,6 +86,10 @@ nav{position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdrop
 #back-to-top.visible{opacity:1;pointer-events:auto;}
 #back-to-top:hover{box-shadow:0 8px 24px rgba(26,26,24,0.28);}
 @media(max-width:768px){.nav-hamburger{display:flex;} .nav-cta{display:none;} .nav-qr-btn{display:none;}}
+/* ── Reveal ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(0.16,1,0.3,1),transform .6s cubic-bezier(0.16,1,0.3,1);}
+.reveal.in-view{opacity:1;transform:translateY(0);}
+.reveal-d1{transition-delay:.08s;}.reveal-d2{transition-delay:.16s;}.reveal-d3{transition-delay:.24s;}.reveal-d4{transition-delay:.32s;}
 </style>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -130,9 +134,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="page-hero">
   <div class="page-hero-inner">
-    <p class="tag-label" style="margin-bottom:14px;">FAQ</p>
-    <h1>よくある<br>ご質問</h1>
-    <p>お問い合わせ前に、よくいただく質問をまとめました。解決しない場合はお気軽にご連絡ください。</p>
+    <p class="tag-label reveal" style="margin-bottom:14px;">FAQ</p>
+    <h1 class="reveal reveal-d1">よくある<br>ご質問</h1>
+    <p class="reveal reveal-d2">お問い合わせ前に、よくいただく質問をまとめました。解決しない場合はお気軽にご連絡ください。</p>
   </div>
 </div>
 
@@ -149,15 +153,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div class="faq-group" id="sec-price">
         <div class="faq-group-label">料金</div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q" onclick="toggle(this)"><span>料金はどのくらいかかりますか？</span><span class="faq-icon">+</span></button>
           <div class="faq-a">月額固定制で、初期費用は0円です。広告費の規模に応じたプランをご用意しており、スタートプラン（広告費〜30万円）・スタンダードプラン（30〜100万円）・カスタムプラン（100万円超）の3種類があります。具体的な金額はご相談の上お見積もりいたします。</div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q" onclick="toggle(this)"><span>初期費用はかかりますか？</span><span class="faq-icon">+</span></button>
           <div class="faq-a">すべてのプランで初期費用は0円です。アカウント設定・計測設計・Looker Studioダッシュボード構築なども月額料金の中で対応します。</div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q" onclick="toggle(this)"><span>広告費の手数料制はありますか？</span><span class="faq-icon">+</span></button>
           <div class="faq-a">月額定額制・広告費に対するパーセンテージ制のいずれにも対応可能です。ご予算や運用規模に応じて最適な料金体系をご提案します。</div>
         </div>
@@ -165,19 +169,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div class="faq-group" id="sec-contract">
         <div class="faq-group-label">契約</div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q" onclick="toggle(this)"><span>最低契約期間はありますか？</span><span class="faq-icon">+</span></button>
           <div class="faq-a">最低契約期間は3ヶ月です。広告運用は効果が出るまでに一定の期間が必要なため、3ヶ月を基本としています。その後は1ヶ月単位での更新が可能です。</div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q" onclick="toggle(this)"><span>広告アカウントの所有権はどちらになりますか？</span><span class="faq-icon">+</span></button>
           <div class="faq-a">広告アカウントの所有権はお客様に帰属します。Foresyは管理権限をお借りして運用を行います。契約終了後も、これまでの運用データはすべてお客様のアカウントに残ります。</div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q" onclick="toggle(this)"><span>他社代理店からの乗り換えは可能ですか？</span><span class="faq-icon">+</span></button>
           <div class="faq-a">はい、他社からの乗り換えも歓迎します。現在の代理店との契約状況・アカウントの引き継ぎ方法など、スムーズに移行できるようサポートします。まずはご相談ください。</div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q" onclick="toggle(this)"><span>途中解約はできますか？</span><span class="faq-icon">+</span></button>
           <div class="faq-a">最低契約期間（3ヶ月）経過後は、1ヶ月前のご連絡で解約可能です。解約後のデータ・アカウントはすべてお客様に引き渡しします。</div>
         </div>
@@ -185,19 +189,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div class="faq-group" id="sec-ops">
         <div class="faq-group-label">運用</div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q" onclick="toggle(this)"><span>どのくらいの予算から対応できますか？</span><span class="faq-icon">+</span></button>
           <div class="faq-a">月間広告費10万円程度から対応可能です。少額でも効果的な運用ができるよう、予算規模に合わせた戦略をご提案します。</div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q" onclick="toggle(this)"><span>レポートはどのくらいの頻度で届きますか？</span><span class="faq-icon">+</span></button>
           <div class="faq-a">Looker Studioによるリアルタイムダッシュボードをご共有します。月次の定例レポートに加え、施策実施時・数値に大きな動きがあった際は都度ご連絡します。</div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q" onclick="toggle(this)"><span>対応している広告媒体はどこですか？</span><span class="faq-icon">+</span></button>
           <div class="faq-a">現在はGoogle広告（検索・ディスプレイ・P-MAX）とLINEヤフー広告（Yahoo!検索・ディスプレイ）に対応しています。他媒体をご希望の場合はご相談ください。</div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q" onclick="toggle(this)"><span>LP制作だけの依頼は可能ですか？</span><span class="faq-icon">+</span></button>
           <div class="faq-a">はい、LP制作・LINE公式構築・Looker Studio導入など、制作・ツール系のみのご依頼も承ります。広告運用とセットでなくてもご相談ください。</div>
         </div>
@@ -205,11 +209,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div class="faq-group" id="sec-other">
         <div class="faq-group-label">その他</div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q" onclick="toggle(this)"><span>対応エリアはどこですか？</span><span class="faq-icon">+</span></button>
           <div class="faq-a">拠点は福岡ですが、オンラインで全国対応しています。Zoom・Google Meetでの打ち合わせを基本とし、遠方のお客様も安心してご利用いただけます。福岡市内の場合は対面打ち合わせも可能です。</div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q" onclick="toggle(this)"><span>個人事業主・フリーランスでも依頼できますか？</span><span class="faq-icon">+</span></button>
           <div class="faq-a">はい、個人事業主・フリーランスの方からのご依頼も歓迎します。法人格の有無は問いません。</div>
         </div>
@@ -249,6 +253,12 @@ document.addEventListener('click',(e)=>{if(!e.target.closest('.nav-qr-btn')&&!e.
 function toggleMenu(){document.getElementById('nav-mobile-menu').classList.toggle('open');document.getElementById('nav-hamburger').classList.toggle('open');}
 document.addEventListener('click',(e)=>{if(!e.target.closest('nav')&&!e.target.closest('.nav-mobile-menu')){document.getElementById('nav-mobile-menu')?.classList.remove('open');document.getElementById('nav-hamburger')?.classList.remove('open');}});
 const b=document.getElementById('back-to-top');window.addEventListener('scroll',()=>{b.classList.toggle('visible',window.scrollY>400);},{passive:true});b.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});
+
+/* ── Scroll Reveal ── */
+const revealIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (!e.isIntersecting) return; e.target.classList.add('in-view'); revealIO.unobserve(e.target); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
 </script>
 </body>
 </html>

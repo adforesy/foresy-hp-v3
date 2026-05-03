@@ -82,6 +82,12 @@ nav{position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdrop
 #back-to-top.visible{opacity:1;pointer-events:auto;}
 #back-to-top:hover{box-shadow:0 8px 24px rgba(26,26,24,0.28);}
 @media(max-width:768px){.nav-hamburger{display:flex;} .nav-cta{display:none;} .nav-qr-btn{display:none;}}
+/* ── Reveal + Spring hover ── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(0.16,1,0.3,1),transform .65s cubic-bezier(0.16,1,0.3,1);}
+.reveal.in-view{opacity:1;transform:translateY(0);}
+.reveal-d1{transition-delay:.08s;}.reveal-d2{transition-delay:.16s;}.reveal-d3{transition-delay:.24s;}
+.work-card{transition:transform .45s cubic-bezier(0.34,1.56,0.64,1),box-shadow .45s cubic-bezier(0.34,1.56,0.64,1);}
+.work-card:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(0,0,0,0.12);}
 </style>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -125,9 +131,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 <div class="page-hero">
   <div class="page-hero-inner">
-    <p class="tag-label" style="margin-bottom:14px;">WORKS</p>
-    <h1>実績・制作物</h1>
-    <p>これまでの支援・制作事例を一部ご紹介します。具体的な数値や詳細はお問い合わせください。</p>
+    <p class="tag-label reveal" style="margin-bottom:14px;">WORKS</p>
+    <h1 class="reveal reveal-d1">実績・制作物</h1>
+    <p class="reveal reveal-d2">これまでの支援・制作事例を一部ご紹介します。具体的な数値や詳細はお問い合わせください。</p>
   </div>
 </div>
 <div class="works-main">
@@ -147,7 +153,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="works-grid" id="works-grid">
 
-      <div class="work-card" data-cat="lp" onclick="openSitePreview('https://foresy-lp-chiropractic.vercel.app/','さくら整骨院 LP')">
+      <div class="work-card reveal" data-cat="lp" onclick="openSitePreview('https://foresy-lp-chiropractic.vercel.app/','さくら整骨院 LP')">
         <div class="work-thumb">
           <svg width="100%" height="100%" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice">
             <rect width="560" height="220" fill="#F0EBE3"/>
@@ -183,7 +189,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <div class="work-card" data-cat="lp">
+      <div class="work-card reveal" data-cat="lp">
         <div class="work-thumb">
           <svg width="100%" height="100%" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice">
             <rect width="560" height="220" fill="#E5E1D8"/>
@@ -209,7 +215,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <div class="work-card" data-cat="looker">
+      <div class="work-card reveal" data-cat="looker">
         <div class="work-thumb">
           <svg width="100%" height="100%" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice">
             <rect width="560" height="220" fill="#E5E1D8"/>
@@ -240,7 +246,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <div class="work-card" data-cat="yahoo">
+      <div class="work-card reveal" data-cat="yahoo">
         <div class="work-thumb">
           <svg width="100%" height="100%" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice">
             <rect width="560" height="220" fill="#E5E1D8"/>
@@ -266,7 +272,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <div class="work-card" data-cat="line">
+      <div class="work-card reveal" data-cat="line">
         <div class="work-thumb">
           <svg width="100%" height="100%" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice">
             <rect width="560" height="220" fill="#E5E1D8"/>
@@ -305,7 +311,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <div class="work-card" data-cat="google" data-tbd="true">
+      <div class="work-card reveal" data-cat="google" data-tbd="true">
         <div class="work-thumb">
           <svg width="100%" height="100%" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice">
             <rect width="560" height="220" fill="#E5E1D8"/>
@@ -335,7 +341,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <div class="work-card" data-cat="yahoo">
+      <div class="work-card reveal" data-cat="yahoo">
         <div class="work-thumb">
           <svg width="100%" height="100%" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice">
             <rect width="560" height="220" fill="#E5E1D8"/>
@@ -383,7 +389,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <!-- 008: 初期設定 -->
-      <div class="work-card" data-cat="yahoo">
+      <div class="work-card reveal" data-cat="yahoo">
         <div class="work-thumb">
           <svg width="100%" height="100%" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice">
             <rect width="560" height="220" fill="#E5E1D8"/>
@@ -436,7 +442,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <!-- 009: テキスト・画像生成 -->
-      <div class="work-card" data-cat="yahoo">
+      <div class="work-card reveal" data-cat="yahoo">
         <div class="work-thumb">
           <svg width="100%" height="100%" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice">
             <rect width="560" height="220" fill="#E5E1D8"/>
@@ -484,7 +490,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <!-- 010: コンバージョン計測タグ -->
-      <div class="work-card" data-cat="yahoo">
+      <div class="work-card reveal" data-cat="yahoo">
         <div class="work-thumb">
           <svg width="100%" height="100%" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice">
             <rect width="560" height="220" fill="#E5E1D8"/>
@@ -620,6 +626,26 @@ function closeSitePreview(e) {
   }
 }
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSitePreview(); });
+
+/* ── Scroll Reveal ── */
+const revealIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (!e.isIntersecting) return; e.target.classList.add('in-view'); revealIO.unobserve(e.target); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
+
+/* ── Magnetic Buttons ── */
+document.querySelectorAll('.nav-cta').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    btn.style.transition = 'none';
+    const r = btn.getBoundingClientRect();
+    btn.style.transform = `translate(${(e.clientX-r.left-r.width/2)*.2}px,${(e.clientY-r.top-r.height/2)*.2}px)`;
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transition = 'transform .5s cubic-bezier(0.34,1.56,0.64,1)';
+    btn.style.transform = '';
+    setTimeout(() => btn.style.transition = '', 500);
+  });
+});
 </script>
 </body>
 </html>
