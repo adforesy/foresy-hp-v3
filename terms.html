@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>利用規約 | Foresy（フォレジー）</title>
+<meta name="description" content="Foresy（フォレジー）の利用規約です。本サイトおよびサービスのご利用条件を定めています。">
+<link rel="icon" type="image/png" href="F_rogo.png">
+<meta property="og:title" content="利用規約 | Foresy（フォレジー）">
+<meta property="og:description" content="Foresy（フォレジー）の利用規約です。">
+<meta property="og:url" content="https://foresy-v2.vercel.app/terms.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Foresy">
+<meta property="og:image" content="https://foresy-v2.vercel.app/F_rogo.png">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500&family=DM+Mono:wght@400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg-primary:#F5F3EE;--bg-secondary:#EDEAE3;--bg-tertiary:#E5E1D8;--bg-dark:#1A1A18;--text-primary:#1A1A18;--text-secondary:#5C5B56;--text-muted:#9B9991;--forest:#4A7A5A;--sage:#7A9E87;--mist:#C8D9CC;--cta:#C96B3A;--cta-hover:#B05C2E;--font-sans:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace;--font-jp:'Noto Sans JP',sans-serif;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-jp);background:var(--bg-primary);color:var(--text-primary);line-height:1.8;-webkit-font-smoothing:antialiased;}
+nav{position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--mist);height:80px;display:flex;align-items:center;padding:0 40px;}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{display:flex;align-items:center;gap:8px;font-family:var(--font-sans);font-size:36px;color:var(--text-primary);text-decoration:none;letter-spacing:-0.02em;}
+.nav-logo-img{height:56px;width:auto;border-radius:4px;}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{font-family:var(--font-sans);font-size:14px;color:var(--text-secondary);text-decoration:none;transition:color 150ms;}
+.nav-links a:hover{color:var(--text-primary);}
+.nav-cta{background:var(--cta);color:white;border:none;border-radius:6px;padding:8px 18px;font-family:var(--font-sans);font-size:13px;cursor:pointer;transition:background 150ms;text-decoration:none;display:inline-block;}
+.nav-cta:hover{background:var(--cta-hover);}
+.tag-label{font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;color:var(--sage);text-transform:uppercase;}
+.page-hero{background:var(--bg-primary);padding:80px 40px 64px;border-bottom:1px solid var(--mist);}
+.page-hero-inner{max-width:1200px;margin:0 auto;}
+.page-hero h1{font-family:var(--font-sans);font-weight:300;font-size:clamp(36px,5vw,60px);letter-spacing:-0.02em;color:var(--text-primary);line-height:1.1;margin-bottom:16px;}
+.page-hero p{font-family:var(--font-jp);font-size:15px;color:var(--text-secondary);line-height:1.9;max-width:560px;}
+
+/* ポリシー本文 */
+.policy-section{padding:80px 40px;background:var(--bg-primary);}
+.policy-inner{max-width:760px;margin:0 auto;}
+.policy-meta{font-family:var(--font-mono);font-size:11px;color:var(--sage);letter-spacing:0.08em;margin-bottom:48px;padding-bottom:24px;border-bottom:1px solid var(--mist);}
+.policy-block{margin-bottom:48px;}
+.policy-block-title{font-family:var(--font-sans);font-weight:400;font-size:16px;color:var(--forest);letter-spacing:0.01em;margin-bottom:16px;padding-left:14px;border-left:2px solid var(--forest);}
+.policy-text{font-family:var(--font-jp);font-size:14px;color:var(--text-secondary);line-height:1.9;margin-bottom:12px;}
+.policy-text:last-child{margin-bottom:0;}
+.policy-list{list-style:none;padding:0;margin:0;}
+.policy-list li{font-family:var(--font-jp);font-size:14px;color:var(--text-secondary);line-height:1.9;padding:6px 0 6px 18px;position:relative;border-bottom:1px solid rgba(200,217,204,0.35);}
+.policy-list li:last-child{border-bottom:none;}
+.policy-list li::before{content:'—';position:absolute;left:0;color:var(--sage);font-family:var(--font-mono);font-size:12px;}
+.policy-info-table{width:100%;border-collapse:collapse;margin-top:8px;}
+.policy-info-table tr{border-bottom:1px solid rgba(200,217,204,0.4);}
+.policy-info-table tr:last-child{border-bottom:none;}
+.policy-info-table th{font-family:var(--font-mono);font-size:11px;color:var(--sage);letter-spacing:0.06em;text-transform:uppercase;text-align:left;padding:10px 0;width:140px;vertical-align:top;}
+.policy-info-table td{font-family:var(--font-jp);font-size:14px;color:var(--text-secondary);padding:10px 0;line-height:1.8;}
+.policy-divider{border:none;border-top:1px solid var(--mist);margin:64px 0;}
+.policy-caution{background:var(--bg-secondary);border:1px solid var(--mist);border-left:3px solid var(--cta);border-radius:0 8px 8px 0;padding:16px 20px;margin-top:16px;}
+.policy-caution p{font-family:var(--font-jp);font-size:13px;color:var(--text-secondary);line-height:1.8;}
+
+/* ナビゲーション補助 */
+.nav-right{display:flex;align-items:center;gap:12px;}
+.nav-qr-btn{width:36px;height:36px;border-radius:6px;border:1px solid var(--mist);background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 200ms;}
+.nav-qr-btn:hover{background:var(--bg-secondary);}
+.nav-qr-panel{position:absolute;top:88px;right:40px;z-index:200;background:white;border:1px solid var(--mist);border-radius:10px;padding:20px;box-shadow:0 8px 32px rgba(0,0,0,0.12);display:none;flex-direction:column;align-items:center;gap:10px;min-width:160px;}
+.nav-qr-panel.open{display:flex;}
+.nav-qr-label{font-family:var(--font-mono);font-size:10px;color:var(--sage);letter-spacing:0.08em;text-align:center;}
+.nav-hamburger{display:none;width:36px;height:36px;border:none;background:none;cursor:pointer;align-items:center;justify-content:center;border-radius:6px;transition:background 150ms;padding:0;flex-shrink:0;}
+.nav-hamburger:hover{background:var(--bg-secondary);}
+.nav-hamburger .bar{display:block;width:18px;height:1.5px;background:var(--text-primary);transition:all 220ms;position:relative;margin:0 auto;}
+.nav-hamburger .bar::before,.nav-hamburger .bar::after{content:'';position:absolute;left:0;width:18px;height:1.5px;background:var(--text-primary);transition:all 220ms;}
+.nav-hamburger .bar::before{top:-5px;}
+.nav-hamburger .bar::after{top:5px;}
+.nav-hamburger.open .bar{background:transparent;}
+.nav-hamburger.open .bar::before{transform:rotate(45deg);top:0;}
+.nav-hamburger.open .bar::after{transform:rotate(-45deg);top:0;}
+.nav-mobile-menu{display:none;position:fixed;top:80px;left:0;right:0;background:rgba(245,243,238,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--mist);z-index:99;padding:8px 20px 20px;}
+.nav-mobile-menu.open{display:block;}
+.nav-mobile-menu a{display:block;padding:13px 0;font-family:var(--font-jp);font-size:15px;color:var(--text-primary);text-decoration:none;border-bottom:1px solid rgba(200,217,204,0.4);}
+.nav-mobile-menu a:last-child{border-bottom:none;}
+.nav-mobile-cta{margin-top:14px;background:var(--cta)!important;color:white!important;text-align:center;border-radius:6px;padding:12px 0!important;}
+#back-to-top{position:fixed;bottom:28px;right:28px;z-index:90;width:44px;height:44px;background:var(--bg-dark);color:var(--bg-primary);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:16px;opacity:0;pointer-events:none;transition:opacity 300ms,box-shadow 300ms;box-shadow:0 4px 16px rgba(26,26,24,0.18);}
+#back-to-top.visible{opacity:1;pointer-events:auto;}
+#back-to-top:hover{box-shadow:0 8px 24px rgba(26,26,24,0.28);}
+
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .nav-links,.nav-qr-btn{display:none;}
+  .nav-hamburger{display:flex;}
+  .nav-cta{display:none;}
+  .page-hero{padding:48px 20px 40px;}
+  .policy-section{padding:60px 20px;}
+  .policy-info-table th{width:100px;font-size:10px;}
+}
+</style>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5H8HNCPR');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5H8HNCPR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="F_rogo.png" alt="Foresy" class="nav-logo-img">
+      Foresy
+    </a>
+    <div class="nav-links">
+      <a href="services.html">サービス</a>
+      <a href="works.html">実績</a>
+      <a href="about.html">会社概要</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-qr-btn" onclick="toggleQR()" aria-label="LINE QRコード"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#5C5B56" stroke-width="1.4" fill="none"/><rect x="4" y="4" width="2" height="2" fill="#5C5B56"/><rect x="10" y="2" width="6" height="6" rx="1" stroke="#5C5B56" stroke-width="1.4" fill="none"/><rect x="12" y="4" width="2" height="2" fill="#5C5B56"/><rect x="2" y="10" width="6" height="6" rx="1" stroke="#5C5B56" stroke-width="1.4" fill="none"/><rect x="4" y="12" width="2" height="2" fill="#5C5B56"/><rect x="10" y="10" width="2" height="2" fill="#5C5B56"/><rect x="14" y="10" width="2" height="2" fill="#5C5B56"/><rect x="12" y="12" width="4" height="4" rx="0.5" fill="#5C5B56"/><rect x="10" y="14" width="2" height="2" fill="#5C5B56"/></svg></button>
+      <div class="nav-qr-panel" id="qr-panel"><img src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https://line.me/R/ti/p/%40222yxjit" alt="LINE @222yxjit" width="110" height="110" style="border-radius:4px;"><span class="nav-qr-label">LINE 公式アカウント<br>Foresy<br>@222yxjit</span></div>
+      <a href="contact.html" class="nav-cta">無料相談</a>
+      <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()" aria-label="メニュー"><span class="bar"></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="services.html">サービス</a>
+  <a href="works.html">実績</a>
+  <a href="about.html">会社概要</a>
+  <a href="faq.html">FAQ</a>
+  <a href="contact.html" class="nav-mobile-cta">無料相談（0円）</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="tag-label" style="margin-bottom:14px;">TERMS OF SERVICE</p>
+    <h1>利用規約</h1>
+    <p>本サイトおよびForesyが提供するサービスのご利用条件を定めています。</p>
+  </div>
+</div>
+
+<section class="policy-section">
+  <div class="policy-inner">
+
+    <div class="policy-meta">
+      制定日：2026年5月3日　／　最終改定：2026年5月3日
+    </div>
+
+    <!-- 1. 適用範囲 -->
+    <div class="policy-block">
+      <h2 class="policy-block-title">1. 適用範囲</h2>
+      <p class="policy-text">本規約は、Foresy（フォレジー）（以下「当事業」）が運営するウェブサイト（https://foresy-v2.vercel.app/、以下「本サイト」）をご利用いただくすべてのお客様（以下「ユーザー」）に適用されます。</p>
+      <p class="policy-text">本サイトをご利用いただいた時点で、本規約にご同意いただいたものとみなします。本規約に同意いただけない場合は、本サイトのご利用をお控えください。</p>
+    </div>
+
+    <!-- 2. サービス内容 -->
+    <div class="policy-block">
+      <h2 class="policy-block-title">2. 提供サービスの概要</h2>
+      <p class="policy-text">当事業が提供するサービスは以下のとおりです。個別のサービス内容・料金・納期等は、別途ご契約時に定めるものとします。</p>
+      <ul class="policy-list">
+        <li>Google広告・LINEヤフー広告等の運用代行</li>
+        <li>ランディングページ（LP）の制作</li>
+        <li>GA4・GTMを用いた計測設計・タグ設定</li>
+        <li>Looker Studioによるレポート設計・自動化</li>
+        <li>広告戦略・デジタルマーケティングに関するコンサルティング</li>
+      </ul>
+    </div>
+
+    <!-- 3. 禁止事項 -->
+    <div class="policy-block">
+      <h2 class="policy-block-title">3. 禁止事項</h2>
+      <p class="policy-text">本サイトのご利用にあたり、以下の行為を禁止します。</p>
+      <ul class="policy-list">
+        <li>法令または公序良俗に違反する行為</li>
+        <li>当事業または第三者の知的財産権・著作権・肖像権を侵害する行為</li>
+        <li>本サイトのシステムへの不正アクセス・クラッキング・過度な負荷をかける行為</li>
+        <li>営業目的のスパム送信・迷惑行為</li>
+        <li>虚偽の情報を入力してのお問い合わせ</li>
+        <li>その他、当事業が不適切と合理的に判断する行為</li>
+      </ul>
+    </div>
+
+    <!-- 4. 知的財産権 -->
+    <div class="policy-block">
+      <h2 class="policy-block-title">4. 知的財産権</h2>
+      <p class="policy-text">本サイトに掲載されているすべてのコンテンツ（文章・画像・デザイン・ロゴ・コード等）の著作権その他の知的財産権は、当事業または正当な権利を有する第三者に帰属します。</p>
+      <p class="policy-text">お客様は、私的使用の範囲を超えて、当事業の事前の書面による許可なく、これらのコンテンツを複製・転用・転載・二次加工することはできません。</p>
+    </div>
+
+    <!-- 5. 広告効果の保証 -->
+    <div class="policy-block">
+      <h2 class="policy-block-title">5. 広告効果・成果の保証について</h2>
+      <p class="policy-text">当事業が提供する広告運用サービスは、以下の事項を保証するものではありません。</p>
+      <ul class="policy-list">
+        <li>特定のコンバージョン数・コンバージョン率の達成</li>
+        <li>特定の費用対効果（ROAS・CPAなど）の実現</li>
+        <li>広告の掲載順位・表示回数</li>
+        <li>広告アカウントの審査通過・掲載継続</li>
+      </ul>
+      <div class="policy-caution">
+        <p>広告成果は、市場環境・競合状況・媒体アルゴリズムの変更・広告ポリシーの改定など、当事業がコントロールできない外部要因によって変動します。当事業は、最善の施策立案・実行に努めますが、特定の成果を約束することはできません。</p>
+      </div>
+    </div>
+
+    <!-- 6. 免責事項 -->
+    <div class="policy-block">
+      <h2 class="policy-block-title">6. 免責事項</h2>
+      <p class="policy-text">当事業は、以下の事項について、当事業の故意または重大な過失による場合を除き、その責任を負いません。</p>
+      <ul class="policy-list">
+        <li>本サイトの利用、または利用できないことにより生じた損害</li>
+        <li>本サイトに掲載された情報の正確性・完全性・最新性</li>
+        <li>本サイトからリンクされる外部サイトのコンテンツおよびその利用により生じた損害</li>
+        <li>システム障害・通信回線の不具合等、技術的要因による利用不能</li>
+        <li>第三者による不正アクセス・情報の改ざん等</li>
+        <li>広告媒体（Google・Yahoo!等）の仕様変更・ポリシー改定により生じた影響</li>
+      </ul>
+      <p class="policy-text" style="margin-top:12px;">なお、消費者契約法その他の強行法規が適用される場合には、上記免責事項の一部が制限されることがあります。</p>
+    </div>
+
+    <!-- 7. サービスの変更・中断・終了 -->
+    <div class="policy-block">
+      <h2 class="policy-block-title">7. サービスの変更・中断・終了</h2>
+      <p class="policy-text">当事業は、事前の通知なく本サイトの内容を変更し、またはサービスを一時的に中断・終了する場合があります。これによってユーザーに生じた損害について、当事業は責任を負いません。</p>
+    </div>
+
+    <!-- 8. 外部リンク -->
+    <div class="policy-block">
+      <h2 class="policy-block-title">8. 外部リンク</h2>
+      <p class="policy-text">本サイトから外部ウェブサイトへのリンクを掲載している場合があります。当事業は、リンク先のウェブサイトの内容・安全性・正確性について保証せず、これらに起因するいかなる損害についても責任を負いません。</p>
+    </div>
+
+    <!-- 9. 準拠法・管轄裁判所 -->
+    <div class="policy-block">
+      <h2 class="policy-block-title">9. 準拠法・管轄裁判所</h2>
+      <p class="policy-text">本規約は、日本国法に準拠し解釈されます。本規約に関する一切の紛争については、福岡地方裁判所を第一審の専属的合意管轄裁判所とします。</p>
+    </div>
+
+    <!-- 10. 改定 -->
+    <div class="policy-block">
+      <h2 class="policy-block-title">10. 利用規約の改定</h2>
+      <p class="policy-text">当事業は、必要に応じて本規約を変更することができます。重要な変更を行う場合は、本サイト上でお知らせします。改定後の規約は、本サイト上に掲載した時点で効力を生じます。</p>
+    </div>
+
+    <!-- 11. お問い合わせ -->
+    <div class="policy-block">
+      <h2 class="policy-block-title">11. お問い合わせ窓口</h2>
+      <p class="policy-text">本規約に関するお問い合わせは、以下の窓口までご連絡ください。</p>
+      <table class="policy-info-table">
+        <tr><th>事業名</th><td>Foresy（フォレジー）</td></tr>
+        <tr><th>担当</th><td>代表 森 大記</td></tr>
+        <tr><th>メール</th><td>adforesy@gmail.com</td></tr>
+        <tr><th>対応時間</th><td>平日 10:00〜18:00（土日祝・年末年始を除く）</td></tr>
+      </table>
+    </div>
+
+    <hr class="policy-divider">
+    <p class="policy-text" style="text-align:center;font-size:13px;color:var(--text-muted);">制定日：2026年5月3日　／　最終改定：2026年5月3日</p>
+
+  </div>
+</section>
+
+<footer style="background:#1A1A18;border-top:1px solid rgba(255,255,255,0.07);padding:40px 40px 28px;">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;">
+    <div>
+      <div style="font-size:18px;color:white;font-weight:300;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
+        <img src="F_rogo.png" alt="Foresy" style="height:26px;width:auto;border-radius:4px;vertical-align:middle;">Foresy
+      </div>
+      <p style="font-size:13px;color:rgba(245,243,238,0.45);line-height:1.9;">福岡市東区和白丘3丁目23-15<br>adforesy@gmail.com</p>
+    </div>
+    <div>
+      <div style="font-size:10px;color:#7A9E87;letter-spacing:0.1em;margin-bottom:18px;text-transform:uppercase;">PAGES</div>
+      <ul style="list-style:none;">
+        <li style="margin-bottom:10px;"><a href="services.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">サービス</a></li>
+        <li style="margin-bottom:10px;"><a href="works.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">実績</a></li>
+        <li style="margin-bottom:10px;"><a href="about.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">会社概要</a></li>
+        <li style="margin-bottom:10px;"><a href="faq.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">FAQ</a></li>
+        <li style="margin-bottom:10px;"><a href="privacy.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">プライバシーポリシー</a></li>
+        <li><a href="terms.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">利用規約</a></li>
+      </ul>
+    </div>
+    <div>
+      <div style="font-size:10px;color:#7A9E87;letter-spacing:0.1em;margin-bottom:18px;text-transform:uppercase;">CONTACT</div>
+      <ul style="list-style:none;">
+        <li style="margin-bottom:10px;"><a href="mailto:adforesy@gmail.com" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">adforesy@gmail.com</a></li>
+        <li><a href="contact.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">お問い合わせ・無料相談</a></li>
+      </ul>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:28px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+    <span style="font-size:11px;color:rgba(245,243,238,0.35);">&copy; 2026 Foresy. All rights reserved.</span>
+    <div style="display:flex;gap:16px;">
+      <a href="privacy.html" style="font-size:11px;color:rgba(245,243,238,0.55);text-decoration:none;">プライバシーポリシー</a>
+      <a href="terms.html" style="font-size:11px;color:rgba(245,243,238,0.55);text-decoration:none;">利用規約</a>
+    </div>
+  </div>
+</footer>
+
+<button id="back-to-top" aria-label="トップへ戻る">↑</button>
+<script>
+function toggleQR(){document.getElementById('qr-panel').classList.toggle('open');}
+document.addEventListener('click',(e)=>{if(!e.target.closest('.nav-qr-btn')&&!e.target.closest('#qr-panel')){var p=document.getElementById('qr-panel');if(p)p.classList.remove('open');}});
+function toggleMenu(){document.getElementById('nav-mobile-menu').classList.toggle('open');document.getElementById('nav-hamburger').classList.toggle('open');}
+document.addEventListener('click',(e)=>{if(!e.target.closest('nav')&&!e.target.closest('.nav-mobile-menu')){document.getElementById('nav-mobile-menu')?.classList.remove('open');document.getElementById('nav-hamburger')?.classList.remove('open');}});
+const b=document.getElementById('back-to-top');window.addEventListener('scroll',()=>{b.classList.toggle('visible',window.scrollY>400);},{passive:true});b.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});
+</script>
+</body>
+</html>

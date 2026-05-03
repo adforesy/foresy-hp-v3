@@ -122,6 +122,49 @@ footer { background:var(--bg-dark);border-top:1px solid rgba(255,255,255,0.07);p
 #back-to-top.visible{opacity:1;pointer-events:auto;}
 #back-to-top:hover{transform:translateY(-3px);}
 
+/* ========== DIAGNOSTIC FLOW ========== */
+.diag-hidden { display:none !important; }
+.diag-section { padding:80px 40px; background:var(--bg-primary); }
+.diag-container { max-width:680px; margin:0 auto; }
+.diag-card { background:var(--bg-secondary); border:1px solid var(--mist); border-radius:16px; padding:48px; }
+.diag-title { font-family:var(--font-sans); font-weight:300; font-size:clamp(32px,6vw,54px); letter-spacing:-0.025em; color:var(--text-primary); line-height:1.15; margin-bottom:20px; }
+.diag-subtitle { font-family:var(--font-jp); font-size:15px; color:var(--text-secondary); line-height:1.9; margin-bottom:28px; }
+.diag-meta-badges { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px; }
+.diag-meta-badges span { font-family:var(--font-mono); font-size:11px; color:var(--sage); letter-spacing:0.08em; background:white; border:1px solid var(--mist); border-radius:4px; padding:4px 10px; }
+.diag-start-btn { background:var(--forest); color:white; border:none; border-radius:8px; padding:16px 32px; font-family:var(--font-jp); font-size:16px; cursor:pointer; width:100%; transition:background 200ms,transform 200ms var(--ease-spring); }
+.diag-start-btn:hover { background:#3d6649; transform:translateY(-2px); }
+.diag-progress-wrap { width:100%; height:3px; background:var(--mist); border-radius:2px; margin-bottom:28px; overflow:hidden; }
+.diag-progress-bar { height:100%; background:var(--forest); border-radius:2px; transition:width 400ms ease; }
+.diag-step-label { font-family:var(--font-mono); font-size:11px; color:var(--text-muted); letter-spacing:0.1em; margin-bottom:8px; }
+.diag-category-badge { font-family:var(--font-mono); font-size:10px; color:var(--sage); letter-spacing:0.1em; text-transform:uppercase; background:rgba(122,158,135,0.12); border:1px solid rgba(122,158,135,0.3); border-radius:4px; padding:3px 8px; display:inline-block; margin-bottom:16px; }
+.diag-question { font-family:var(--font-jp); font-weight:400; font-size:17px; color:var(--text-primary); line-height:1.7; margin-bottom:24px; }
+.diag-options { display:flex; flex-direction:column; gap:10px; margin-bottom:24px; }
+.diag-option { background:white; border:1.5px solid var(--mist); border-radius:8px; padding:14px 18px; font-family:var(--font-jp); font-size:14px; color:var(--text-secondary); cursor:pointer; text-align:left; transition:border-color 200ms,background 200ms,color 200ms; line-height:1.6; }
+.diag-option:hover { border-color:var(--sage); color:var(--text-primary); }
+.diag-option.selected { border-color:var(--forest); background:rgba(74,122,90,0.06); color:var(--text-primary); }
+.diag-next-btn { background:var(--forest); color:white; border:none; border-radius:8px; padding:14px 24px; font-family:var(--font-jp); font-size:15px; cursor:pointer; width:100%; transition:background 200ms,opacity 200ms; }
+.diag-next-btn:disabled { background:var(--text-muted); cursor:not-allowed; opacity:0.4; }
+.diag-next-btn:not(:disabled):hover { background:#3d6649; }
+.diag-loading-wrap { text-align:center; padding:48px 0; }
+.diag-spinner { width:36px; height:36px; border:3px solid var(--mist); border-top-color:var(--forest); border-radius:50%; animation:diagSpin 0.8s linear infinite; margin:0 auto 20px; }
+@keyframes diagSpin { to { transform:rotate(360deg); } }
+.diag-loading-text { font-family:var(--font-jp); font-size:14px; color:var(--text-secondary); }
+.diag-score-row { display:flex; align-items:center; gap:16px; margin-bottom:20px; }
+.diag-grade-badge { font-family:var(--font-sans); font-size:13px; font-weight:500; color:white; border-radius:6px; padding:6px 14px; letter-spacing:0.04em; flex-shrink:0; }
+.diag-score-num { font-family:var(--font-sans); font-weight:300; font-size:42px; letter-spacing:-0.03em; color:var(--text-primary); line-height:1; }
+.diag-score-num span { font-size:16px; color:var(--text-muted); }
+.diag-result-summary { font-family:var(--font-jp); font-size:15px; color:var(--text-secondary); line-height:1.9; margin-bottom:24px; }
+.diag-improve-box { background:white; border:1px solid var(--mist); border-radius:8px; padding:20px 24px; margin-bottom:28px; }
+.diag-improve-title { font-family:var(--font-mono); font-size:11px; color:var(--sage); letter-spacing:0.08em; margin-bottom:12px; text-transform:uppercase; }
+.diag-improve-list { list-style:none; padding:0; }
+.diag-improve-list li { font-family:var(--font-jp); font-size:14px; color:var(--text-secondary); line-height:1.8; padding:6px 0 6px 18px; position:relative; border-bottom:1px solid rgba(200,217,204,0.35); }
+.diag-improve-list li:last-child { border-bottom:none; }
+.diag-improve-list li::before { content:'—'; position:absolute; left:0; color:var(--sage); font-family:var(--font-mono); font-size:12px; }
+.diag-cta-btn { background:var(--cta); color:white; border:none; border-radius:8px; padding:16px 32px; font-family:var(--font-jp); font-size:16px; cursor:pointer; width:100%; transition:background 200ms,transform 200ms var(--ease-spring); display:block; }
+.diag-cta-btn:hover { background:var(--cta-hover); transform:translateY(-2px); }
+.contact-form-section { padding:80px 40px; background:var(--bg-secondary); border-top:1px solid var(--mist); }
+.contact-form-inner { max-width:680px; margin:0 auto; }
+
 @media(max-width:768px) {
   nav { padding:0 20px; } .nav-links { display:none; }
   .nav-hamburger{display:flex;} .nav-cta{display:none;} .nav-qr-btn{display:none;}
@@ -132,10 +175,24 @@ footer { background:var(--bg-dark);border-top:1px solid rgba(255,255,255,0.07);p
   footer { padding:40px 20px 24px; }
   .footer-inner { grid-template-columns:1fr;gap:28px; }
   .footer-bottom { flex-direction:column;gap:8px;text-align:center; }
+  .diag-section { padding:48px 20px; }
+  .diag-card { padding:28px 20px; }
+  .contact-form-section { padding:48px 20px; }
 }
 </style>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5H8HNCPR');</script>
+<!-- End Google Tag Manager -->
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5H8HNCPR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <nav>
   <div class="nav-inner">
@@ -165,36 +222,8 @@ footer { background:var(--bg-dark);border-top:1px solid rgba(255,255,255,0.07);p
         </svg>
       </button>
       <div class="nav-qr-panel" id="qr-panel">
-        <svg width="110" height="110" viewBox="0 0 120 120" fill="none">
-          <rect width="120" height="120" fill="white"/>
-          <rect x="4" y="4" width="36" height="36" rx="3" fill="#1A1A18"/>
-          <rect x="10" y="10" width="24" height="24" rx="2" fill="white"/>
-          <rect x="14" y="14" width="16" height="16" rx="1" fill="#1A1A18"/>
-          <rect x="80" y="4" width="36" height="36" rx="3" fill="#1A1A18"/>
-          <rect x="86" y="10" width="24" height="24" rx="2" fill="white"/>
-          <rect x="90" y="14" width="16" height="16" rx="1" fill="#1A1A18"/>
-          <rect x="4" y="80" width="36" height="36" rx="3" fill="#1A1A18"/>
-          <rect x="10" y="86" width="24" height="24" rx="2" fill="white"/>
-          <rect x="14" y="90" width="16" height="16" rx="1" fill="#1A1A18"/>
-          <rect x="46" y="4" width="6" height="6" fill="#1A1A18"/>
-          <rect x="56" y="4" width="6" height="6" fill="#1A1A18"/>
-          <rect x="66" y="4" width="6" height="6" fill="#1A1A18"/>
-          <rect x="46" y="14" width="6" height="6" fill="#1A1A18"/>
-          <rect x="66" y="14" width="6" height="6" fill="#1A1A18"/>
-          <rect x="46" y="24" width="16" height="6" fill="#1A1A18"/>
-          <rect x="46" y="46" width="6" height="6" fill="#1A1A18"/>
-          <rect x="56" y="46" width="16" height="6" fill="#1A1A18"/>
-          <rect x="4" y="46" width="6" height="6" fill="#1A1A18"/>
-          <rect x="14" y="46" width="16" height="6" fill="#1A1A18"/>
-          <rect x="4" y="56" width="16" height="6" fill="#1A1A18"/>
-          <rect x="46" y="56" width="6" height="26" fill="#1A1A18"/>
-          <rect x="76" y="46" width="6" height="36" fill="#1A1A18"/>
-          <rect x="86" y="46" width="16" height="6" fill="#1A1A18"/>
-          <rect x="96" y="56" width="6" height="16" fill="#1A1A18"/>
-          <rect x="86" y="66" width="6" height="6" fill="#1A1A18"/>
-          <rect x="106" y="46" width="10" height="6" fill="#1A1A18"/>
-        </svg>
-        <span class="nav-qr-label">LINE 公式アカウント<br>友だち追加はこちら</span>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https://line.me/R/ti/p/%40222yxjit" alt="LINE @222yxjit" width="110" height="110" style="border-radius:4px;">
+        <span class="nav-qr-label">LINE 公式アカウント<br>Foresy<br>@222yxjit</span>
       </div>
       <a href="contact.html" class="nav-cta active" style="background:var(--cta);">無料相談</a>
       <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()" aria-label="メニュー"><span class="bar"></span></button>
@@ -212,57 +241,59 @@ footer { background:var(--bg-dark);border-top:1px solid rgba(255,255,255,0.07);p
 <div class="page-hero">
   <div class="page-hero-inner">
     <p class="tag-label" style="margin-bottom:14px;">CONTACT</p>
-    <h1>まずは、<br>気軽に話しましょう</h1>
-    <p>相談は完全無料です。「まだ具体的な依頼ではない」「ちょっと聞いてみたい」というレベルでも大歓迎です。</p>
+    <h1>まずは、<br>無料診断から。</h1>
+    <p>6つの質問で広告運用の現状を診断。改善ポイントが分かったら、そのままご相談いただけます。</p>
   </div>
 </div>
 
-<section class="contact-section">
-  <div class="contact-grid">
-    <!-- 左：インフォ -->
-    <div class="contact-info">
-      <h2>お気軽に、なんでも<br>相談してください。</h2>
-      <p>広告のこと、計測のこと、「そもそも何から始めればいいか分からない」というご相談まで、丁寧にお答えします。</p>
+<!-- DIAGNOSTIC SECTION -->
+<section class="diag-section">
+  <div class="diag-container">
 
-      <div class="contact-point">
-        <div class="contact-point-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#4A7A5A" stroke-width="1.5"/><path d="M8 5v4l2.5 1.5" stroke="#4A7A5A" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-        <div class="contact-point-text">
-          <strong>返信スピード</strong>
-          原則24時間以内にご返信します
-        </div>
+    <!-- Step 0: スタート -->
+    <div class="diag-card" id="diag-step-0">
+      <p class="tag-label" style="margin-bottom:12px;">FREE DIAGNOSTIC</p>
+      <h2 class="diag-title">広告運用<br>無料診断</h2>
+      <p class="diag-subtitle">6つの質問に答えるだけ。広告運用の現状と改善ポイントがすぐに分かります。所要時間：約1分。</p>
+      <div class="diag-meta-badges">
+        <span>Q 6問</span><span>無料</span><span>約1分</span>
       </div>
-      <div class="contact-point">
-        <div class="contact-point-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="9" rx="2" stroke="#4A7A5A" stroke-width="1.5" fill="none"/><path d="M2 7l6 3.5L14 7" stroke="#4A7A5A" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-        <div class="contact-point-text">
-          <strong>メールアドレス</strong>
-          adforesy@gmail.com
-        </div>
+      <button class="diag-start-btn" onclick="startDiag()">診断スタート →</button>
+      <p style="font-family:var(--font-jp);font-size:12px;color:var(--text-muted);margin-top:16px;text-align:center;">診断後、ご希望の方は無料相談のお申し込みができます</p>
+    </div>
+
+    <!-- Step Q: 質問 (1〜6) -->
+    <div class="diag-card diag-hidden" id="diag-step-q">
+      <div class="diag-progress-wrap">
+        <div class="diag-progress-bar" id="diag-progress-bar" style="width:0%"></div>
       </div>
-      <div class="contact-point">
-        <div class="contact-point-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2C5.24 2 3 4.24 3 7c0 4 5 9 5 9s5-5 5-9c0-2.76-2.24-5-5-5z" stroke="#4A7A5A" stroke-width="1.5" fill="none"/><circle cx="8" cy="7" r="2" stroke="#4A7A5A" stroke-width="1.5" fill="none"/></svg>
-        </div>
-        <div class="contact-point-text">
-          <strong>対応エリア</strong>
-          全国対応（オンライン）· 福岡市内は対面可
-        </div>
-      </div>
-      <div class="contact-point">
-        <div class="contact-point-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="#4A7A5A" stroke-width="1.5" fill="none"/><path d="M5 5h6M5 8h4" stroke="#4A7A5A" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-        <div class="contact-point-text">
-          <strong>費用</strong>
-          相談は完全無料。初期費用0円からスタート可能。
-        </div>
+      <p class="diag-step-label" id="diag-step-label">STEP 1 / 6</p>
+      <span class="diag-category-badge" id="diag-category">技術</span>
+      <h3 class="diag-question" id="diag-question"></h3>
+      <div class="diag-options" id="diag-options"></div>
+      <button class="diag-next-btn" id="diag-next-btn" disabled onclick="nextDiagStep()">次の質問</button>
+    </div>
+
+    <!-- Loading -->
+    <div class="diag-card diag-hidden" id="diag-step-loading">
+      <div class="diag-loading-wrap">
+        <div class="diag-spinner"></div>
+        <p class="diag-loading-text">診断中です...</p>
       </div>
     </div>
 
-    <!-- 右：フォーム -->
+    <!-- Result -->
+    <div class="diag-card diag-hidden" id="diag-step-result"></div>
+
+  </div>
+</section>
+
+<!-- CONTACT FORM（診断後に表示） -->
+<section class="contact-form-section diag-hidden" id="contact-form-section">
+  <div class="contact-form-inner">
+    <p class="tag-label" style="margin-bottom:12px;">CONTACT</p>
+    <h2 style="font-family:var(--font-sans);font-weight:300;font-size:clamp(24px,3vw,36px);letter-spacing:-0.025em;color:var(--text-primary);margin-bottom:8px;line-height:1.2;">無料相談の<br>お申し込み</h2>
+    <p style="font-family:var(--font-jp);font-size:14px;color:var(--text-secondary);line-height:1.9;margin-bottom:36px;">診断結果をもとに、現状の課題と改善案をご説明します。相談は完全無料。しつこい営業は一切しません。</p>
     <div class="contact-form">
       <form id="contact-form" onsubmit="handleSubmit(event)">
         <div class="form-group">
@@ -291,19 +322,8 @@ footer { background:var(--bg-dark);border-top:1px solid rgba(255,255,255,0.07);p
           </select>
         </div>
         <div class="form-group">
-          <label class="form-label">現在の月間広告費（目安）</label>
-          <select name="月間広告費" class="form-select">
-            <option value="" disabled selected>選択してください（任意）</option>
-            <option>まだ広告を出していない</option>
-            <option>〜10万円</option>
-            <option>10〜30万円</option>
-            <option>30〜100万円</option>
-            <option>100万円以上</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">メッセージ・ご質問</label>
-          <textarea name="メッセージ" class="form-textarea" placeholder="現状の課題、気になっていること、なんでもお気軽にどうぞ。「まずは話を聞いてみたい」だけでも大丈夫です。"></textarea>
+          <label class="form-label">質問内容・メッセージ</label>
+          <textarea name="メッセージ" id="diag-message" class="form-textarea" style="min-height:160px;" placeholder="診断結果をもとにご質問や相談内容をご記入ください。"></textarea>
         </div>
         <p class="form-privacy">送信された情報は、ご相談への回答・Foresy からのご連絡のみに使用します。第三者への提供・営業目的での利用は一切行いません。</p>
         <button type="submit" class="btn-submit">送信する（無料）</button>
@@ -327,7 +347,7 @@ footer { background:var(--bg-dark);border-top:1px solid rgba(255,255,255,0.07);p
         <img src="F_rogo.png" alt="Foresy" class="footer-logo-img">
         Foresy
       </div>
-      <p class="footer-info">福岡県福岡市<br>adforesy@gmail.com</p>
+      <p class="footer-info">福岡市東区和白丘3丁目23-15<br>adforesy@gmail.com</p>
     </div>
     <div>
       <div class="footer-col-title">PAGES</div>
@@ -336,6 +356,8 @@ footer { background:var(--bg-dark);border-top:1px solid rgba(255,255,255,0.07);p
         <li><a href="works.html">実績</a></li>
         <li><a href="about.html">会社概要</a></li>
         <li><a href="faq.html">FAQ</a></li>
+        <li><a href="privacy.html">プライバシーポリシー</a></li>
+        <li><a href="terms.html">利用規約</a></li>
       </ul>
     </div>
     <div>
@@ -348,10 +370,11 @@ footer { background:var(--bg-dark);border-top:1px solid rgba(255,255,255,0.07);p
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">© 2026 Foresy. All rights reserved.</span>
-    <span class="footer-copy">広告代理店</span>
+    <div style="display:flex;gap:16px;"><a href="privacy.html" class="footer-copy" style="text-decoration:none;">プライバシーポリシー</a><a href="terms.html" class="footer-copy" style="text-decoration:none;">利用規約</a></div>
   </div>
 </footer>
 
+<button id="back-to-top" aria-label="トップへ戻る">↑</button>
 <script>
 function toggleQR() {
   document.getElementById('qr-panel').classList.toggle('open');
@@ -404,8 +427,148 @@ window.addEventListener('scroll', () => {
   btt.classList.toggle('visible', window.scrollY > 400);
 });
 btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-</script>
 
-<button id="back-to-top" aria-label="トップへ戻る">↑</button>
+// ==================== DIAGNOSTIC ====================
+const DIAG_QUESTIONS = [
+  {
+    category: '技術',
+    text: 'コンバージョン計測の設定状況を教えてください。',
+    options: ['未設定、またはよく分からない', '設定済みだが数値が正しいか不明', 'GA4で正しく計測できている']
+  },
+  {
+    category: '戦略',
+    text: '広告で狙うターゲット（顧客像）は言語化できていますか？',
+    options: ['決めていない', 'なんとなくイメージがある', 'ペルソナに基づき明確に定義している']
+  },
+  {
+    category: '運用',
+    text: '広告の見出し・説明文（アセット）は何種類用意していますか？',
+    options: ['1〜2種類のみ', '数種類あるが固定で運用している', '複数パターンを定期的に入れ替えている']
+  },
+  {
+    category: '運用',
+    text: 'クリエイティブ（画像・動画）の更新はしていますか？',
+    options: ['ほぼ変更なし', 'たまに変更している', 'ABテストを定期的に実施している']
+  },
+  {
+    category: '着地',
+    text: 'LP（ランディングページ）はどのような状態ですか？',
+    options: ['トップページをそのまま使っている', '専用LPはあるが改善していない', '継続的にLPO（改善）を実施している']
+  },
+  {
+    category: '予算',
+    text: '想定している月間広告予算はいくらですか？',
+    options: ['5万円未満', '5万〜10万円', '10万〜30万円', '30万円以上']
+  }
+];
+
+let diagStep = 0;
+let diagAnswers = [];
+let diagSelected = null;
+
+function startDiag() {
+  document.getElementById('diag-step-0').classList.add('diag-hidden');
+  document.getElementById('diag-step-q').classList.remove('diag-hidden');
+  renderDiagQuestion(0);
+}
+
+function renderDiagQuestion(step) {
+  diagStep = step;
+  diagSelected = null;
+  const q = DIAG_QUESTIONS[step];
+  const pct = (step / 6) * 100;
+  document.getElementById('diag-progress-bar').style.width = pct + '%';
+  document.getElementById('diag-step-label').textContent = 'STEP ' + (step + 1) + ' / 6';
+  document.getElementById('diag-category').textContent = q.category;
+  document.getElementById('diag-question').textContent = q.text;
+  const container = document.getElementById('diag-options');
+  container.innerHTML = '';
+  q.options.forEach(function(opt, i) {
+    const btn = document.createElement('button');
+    btn.className = 'diag-option';
+    btn.textContent = opt;
+    btn.addEventListener('click', function() { selectDiagOption(i); });
+    container.appendChild(btn);
+  });
+  const nextBtn = document.getElementById('diag-next-btn');
+  nextBtn.disabled = true;
+  nextBtn.textContent = step === 5 ? '診断する' : '次の質問';
+}
+
+function selectDiagOption(idx) {
+  diagSelected = idx;
+  document.querySelectorAll('.diag-option').forEach(function(btn, i) {
+    btn.classList.toggle('selected', i === idx);
+  });
+  document.getElementById('diag-next-btn').disabled = false;
+}
+
+function nextDiagStep() {
+  if (diagSelected === null) return;
+  diagAnswers[diagStep] = diagSelected;
+  if (diagStep < 5) {
+    renderDiagQuestion(diagStep + 1);
+  } else {
+    document.getElementById('diag-step-q').classList.add('diag-hidden');
+    document.getElementById('diag-step-loading').classList.remove('diag-hidden');
+    setTimeout(showDiagResult, 1800);
+  }
+}
+
+function showDiagResult() {
+  let score = 0;
+  diagAnswers.forEach(function(ans) { score += ans; });
+  const maxScore = 13;
+  let grade, gradeColor, summary, items;
+  if (score >= 11) {
+    grade = 'Rank A'; gradeColor = '#4A7A5A';
+    summary = '広告設計の上位水準に達しています。細部の精度向上でさらなる成果改善が見込めます。';
+    items = ['競合比較・入札戦略の精度向上', 'クリエイティブの高度なABテスト設計', '費用対効果のさらなる最適化'];
+  } else if (score >= 8) {
+    grade = 'Rank B'; gradeColor = '#7A9E87';
+    summary = '基本的な広告設計は整っています。いくつかの改善でより大きな成果が出せる状態です。';
+    items = ['計測精度の強化とデータ活用', '広告アセットの拡充と定期的な入れ替え', 'LPと広告の一致度向上（コンテンツマッチ）'];
+  } else if (score >= 5) {
+    grade = 'Rank C'; gradeColor = '#C96B3A';
+    summary = '改善できる箇所が複数あります。順に整えていくことで広告効果が大きく変わります。';
+    items = ['コンバージョン計測の正確な設定', 'ターゲット設定の言語化と広告設計への反映', 'LP改善による離脱率の低下'];
+  } else {
+    grade = 'Rank D'; gradeColor = '#9B9991';
+    summary = '基礎構築から始めましょう。適切な計測設計と戦略設定が成果改善の第一歩です。';
+    items = ['GA4・GTMによる計測環境の整備', '広告戦略の設計（ターゲット・予算・訴求）', '専用LPの制作または改修'];
+  }
+  document.getElementById('diag-step-loading').classList.add('diag-hidden');
+  const resultDiv = document.getElementById('diag-step-result');
+  resultDiv.innerHTML =
+    '<p class="tag-label" style="margin-bottom:16px;">DIAGNOSTIC RESULT</p>' +
+    '<div class="diag-score-row">' +
+      '<span class="diag-grade-badge" style="background:' + gradeColor + ';">' + grade + '</span>' +
+      '<div class="diag-score-num">' + score + '<span> / ' + maxScore + '</span></div>' +
+    '</div>' +
+    '<p class="diag-result-summary">' + summary + '</p>' +
+    '<div class="diag-improve-box">' +
+      '<p class="diag-improve-title">改善が見込まれるポイント</p>' +
+      '<ul class="diag-improve-list">' + items.map(function(it) { return '<li>' + it + '</li>'; }).join('') + '</ul>' +
+    '</div>' +
+    '<button class="diag-cta-btn" onclick="showContactForm()">Foresyに無料で相談する →</button>' +
+    '<p style="font-family:var(--font-jp);font-size:12px;color:var(--text-muted);margin-top:12px;text-align:center;">相談は完全無料。しつこい営業は一切しません。</p>';
+  resultDiv.classList.remove('diag-hidden');
+}
+
+function showContactForm() {
+  let summary = '【広告運用診断結果】\n';
+  diagAnswers.forEach(function(ans, i) {
+    const q = DIAG_QUESTIONS[i];
+    summary += 'Q' + (i + 1) + ' ' + q.category + ': ' + q.options[ans] + '\n';
+  });
+  summary += '\n---\nご質問・ご要望をこちらにご記入ください：\n';
+  document.getElementById('diag-message').value = summary;
+  const formSection = document.getElementById('contact-form-section');
+  formSection.classList.remove('diag-hidden');
+  setTimeout(function() {
+    formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+</script>
 </body>
 </html>
