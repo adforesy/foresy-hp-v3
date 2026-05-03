@@ -1224,13 +1224,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="stat-accent"></span>
     </div>
     <div class="stat-item reveal reveal-delay-2">
-      <span class="stat-num" style="font-size:clamp(32px,4vw,48px);letter-spacing:-0.03em;" data-target="3" data-suffix="年+">3年+</span>
-      <span class="stat-label">デジタル広告<br>実務経験</span>
+      <span class="stat-num" style="font-size:clamp(32px,4vw,48px);letter-spacing:-0.03em;" data-target="3" data-suffix="年+">8年</span>
+      <span class="stat-label">WEB広告<br>実務経験</span>
       <span class="stat-accent"></span>
     </div>
     <div class="stat-item reveal reveal-delay-3">
-      <span class="stat-num" style="font-size:clamp(24px,3vw,34px);letter-spacing:-0.02em;padding-top:8px;line-height:1.15;">NPS<br>改善</span>
-      <span class="stat-label">LINEヤフーCS<br>在籍時の実績</span>
+      <span class="stat-num" data-target="18000" data-suffix="件+" style="font-size:clamp(28px,3.5vw,42px);letter-spacing:-0.03em;">18,000件+</span>
+      <span class="stat-label">NPS改善<br>LINEヤフー在籍時</span>
       <span class="stat-accent"></span>
     </div>
   </div>
@@ -1758,7 +1758,7 @@ function animateCount(el) {
   (function tick(now) {
     const p = Math.min((now - t0) / dur, 1);
     const eased = 1 - Math.pow(1 - p, 3);
-    el.textContent = Math.round(eased * target) + suffix;
+    el.textContent = Math.round(eased * target).toLocaleString() + suffix;
     if (p < 1) requestAnimationFrame(tick);
   })(performance.now());
 }
