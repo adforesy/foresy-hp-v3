@@ -8,10 +8,10 @@
 <link rel="icon" type="image/png" href="F_rogo.png">
 <meta property="og:title" content="会社概要 | Foresy（フォレジー）">
 <meta property="og:description" content="広告代理店 Foresy の会社概要・代表プロフィールをご紹介します。">
-<meta property="og:url" content="https://foresy-v2.vercel.app/about.html">
+<meta property="og:url" content="https://foresy.vercel.app/about.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Foresy">
-<meta property="og:image" content="https://foresy-v2.vercel.app/F_rogo.png">
+<meta property="og:image" content="https://foresy.vercel.app/F_rogo.png">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -107,6 +107,9 @@ nav{position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdrop
 #back-to-top.visible{opacity:1;pointer-events:auto;}
 #back-to-top:hover{box-shadow:0 8px 24px rgba(26,26,24,0.28);}
 @media(max-width:768px){.nav-hamburger{display:flex;} .nav-cta{display:none;} .nav-qr-btn{display:none;}}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(0.16,1,0.3,1),transform .65s cubic-bezier(0.16,1,0.3,1);}
+.reveal.in-view{opacity:1;transform:translateY(0);}
+.reveal-d1{transition-delay:.08s;}.reveal-d2{transition-delay:.16s;}.reveal-d3{transition-delay:.24s;}.reveal-d4{transition-delay:.32s;}
 </style>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -151,16 +154,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="page-hero">
   <div class="page-hero-inner">
-    <p class="tag-label" style="margin-bottom:14px;">ABOUT</p>
-    <h1>サポートの視点で<br>伴走する代理店</h1>
-    <p>媒体社と広告主、両側の経験から生まれたForesyのスタンスをご紹介します。</p>
+    <p class="tag-label reveal" style="margin-bottom:14px;">ABOUT</p>
+    <h1 class="reveal reveal-d1">サポートの視点で<br>伴走する代理店</h1>
+    <p class="reveal reveal-d2">媒体社と広告主、両側の経験から生まれたForesyのスタンスをご紹介します。</p>
   </div>
 </div>
 
 <!-- PROFILE -->
 <div class="profile-section">
   <div class="profile-grid">
-    <div class="profile-illust">
+    <div class="profile-illust reveal">
       <img src="about.png" alt="代表イラスト" style="width:100%;border-radius:12px;display:block;">
       <div style="margin-top:20px;">
         <div class="profile-name">代表</div>
@@ -170,9 +173,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div>
-      <p class="tag-label" style="margin-bottom:24px;">CAREER TIMELINE</p>
+      <p class="tag-label reveal" style="margin-bottom:24px;">CAREER TIMELINE</p>
       <div class="timeline">
-        <div class="tl-item">
+        <div class="tl-item reveal">
           <div class="tl-line"><div class="tl-dot"></div><div class="tl-rule"></div></div>
           <div class="tl-year">2018–2021</div>
           <div class="tl-content">
@@ -180,7 +183,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="tl-desc">Google広告・SNS広告の運用・LP制作・CRM設計・GA計測設計を担当。広告主側のリアルな課題を経験。</p>
           </div>
         </div>
-        <div class="tl-item">
+        <div class="tl-item reveal reveal-d1">
           <div class="tl-line"><div class="tl-dot"></div><div class="tl-rule"></div></div>
           <div class="tl-year">2021–2026</div>
           <div class="tl-content">
@@ -188,7 +191,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="tl-desc">大手広告主向けのYahoo!広告・LINEヤフー広告のカスタマーサクセスを担当。広告主NPSの改善プロジェクトに従事。媒体社側から支援の在り方を学ぶ。</p>
           </div>
         </div>
-        <div class="tl-item">
+        <div class="tl-item reveal reveal-d2">
           <div class="tl-line"><div class="tl-dot"></div><div class="tl-rule"></div></div>
           <div class="tl-year">2026</div>
           <div class="tl-content">
@@ -196,7 +199,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="tl-desc">両側の視点を活かし、「伴走型の広告代理店」をコンセプトに福岡で独立。Google広告認定資格を取得。</p>
           </div>
         </div>
-        <div class="tl-item" style="margin-bottom:0;">
+        <div class="tl-item reveal reveal-d3" style="margin-bottom:0;">
           <div class="tl-line"><div class="tl-dot" style="background:var(--cta);"></div></div>
           <div class="tl-year">現在</div>
           <div class="tl-content">
@@ -212,9 +215,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- COMPANY INFO -->
 <div class="company-section">
   <div style="max-width:1200px;margin:0 auto;">
-    <p class="tag-label" style="margin-bottom:12px;">COMPANY</p>
-    <h2 style="font-family:var(--font-sans);font-weight:300;font-size:clamp(24px,3vw,36px);letter-spacing:-0.02em;color:var(--text-primary);">会社概要</h2>
-    <div class="company-table">
+    <p class="tag-label reveal" style="margin-bottom:12px;">COMPANY</p>
+    <h2 class="reveal reveal-d1" style="font-family:var(--font-sans);font-weight:300;font-size:clamp(24px,3vw,36px);letter-spacing:-0.02em;color:var(--text-primary);">会社概要</h2>
+    <div class="company-table reveal reveal-d2">
       <div class="company-row">
         <span class="company-key">COMPANY</span>
         <span class="company-val">Foresy（フォレジー）</span>
@@ -250,9 +253,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- CERTIFICATIONS -->
 <div class="cert-section">
   <div style="max-width:1200px;margin:0 auto;">
-    <p class="tag-label" style="margin-bottom:12px;">CERTIFICATIONS</p>
-    <h2 style="font-family:var(--font-sans);font-weight:300;font-size:clamp(24px,3vw,36px);letter-spacing:-0.02em;color:var(--text-primary);">認定資格</h2>
-    <div class="cert-grid">
+    <p class="tag-label reveal" style="margin-bottom:12px;">CERTIFICATIONS</p>
+    <h2 class="reveal reveal-d1" style="font-family:var(--font-sans);font-weight:300;font-size:clamp(24px,3vw,36px);letter-spacing:-0.02em;color:var(--text-primary);">認定資格</h2>
+    <div class="cert-grid reveal reveal-d2">
       <div class="cert-card">
         <div class="cert-icon-wrap">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -296,6 +299,7 @@ document.addEventListener('click',(e)=>{if(!e.target.closest('.nav-qr-btn')&&!e.
 function toggleMenu(){document.getElementById('nav-mobile-menu').classList.toggle('open');document.getElementById('nav-hamburger').classList.toggle('open');}
 document.addEventListener('click',(e)=>{if(!e.target.closest('nav')&&!e.target.closest('.nav-mobile-menu')){document.getElementById('nav-mobile-menu')?.classList.remove('open');document.getElementById('nav-hamburger')?.classList.remove('open');}});
 const b=document.getElementById('back-to-top');window.addEventListener('scroll',()=>{b.classList.toggle('visible',window.scrollY>400);},{passive:true});b.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});
+const revealIO=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in-view');revealIO.unobserve(e.target);});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal').forEach(el=>revealIO.observe(el));
 </script>
 </body>
 </html>
