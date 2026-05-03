@@ -142,24 +142,26 @@ footer { background:var(--bg-dark);border-top:1px solid rgba(255,255,255,0.07);p
 .diag-option { background:white; border:1.5px solid var(--mist); border-radius:8px; padding:14px 18px; font-family:var(--font-jp); font-size:14px; color:var(--text-secondary); cursor:pointer; text-align:left; transition:border-color 200ms,background 200ms,color 200ms; line-height:1.6; }
 .diag-option:hover { border-color:var(--sage); color:var(--text-primary); }
 .diag-option.selected { border-color:var(--forest); background:rgba(74,122,90,0.06); color:var(--text-primary); }
-.diag-next-btn { background:var(--forest); color:white; border:none; border-radius:8px; padding:14px 24px; font-family:var(--font-jp); font-size:15px; cursor:pointer; width:100%; transition:background 200ms,opacity 200ms; }
-.diag-next-btn:disabled { background:var(--text-muted); cursor:not-allowed; opacity:0.4; }
-.diag-next-btn:not(:disabled):hover { background:#3d6649; }
+.diag-back-btn { background:none; border:none; padding:0; font-family:var(--font-jp); font-size:13px; color:var(--text-muted); cursor:pointer; margin-top:20px; display:block; transition:color 200ms; }
+.diag-back-btn:hover { color:var(--text-secondary); }
 .diag-loading-wrap { text-align:center; padding:48px 0; }
 .diag-spinner { width:36px; height:36px; border:3px solid var(--mist); border-top-color:var(--forest); border-radius:50%; animation:diagSpin 0.8s linear infinite; margin:0 auto 20px; }
 @keyframes diagSpin { to { transform:rotate(360deg); } }
 .diag-loading-text { font-family:var(--font-jp); font-size:14px; color:var(--text-secondary); }
-.diag-score-row { display:flex; align-items:center; gap:16px; margin-bottom:20px; }
-.diag-grade-badge { font-family:var(--font-sans); font-size:13px; font-weight:500; color:white; border-radius:6px; padding:6px 14px; letter-spacing:0.04em; flex-shrink:0; }
-.diag-score-num { font-family:var(--font-sans); font-weight:300; font-size:42px; letter-spacing:-0.03em; color:var(--text-primary); line-height:1; }
-.diag-score-num span { font-size:16px; color:var(--text-muted); }
+.diag-stars { font-size:34px; letter-spacing:4px; line-height:1; margin-bottom:6px; }
+.diag-star-label { font-family:var(--font-mono); font-size:11px; color:var(--sage); letter-spacing:0.08em; margin-bottom:20px; }
 .diag-result-summary { font-family:var(--font-jp); font-size:15px; color:var(--text-secondary); line-height:1.9; margin-bottom:24px; }
-.diag-improve-box { background:white; border:1px solid var(--mist); border-radius:8px; padding:20px 24px; margin-bottom:28px; }
+.diag-improve-box { background:white; border:1px solid var(--mist); border-radius:8px; padding:20px 24px; margin-bottom:16px; }
 .diag-improve-title { font-family:var(--font-mono); font-size:11px; color:var(--sage); letter-spacing:0.08em; margin-bottom:12px; text-transform:uppercase; }
 .diag-improve-list { list-style:none; padding:0; }
 .diag-improve-list li { font-family:var(--font-jp); font-size:14px; color:var(--text-secondary); line-height:1.8; padding:6px 0 6px 18px; position:relative; border-bottom:1px solid rgba(200,217,204,0.35); }
 .diag-improve-list li:last-child { border-bottom:none; }
 .diag-improve-list li::before { content:'—'; position:absolute; left:0; color:var(--sage); font-family:var(--font-mono); font-size:12px; }
+.diag-foresy-box { background:linear-gradient(135deg,rgba(74,122,90,0.07),rgba(122,158,135,0.04)); border:1px solid rgba(74,122,90,0.22); border-radius:10px; padding:20px 24px; margin-bottom:28px; }
+.diag-foresy-title { font-family:var(--font-mono); font-size:11px; color:var(--forest); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:10px; }
+.diag-foresy-list { list-style:none; padding:0; margin:10px 0 0; }
+.diag-foresy-list li { font-family:var(--font-jp); font-size:13px; color:var(--forest); padding:3px 0 3px 18px; position:relative; }
+.diag-foresy-list li::before { content:'✓'; position:absolute; left:0; font-size:12px; }
 .diag-cta-btn { background:var(--cta); color:white; border:none; border-radius:8px; padding:16px 32px; font-family:var(--font-jp); font-size:16px; cursor:pointer; width:100%; transition:background 200ms,transform 200ms var(--ease-spring); display:block; }
 .diag-cta-btn:hover { background:var(--cta-hover); transform:translateY(-2px); }
 .contact-form-section { padding:80px 40px; background:var(--bg-secondary); border-top:1px solid var(--mist); }
@@ -271,7 +273,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="diag-category-badge" id="diag-category">技術</span>
       <h3 class="diag-question" id="diag-question"></h3>
       <div class="diag-options" id="diag-options"></div>
-      <button class="diag-next-btn" id="diag-next-btn" disabled onclick="nextDiagStep()">次の質問</button>
+      <button class="diag-back-btn" id="diag-back-btn" onclick="goBackDiag()" style="display:none;">← 前の質問に戻る</button>
     </div>
 
     <!-- Loading -->
@@ -474,7 +476,6 @@ function startDiag() {
 
 function renderDiagQuestion(step) {
   diagStep = step;
-  diagSelected = null;
   const q = DIAG_QUESTIONS[step];
   const pct = (step / 6) * 100;
   document.getElementById('diag-progress-bar').style.width = pct + '%';
@@ -483,72 +484,87 @@ function renderDiagQuestion(step) {
   document.getElementById('diag-question').textContent = q.text;
   const container = document.getElementById('diag-options');
   container.innerHTML = '';
+  const prevAnswer = diagAnswers[step];
   q.options.forEach(function(opt, i) {
     const btn = document.createElement('button');
-    btn.className = 'diag-option';
+    btn.className = 'diag-option' + (prevAnswer === i ? ' selected' : '');
     btn.textContent = opt;
     btn.addEventListener('click', function() { selectDiagOption(i); });
     container.appendChild(btn);
   });
-  const nextBtn = document.getElementById('diag-next-btn');
-  nextBtn.disabled = true;
-  nextBtn.textContent = step === 5 ? '診断する' : '次の質問';
+  const backBtn = document.getElementById('diag-back-btn');
+  backBtn.style.display = step === 0 ? 'none' : 'block';
 }
 
 function selectDiagOption(idx) {
-  diagSelected = idx;
   document.querySelectorAll('.diag-option').forEach(function(btn, i) {
     btn.classList.toggle('selected', i === idx);
+    btn.disabled = true;
   });
-  document.getElementById('diag-next-btn').disabled = false;
+  setTimeout(function() {
+    diagAnswers[diagStep] = idx;
+    if (diagStep < 5) {
+      renderDiagQuestion(diagStep + 1);
+    } else {
+      document.getElementById('diag-step-q').classList.add('diag-hidden');
+      document.getElementById('diag-step-loading').classList.remove('diag-hidden');
+      setTimeout(showDiagResult, 1800);
+    }
+  }, 350);
 }
 
-function nextDiagStep() {
-  if (diagSelected === null) return;
-  diagAnswers[diagStep] = diagSelected;
-  if (diagStep < 5) {
-    renderDiagQuestion(diagStep + 1);
+function goBackDiag() {
+  if (diagStep > 0) {
+    renderDiagQuestion(diagStep - 1);
   } else {
     document.getElementById('diag-step-q').classList.add('diag-hidden');
-    document.getElementById('diag-step-loading').classList.remove('diag-hidden');
-    setTimeout(showDiagResult, 1800);
+    document.getElementById('diag-step-0').classList.remove('diag-hidden');
   }
 }
 
 function showDiagResult() {
   let score = 0;
   diagAnswers.forEach(function(ans) { score += ans; });
-  const maxScore = 13;
-  let grade, gradeColor, summary, items;
+  let stars, starLabel, summary, items;
   if (score >= 11) {
-    grade = 'Rank A'; gradeColor = '#4A7A5A';
+    stars = 5; starLabel = '広告運用レベル：上位水準';
     summary = '広告設計の上位水準に達しています。細部の精度向上でさらなる成果改善が見込めます。';
     items = ['競合比較・入札戦略の精度向上', 'クリエイティブの高度なABテスト設計', '費用対効果のさらなる最適化'];
   } else if (score >= 8) {
-    grade = 'Rank B'; gradeColor = '#7A9E87';
+    stars = 4; starLabel = '広告運用レベル：基礎は整っています';
     summary = '基本的な広告設計は整っています。いくつかの改善でより大きな成果が出せる状態です。';
     items = ['計測精度の強化とデータ活用', '広告アセットの拡充と定期的な入れ替え', 'LPと広告の一致度向上（コンテンツマッチ）'];
   } else if (score >= 5) {
-    grade = 'Rank C'; gradeColor = '#C96B3A';
+    stars = 3; starLabel = '広告運用レベル：改善の余地あり';
     summary = '改善できる箇所が複数あります。順に整えていくことで広告効果が大きく変わります。';
     items = ['コンバージョン計測の正確な設定', 'ターゲット設定の言語化と広告設計への反映', 'LP改善による離脱率の低下'];
   } else {
-    grade = 'Rank D'; gradeColor = '#9B9991';
+    stars = 2; starLabel = '広告運用レベル：基礎から見直しを';
     summary = '基礎構築から始めましょう。適切な計測設計と戦略設定が成果改善の第一歩です。';
     items = ['GA4・GTMによる計測環境の整備', '広告戦略の設計（ターゲット・予算・訴求）', '専用LPの制作または改修'];
   }
+  const starsHtml =
+    '<span style="color:#C96B3A;">' + '★'.repeat(stars) + '</span>' +
+    '<span style="color:#D8D5CE;">' + '★'.repeat(5 - stars) + '</span>';
   document.getElementById('diag-step-loading').classList.add('diag-hidden');
   const resultDiv = document.getElementById('diag-step-result');
   resultDiv.innerHTML =
     '<p class="tag-label" style="margin-bottom:16px;">DIAGNOSTIC RESULT</p>' +
-    '<div class="diag-score-row">' +
-      '<span class="diag-grade-badge" style="background:' + gradeColor + ';">' + grade + '</span>' +
-      '<div class="diag-score-num">' + score + '<span> / ' + maxScore + '</span></div>' +
-    '</div>' +
+    '<div class="diag-stars">' + starsHtml + '</div>' +
+    '<p class="diag-star-label">' + starLabel + '</p>' +
     '<p class="diag-result-summary">' + summary + '</p>' +
     '<div class="diag-improve-box">' +
       '<p class="diag-improve-title">改善が見込まれるポイント</p>' +
       '<ul class="diag-improve-list">' + items.map(function(it) { return '<li>' + it + '</li>'; }).join('') + '</ul>' +
+    '</div>' +
+    '<div class="diag-foresy-box">' +
+      '<p class="diag-foresy-title">✓ これらはForesyが対応できます</p>' +
+      '<p style="font-family:var(--font-jp);font-size:14px;color:var(--text-secondary);line-height:1.8;">広告主として3年・媒体会社（LINEヤフー）として5年の実務経験をもとに、計測設計から広告運用・LP改善まで一気通貫でサポートします。</p>' +
+      '<ul class="diag-foresy-list">' +
+        '<li>計測設計・GA4・GTM構築</li>' +
+        '<li>Google広告の戦略設計・運用代行</li>' +
+        '<li>LP制作・改善（LPO）継続支援</li>' +
+      '</ul>' +
     '</div>' +
     '<button class="diag-cta-btn" onclick="showContactForm()">Foresyに無料で相談する →</button>' +
     '<p style="font-family:var(--font-jp);font-size:12px;color:var(--text-muted);margin-top:12px;text-align:center;">相談は完全無料。しつこい営業は一切しません。</p>';
