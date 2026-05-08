@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400&family=Noto+Sans+JP:wght@300;400&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 /* ═══════════════════════════════════════════════
@@ -109,14 +109,24 @@ nav {
   display: flex; align-items: center; justify-content: space-between;
 }
 .nav-logo {
-  display: flex; align-items: center; gap: 8px;
-  font-family: var(--font-sans); font-weight: 400; font-size: 36px;
-  color: var(--text-primary); text-decoration: none; letter-spacing: -0.02em;
+  display: inline-flex; align-items: flex-end;
+  text-decoration: none; gap: 0;
 }
-.nav-logo-img {
-  height: 56px; width: auto;
-  border-radius: 4px;
-  transition: transform 0.3s var(--ease-spring);
+#nl-F-wrap {
+  display: inline-flex; align-items: flex-end; position: relative;
+}
+#nl-svg-F {
+  display: block; overflow: visible;
+}
+.nl-letter {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  color: #5C5B56;
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(12px);
+  line-height: 1;
+  will-change: opacity, transform;
 }
 .nav-logo:hover .nav-logo-img { transform: rotate(-8deg) scale(1.08); }
 .nav-links { display: flex; gap: 28px; }
@@ -262,7 +272,7 @@ nav {
   border-radius: 6px; padding: 13px 26px;
   font-family: var(--font-jp); font-size: 14px; font-weight: 400;
   cursor: pointer; text-decoration: none; display: inline-block;
-  transition: background 200ms, transform 200ms var(--ease-spring), box-shadow 200ms;
+  transition: background 200ms, box-shadow 200ms;
 }
 .btn-primary:hover {
   background: var(--cta-hover);
@@ -1061,9 +1071,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ─── NAV ─────────────────────────────────── -->
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
-      <img src="F_rogo.png" alt="Foresy" class="nav-logo-img">
-      Foresy
+    <a href="index.html" class="nav-logo" aria-label="Foresy">
+      <div id="nl-F-wrap">
+        <svg id="nl-svg-F" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+          <path id="nl-F-stem" fill="none" stroke="#4A7A5A" stroke-linecap="butt" stroke-linejoin="miter"/>
+          <path id="nl-F-top"  fill="none" stroke="#4A7A5A" stroke-linecap="butt" stroke-linejoin="miter"/>
+          <path id="nl-F-mid"  fill="none" stroke="#4A7A5A" stroke-linecap="butt" stroke-linejoin="miter"/>
+          <path id="nl-F-foot" fill="none" stroke="#4A7A5A" stroke-linecap="butt" stroke-opacity="0.45"/>
+        </svg>
+      </div>
+      <span class="nl-letter" id="nl-l-o">o</span>
+      <span class="nl-letter" id="nl-l-r">r</span>
+      <span class="nl-letter" id="nl-l-e">e</span>
+      <span class="nl-letter" id="nl-l-s">s</span>
+      <span class="nl-letter" id="nl-l-y">y</span>
     </a>
     <div class="nav-links">
       <a href="services.html">サービス</a>
@@ -1230,7 +1251,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="stat-item reveal reveal-delay-3">
       <span class="stat-num" data-target="18000" data-suffix="件+" style="font-size:clamp(28px,3.5vw,42px);letter-spacing:-0.03em;">18,000件+</span>
-      <span class="stat-label">NPS改善<br>LINEヤフー在籍時</span>
+      <span class="stat-label">LINEヤフー実務経験<br>運用アドバイス数</span>
       <span class="stat-accent"></span>
     </div>
   </div>
@@ -1484,66 +1505,66 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="pricing-grid">
 
-      <!-- ライトプラン -->
+      <!-- 初期設定プラン -->
       <div class="pricing-card reveal">
+        <span class="pricing-badge" style="visibility: hidden;">RECOMMENDED</span>
         <p class="pricing-plan">PLAN 01</p>
-        <h3 class="pricing-name">スタート</h3>
-        <p class="pricing-desc">広告運用をはじめて試したい方、まずは小さく始めたい方に。</p>
+        <h3 class="pricing-name">初期設定</h3>
+        <p class="pricing-desc">アカウント開設からキャンペーン設計まで、広告スタートの準備をすべて代行します。</p>
         <div class="pricing-amount">
-          <p class="pricing-amount-label">月額管理費（税別）</p>
-          <p class="pricing-amount-num">¥30,000<span class="pricing-amount-unit">〜 / 月</span></p>
+          <p class="pricing-amount-label">初期設定費（税別・一回のみ）</p>
+          <p class="pricing-amount-num">¥50,000<span class="pricing-amount-unit"></span></p>
         </div>
         <ul class="pricing-features">
-          <li>Google広告アカウント設定・運用</li>
-          <li>月次レポート（PDF）</li>
-          <li>月1回オンライン報告</li>
+          <li>Google広告アカウント開設・設定</li>
+          <li>キャンペーン・広告グループ設計</li>
+          <li>Google タグマネージャー設定</li>
+          <li>Looker Studio ダッシュボード構築</li>
+        </ul>
+        <a href="contact.html" class="pricing-cta">相談する →</a>
+      </div>
+
+      <!-- 固定制プラン（おすすめ） -->
+      <div class="pricing-card is-featured reveal reveal-delay-1">
+        <span class="pricing-badge">RECOMMENDED</span>
+        <p class="pricing-plan">PLAN 02</p>
+        <h3 class="pricing-name">固定制</h3>
+        <p class="pricing-desc">毎月定額で運用・最適化・レポートをすべておまかせ。最低契約期間3ヶ月〜。</p>
+        <div class="pricing-amount">
+          <p class="pricing-amount-label">月額固定費（税別）</p>
+          <p class="pricing-amount-num">¥30,000<span class="pricing-amount-unit"> / 月</span></p>
+        </div>
+        <ul class="pricing-features">
+          <li>週次パフォーマンスチェック</li>
+          <li>入札・キーワード最適化</li>
+          <li>除外キーワード管理</li>
+          <li>Looker Studio レポート共有</li>
           <li>チャットサポート</li>
         </ul>
         <a href="contact.html" class="pricing-cta">相談する →</a>
       </div>
 
-      <!-- スタンダードプラン（おすすめ） -->
-      <div class="pricing-card is-featured reveal reveal-delay-1">
-        <span class="pricing-badge">RECOMMENDED</span>
-        <p class="pricing-plan">PLAN 02</p>
-        <h3 class="pricing-name">スタンダード</h3>
-        <p class="pricing-desc">運用・計測・レポートをワンストップで。成果にこだわる方に。</p>
-        <div class="pricing-amount">
-          <p class="pricing-amount-label">月額管理費（税別）</p>
-          <p class="pricing-amount-num">¥50,000<span class="pricing-amount-unit">〜 / 月</span></p>
-        </div>
-        <ul class="pricing-features">
-          <li>Google広告アカウント設定・運用</li>
-          <li>GTM / GA4 計測設計・実装</li>
-          <li>Looker Studio 自動レポート</li>
-          <li>月2回オンライン報告</li>
-          <li>チャットサポート（優先対応）</li>
-        </ul>
-        <a href="contact.html" class="pricing-cta">相談する →</a>
-      </div>
-
-      <!-- フルサポートプラン -->
+      <!-- 手数料制プラン -->
       <div class="pricing-card reveal reveal-delay-2">
+        <span class="pricing-badge" style="visibility: hidden;">RECOMMENDED</span>
         <p class="pricing-plan">PLAN 03</p>
-        <h3 class="pricing-name">フルサポート</h3>
-        <p class="pricing-desc">LP制作から運用・分析まで、デジタル広告をまるごとお任せしたい方に。</p>
+        <h3 class="pricing-name">手数料制</h3>
+        <p class="pricing-desc">媒体費が月15万円を超えたタイミングで、成果に連動した料金体系へ移行できます。</p>
         <div class="pricing-amount">
-          <p class="pricing-amount-label">月額管理費（税別）</p>
-          <p class="pricing-amount-num">要相談<span class="pricing-amount-unit"></span></p>
+          <p class="pricing-amount-label">媒体費に対する手数料（税別）</p>
+          <p class="pricing-amount-num">20<span class="pricing-amount-unit">%</span></p>
         </div>
         <ul class="pricing-features">
-          <li>スタンダードプランの全内容</li>
-          <li>LP制作・改善サポート</li>
-          <li>広告クリエイティブ提案</li>
-          <li>YDA / LINE広告など複数媒体対応</li>
-          <li>専任担当制・随時対応</li>
+          <li>月次管理の全内容を継続</li>
+          <li>媒体費 ¥150,000/月超えで移行可能</li>
+          <li>最低保証 ¥30,000/月</li>
         </ul>
         <a href="contact.html" class="pricing-cta">相談する →</a>
       </div>
 
     </div>
     <p class="pricing-note reveal">
-      ※ 初期設定費が別途かかる場合があります。詳細はお問い合わせください。<br>
+      ※ PLAN 01（初期設定費）はPLAN 02開始時に一回のみ発生します。<br>
       ※ 媒体費（広告費）は含まれません。お客様のクレジットカードより直接お支払いいただきます。
     </p>
   </div>
@@ -1793,8 +1814,126 @@ const io = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal, .stat-item').forEach(el => io.observe(el));
 document.getElementById('why-items') && io.observe(document.getElementById('why-items'));
 
+/* ── ナビゲーションロゴ アニメーション（スクロール双方向連動） ── */
+(function () {
+  var NL_FS = 38; // ナビ用固定フォントサイズ (px)
+  var NL_F_AUTO_END = 0.26;
+  var NL_F_AUTO_MS  = 1100;
+  var nlCurrentT = 0;
+  var nlStartTime = null;
+
+  var NL_LETTER_TIMING = {
+    'nl-l-o': [0.30, 0.48],
+    'nl-l-r': [0.40, 0.56],
+    'nl-l-e': [0.50, 0.66],
+    'nl-l-s': [0.60, 0.76],
+    'nl-l-y': [0.70, 0.86],
+  };
+  var NL_F_SEGS_DEF = [
+    { id: 'nl-F-stem', phase: [0.00, 0.14] },
+    { id: 'nl-F-top',  phase: [0.04, 0.16] },
+    { id: 'nl-F-mid',  phase: [0.14, 0.26] },
+    { id: 'nl-F-foot', phase: [0.20, 0.28] },
+  ];
+
+  function nlEase(t) { return t < 0.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; }
+  function nlEaseOut(t) { return 1-Math.pow(1-t,4); }
+  function nlClamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function nlLocal(t, s, e) { return nlClamp((t-s)/(e-s)); }
+
+  var nlSegsData = [];
+
+  function nlSetup() {
+    var fs = NL_FS;
+    var sw = Math.max(1.5, fs * 0.046);
+    var capH  = fs;
+    var svgW  = fs * 0.62;
+    var stemX = sw * 0.5;
+    var topY  = sw * 0.5;
+    var botY  = capH - sw * 0.5;
+    var midY  = capH * 0.50;
+    var rightX = svgW - sw * 0.5;
+    var midRX  = svgW * 0.72;
+    var footRX = svgW * 0.30;
+
+    var svgF = document.getElementById('nl-svg-F');
+    svgF.setAttribute('width',  svgW);
+    svgF.setAttribute('height', capH);
+    svgF.style.width  = svgW + 'px';
+    svgF.style.height = capH + 'px';
+
+    var defs = {
+      'nl-F-stem': 'M '+stemX+','+topY+' L '+stemX+','+botY,
+      'nl-F-top':  'M '+stemX+','+topY+' L '+rightX+','+topY,
+      'nl-F-mid':  'M '+stemX+','+midY+' L '+midRX+','+midY,
+      'nl-F-foot': 'M '+stemX+','+botY+' L '+footRX+','+botY,
+    };
+
+    nlSegsData = NL_F_SEGS_DEF.map(function(def) {
+      var el = document.getElementById(def.id);
+      el.setAttribute('d', defs[def.id]);
+      el.setAttribute('stroke-width', def.id === 'nl-F-foot' ? sw*0.55 : sw);
+      var len = 0;
+      try { len = el.getTotalLength(); } catch(e) {}
+      if (len < 1) len = 100;
+      el.style.strokeDasharray  = len;
+      el.style.strokeDashoffset = len;
+      return { el: el, len: len, phase: def.phase };
+    });
+
+    /* oresy フォントサイズ設定 */
+    ['nl-l-o','nl-l-r','nl-l-e','nl-l-s','nl-l-y'].forEach(function(id) {
+      var el = document.getElementById(id);
+      el.style.fontSize = fs + 'px';
+      el.style.letterSpacing = (fs * 0.01) + 'px';
+    });
+  }
+
+  function nlRender(t) {
+    /* F パス描画 */
+    nlSegsData.forEach(function(seg) {
+      var lt = nlEase(nlLocal(t, seg.phase[0], seg.phase[1]));
+      seg.el.style.strokeDashoffset = seg.len * (1 - lt);
+    });
+    /* oresy フェード＋スライド */
+    Object.keys(NL_LETTER_TIMING).forEach(function(id) {
+      var timing = NL_LETTER_TIMING[id];
+      var lt = nlEaseOut(nlLocal(t, timing[0], timing[1]));
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.style.opacity   = lt;
+      el.style.transform = 'translateX(' + ((1-lt)*10) + 'px)';
+    });
+  }
+
+  /* F自動描画（ページロード時） */
+  function nlAutoPlay() {
+    var now = Date.now();
+    if (!nlStartTime) nlStartTime = now;
+    var prog = Math.min((now - nlStartTime) / NL_F_AUTO_MS, 1);
+    nlCurrentT = nlEase(prog) * NL_F_AUTO_END;
+    nlRender(nlCurrentT);
+    if (prog < 1) setTimeout(nlAutoPlay, 16);
+    else nlCurrentT = NL_F_AUTO_END;
+  }
+
+  /* スクロール連動（上下双方向） */
+  var NL_SCROLL_END = 250; /* このpx分スクロールで全文字表示 */
+  function nlOnScroll() {
+    var frac = nlClamp(window.scrollY / NL_SCROLL_END);
+    nlCurrentT = NL_F_AUTO_END + frac * (1 - NL_F_AUTO_END);
+    nlRender(nlCurrentT);
+  }
+
+  setTimeout(function() {
+    nlSetup();
+    nlAutoPlay();
+    window.addEventListener('scroll', nlOnScroll, { passive: true });
+  }, 80);
+}());
+
 /* ── Magnetic Buttons ── */
-document.querySelectorAll('.btn-primary,.btn-ghost,.nav-cta').forEach(btn => {
+document.querySelectorAll('.btn-ghost,.nav-cta').forEach(btn => {
   btn.addEventListener('mousemove', e => {
     btn.style.transition = 'none';
     const r = btn.getBoundingClientRect();
@@ -1870,5 +2009,8 @@ function closeSitePreview(e) {
 }
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSitePreview(); });
 </script>
+
+<!-- チャットボット -->
+<script src="chatbot.js" defer></script>
 </body>
 </html>
