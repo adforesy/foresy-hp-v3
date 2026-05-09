@@ -11,7 +11,6 @@ module.exports = async function handler(req, res) {
 
   // 環境変数未設定の場合はログをスキップ（開発環境対応）
   if (!webhookUrl || !secret) {
-    console.log('[chat-log] env vars missing: webhookUrl=', !!webhookUrl, 'secret=', !!secret);
     return res.status(200).json({ ok: true });
   }
 
@@ -49,11 +48,9 @@ module.exports = async function handler(req, res) {
       signal:  controller.signal,
     });
     clearTimeout(timeout);
-    const responseText = await response.text();
-    console.log('[chat-log] GAS status=', response.status, 'body=', responseText);
     return res.status(200).json({ ok: response.ok });
-  } catch (err) {
-    console.log('[chat-log] fetch error:', err.message);
+  } catch {
+    // GAS側のエラーはフロントに影響させない
     return res.status(200).json({ ok: false });
   }
 };
