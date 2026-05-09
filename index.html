@@ -956,7 +956,7 @@ footer {
    BACK TO TOP BUTTON
 ═══════════════════════════════════════════════ */
 #back-to-top {
-  position: fixed; bottom: 28px; right: 28px; z-index: 90;
+  position: fixed; bottom: 88px; right: 28px; z-index: 90;
   width: 44px; height: 44px;
   background: var(--bg-dark); color: var(--bg-primary);
   border: none; border-radius: 50%;
@@ -1028,6 +1028,9 @@ footer {
   footer { padding: 44px 20px 28px; }
   .footer-inner { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+
+  /* チャットボットボタン(bottom:16px / height:46px)と重ならないよう上に避ける */
+  #back-to-top { bottom: 78px; right: 16px; }
 }
 
 /* ── ハンバーガーメニュー ── */
