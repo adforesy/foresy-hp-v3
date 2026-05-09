@@ -130,8 +130,6 @@
       '.cb-ctas{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px;}',
       '.cb-cta-btn{background:#fff;border:1.5px solid #4A7A5A;color:#4A7A5A;border-radius:20px;padding:5px 13px;font-size:12px;font-weight:600;text-decoration:none;cursor:pointer;transition:background .15s,color .15s;white-space:nowrap;}',
       '.cb-cta-btn:hover{background:#4A7A5A;color:#fff;}',
-      /* 注意書き */
-      '.cb-notice{background:#fefce8;border-top:1px solid #fef08a;padding:7px 12px;font-size:10.5px;color:#854d0e;flex-shrink:0;line-height:1.5;}',
       /* クイック質問 */
       '#cb-quick{padding:8px 12px;background:#fff;border-top:1px solid #EDEAE3;display:flex;gap:6px;overflow-x:auto;flex-shrink:0;scroll-behavior:smooth;}',
       '#cb-quick::-webkit-scrollbar{height:3px;}',
@@ -255,7 +253,6 @@
       '  <button class="cb-close" id="chatbot-close" aria-label="閉じる">✕</button>',
       '</div>',
       '<div id="cb-messages"></div>',
-      '<div class="cb-notice">この会話はサービス改善のため記録されます。氏名・電話番号・住所などの個人情報は入力しないでください。</div>',
       '<div id="cb-quick"></div>',
       '<div class="cb-input-wrap">',
       '  <textarea id="cb-input" rows="1" maxlength="500" placeholder="ご質問を入力してください..." aria-label="メッセージ入力"></textarea>',
