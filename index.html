@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400&family=Noto+Sans+JP:wght@300;400&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400&family=Noto+Sans+JP:wght@300;400&family=Josefin+Sans:wght@300;400&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
 
 <style>
 /* ═══════════════════════════════════════════════
@@ -109,26 +109,26 @@ nav {
   display: flex; align-items: center; justify-content: space-between;
 }
 .nav-logo {
-  display: inline-flex; align-items: flex-end;
-  text-decoration: none; gap: 0;
+  display: inline-flex; align-items: baseline;
+  text-decoration: none; white-space: nowrap;
 }
-#nl-F-wrap {
-  display: inline-flex; align-items: flex-end; position: relative;
-}
-#nl-svg-F {
-  display: block; overflow: visible;
-}
-.nl-letter {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
-  color: #5C5B56;
-  display: inline-block;
-  opacity: 0;
-  transform: translateX(12px);
+.nl-logo-letter {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 56px;
   line-height: 1;
+  display: inline-block;
+}
+#nl-letter-F {
+  color: #4A7A5A;
+  clip-path: inset(0 100% 0 0);
+}
+.nl-oresy {
+  color: #5C5B56;
+  opacity: 0;
+  transform: translateX(20px);
   will-change: opacity, transform;
 }
-.nav-logo:hover .nav-logo-img { transform: rotate(-8deg) scale(1.08); }
 .nav-links { display: flex; gap: 28px; }
 .nav-links a {
   font-family: var(--font-sans); font-size: 14px; color: var(--text-secondary);
@@ -644,8 +644,17 @@ nav {
 .work-tag {
   display: inline-block; font-family: var(--font-mono); font-size: 10px;
   background: rgba(200,217,204,0.4); color: var(--forest); border-radius: 4px;
-  padding: 3px 9px; letter-spacing: 0.04em;
+  padding: 3px 9px; letter-spacing: 0.04em; margin-right: 4px;
 }
+.work-desc {
+  font-family: var(--font-jp); font-size: 13px; color: var(--text-secondary);
+  line-height: 1.8; margin-bottom: 10px;
+}
+.work-thumb-overlay {
+  position: absolute; inset: 0;
+  background: rgba(26,26,24,0); transition: background 250ms;
+}
+.work-card:hover .work-thumb-overlay { background: rgba(26,26,24,0.04); }
 .works-cta { text-align: center; }
 .works-cta a {
   display: inline-flex; align-items: center; gap: 6px;
@@ -780,10 +789,9 @@ nav {
 }
 .footer-cta-text {
   font-family: var(--font-sans); font-weight: 200;
-  font-size: clamp(28px,4.5vw,56px); color: white;
-  letter-spacing: -0.03em; margin-bottom: 40px; line-height: 1.15;
+  font-size: clamp(18px,2.8vw,36px); color: white;
+  letter-spacing: -0.02em; margin-bottom: 40px; line-height: 1.8;
 }
-.footer-cta-text em { font-style: italic; color: rgba(201,107,58,0.9); }
 
 .btn-cta-large {
   background: var(--cta); color: white; border: none;
@@ -1075,19 +1083,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="Foresy">
-      <div id="nl-F-wrap">
-        <svg id="nl-svg-F" xmlns="http://www.w3.org/2000/svg" overflow="visible">
-          <path id="nl-F-stem" fill="none" stroke="#4A7A5A" stroke-linecap="butt" stroke-linejoin="miter"/>
-          <path id="nl-F-top"  fill="none" stroke="#4A7A5A" stroke-linecap="butt" stroke-linejoin="miter"/>
-          <path id="nl-F-mid"  fill="none" stroke="#4A7A5A" stroke-linecap="butt" stroke-linejoin="miter"/>
-          <path id="nl-F-foot" fill="none" stroke="#4A7A5A" stroke-linecap="butt" stroke-opacity="0.45"/>
-        </svg>
-      </div>
-      <span class="nl-letter" id="nl-l-o">o</span>
-      <span class="nl-letter" id="nl-l-r">r</span>
-      <span class="nl-letter" id="nl-l-e">e</span>
-      <span class="nl-letter" id="nl-l-s">s</span>
-      <span class="nl-letter" id="nl-l-y">y</span>
+      <span class="nl-logo-letter" id="nl-letter-F">F</span>
+      <span class="nl-logo-letter nl-oresy" id="nl-l-o">o</span>
+      <span class="nl-logo-letter nl-oresy" id="nl-l-r">r</span>
+      <span class="nl-logo-letter nl-oresy" id="nl-l-e">e</span>
+      <span class="nl-logo-letter nl-oresy" id="nl-l-s">s</span>
+      <span class="nl-logo-letter nl-oresy" id="nl-l-y">y</span>
     </a>
     <div class="nav-links">
       <a href="services.html">サービス</a>
@@ -1411,84 +1412,182 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div class="works-grid">
-      <div class="work-card reveal" onclick="openSitePreview('https://foresy-lp-chiropractic.vercel.app/','さくら整骨院 LP')" style="cursor:pointer;">
+      <!-- 014: ソレイユ歯科クリニック LINEヤフー広告 運用支援 -->
+      <div class="work-card reveal">
         <div class="work-thumb">
-          <svg width="100%" height="100%" viewBox="0 0 400 190" preserveAspectRatio="xMidYMid slice">
-            <rect width="400" height="190" fill="#F0EBE3"/>
-            <rect x="0" y="0" width="400" height="28" fill="#EDEAE3"/>
-            <rect x="12" y="9" width="50" height="10" rx="2" fill="#C8D9CC"/>
-            <rect x="310" y="8" width="78" height="12" rx="4" fill="#C96B3A"/>
-            <rect x="0" y="28" width="220" height="162" fill="#F5F1EC"/>
-            <rect x="16" y="44" width="170" height="14" rx="3" fill="#5C5B56"/>
-            <rect x="16" y="64" width="140" height="8" rx="2" fill="#C8D9CC"/>
-            <rect x="16" y="78" width="110" height="8" rx="2" fill="#C8D9CC"/>
-            <rect x="16" y="100" width="100" height="20" rx="4" fill="#C96B3A"/>
-            <rect x="16" y="134" width="190" height="20" rx="3" fill="white" stroke="#C8D9CC"/>
-            <text x="26" y="147" font-family="DM Mono" font-size="8" fill="#7A9E87">★4.8</text>
-            <text x="58" y="147" font-family="DM Mono" font-size="8" fill="#9B9991">3,000名来院実績</text>
-            <rect x="220" y="28" width="180" height="162" fill="#E8E0D8"/>
-            <rect x="232" y="42" width="156" height="110" rx="5" fill="#EDEAE3"/>
-            <rect x="244" y="56" width="120" height="6" rx="2" fill="#C8D9CC"/>
-            <rect x="244" y="68" width="90" height="6" rx="2" fill="#C8D9CC"/>
-            <rect x="244" y="80" width="100" height="6" rx="2" fill="#C8D9CC"/>
-            <text x="310" y="168" font-family="DM Mono" font-size="8" fill="#7A9E87" text-anchor="middle">さくら整骨院</text>
+          <svg width="100%" height="100%" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice">
+            <rect width="560" height="220" fill="#F2F4F7"/>
+            <rect x="0" y="0" width="560" height="38" fill="white"/>
+            <line x1="0" y1="38" x2="560" y2="38" stroke="#E5E5E5" stroke-width="1"/>
+            <rect x="14" y="10" width="5" height="18" rx="1" fill="#FF0033"/>
+            <text x="24" y="24" font-family="Arial, sans-serif" font-size="11" fill="#FF0033" font-weight="bold">Yahoo!</text>
+            <text x="72" y="24" font-family="Arial, sans-serif" font-size="10" fill="#444">広告管理ツール</text>
+            <line x1="155" y1="9" x2="155" y2="29" stroke="#E0E0E0" stroke-width="1"/>
+            <text x="163" y="24" font-family="Arial, sans-serif" font-size="8.5" fill="#666">ソレイユ歯科クリニック</text>
+            <rect x="416" y="10" width="130" height="18" rx="3" fill="#F7F7F7" stroke="#DDD" stroke-width="0.8"/>
+            <text x="436" y="22.5" font-family="Arial, sans-serif" font-size="7.5" fill="#555">2025/03/01 〜 03/31</text>
+            <rect x="0" y="38" width="560" height="26" fill="white"/>
+            <line x1="0" y1="64" x2="560" y2="64" stroke="#E5E5E5" stroke-width="1"/>
+            <text x="18" y="55" font-family="Arial, sans-serif" font-size="9" fill="#FF0033" font-weight="bold">キャンペーン</text>
+            <rect x="14" y="62" width="70" height="2" fill="#FF0033"/>
+            <text x="100" y="55" font-family="Arial, sans-serif" font-size="9" fill="#999">広告グループ</text>
+            <text x="185" y="55" font-family="Arial, sans-serif" font-size="9" fill="#999">キーワード</text>
+            <text x="265" y="55" font-family="Arial, sans-serif" font-size="9" fill="#999">広告</text>
+            <rect x="12" y="72" width="98" height="48" rx="4" fill="white" stroke="#E5E5E5" stroke-width="0.8"/>
+            <text x="20" y="86" font-family="Arial, sans-serif" font-size="7" fill="#888">インプレッション数</text>
+            <text x="20" y="108" font-family="Arial, sans-serif" font-size="17" fill="#222" font-weight="600">24,821</text>
+            <rect x="116" y="72" width="90" height="48" rx="4" fill="white" stroke="#E5E5E5" stroke-width="0.8"/>
+            <text x="124" y="86" font-family="Arial, sans-serif" font-size="7" fill="#888">クリック数</text>
+            <text x="124" y="108" font-family="Arial, sans-serif" font-size="17" fill="#222" font-weight="600">743</text>
+            <rect x="212" y="72" width="82" height="48" rx="4" fill="white" stroke="#E5E5E5" stroke-width="0.8"/>
+            <text x="220" y="86" font-family="Arial, sans-serif" font-size="7" fill="#888">クリック率</text>
+            <text x="220" y="108" font-family="Arial, sans-serif" font-size="17" fill="#222" font-weight="600">2.99%</text>
+            <rect x="300" y="72" width="82" height="48" rx="4" fill="white" stroke="#E5E5E5" stroke-width="0.8"/>
+            <text x="308" y="86" font-family="Arial, sans-serif" font-size="7" fill="#888">コンバージョン</text>
+            <text x="308" y="108" font-family="Arial, sans-serif" font-size="17" fill="#FF0033" font-weight="600">38</text>
+            <rect x="388" y="72" width="100" height="48" rx="4" fill="white" stroke="#E5E5E5" stroke-width="0.8"/>
+            <text x="396" y="86" font-family="Arial, sans-serif" font-size="7" fill="#888">コンバージョン単価</text>
+            <text x="396" y="108" font-family="Arial, sans-serif" font-size="17" fill="#222" font-weight="600">¥2,184</text>
+            <rect x="494" y="72" width="56" height="48" rx="4" fill="white" stroke="#E5E5E5" stroke-width="0.8"/>
+            <text x="500" y="86" font-family="Arial, sans-serif" font-size="6.5" fill="#888">費用合計</text>
+            <text x="500" y="105" font-family="Arial, sans-serif" font-size="11" fill="#222" font-weight="600">¥83K</text>
+            <rect x="12" y="128" width="538" height="18" fill="#F8F8F8" stroke="#E5E5E5" stroke-width="0.5"/>
+            <text x="20" y="141" font-family="Arial, sans-serif" font-size="7" fill="#888">キャンペーン名</text>
+            <text x="220" y="141" font-family="Arial, sans-serif" font-size="7" fill="#888">ステータス</text>
+            <text x="296" y="141" font-family="Arial, sans-serif" font-size="7" fill="#888">IMP</text>
+            <text x="356" y="141" font-family="Arial, sans-serif" font-size="7" fill="#888">クリック</text>
+            <text x="416" y="141" font-family="Arial, sans-serif" font-size="7" fill="#888">CV</text>
+            <text x="460" y="141" font-family="Arial, sans-serif" font-size="7" fill="#888">CPA</text>
+            <text x="505" y="141" font-family="Arial, sans-serif" font-size="7" fill="#888">費用</text>
+            <rect x="12" y="146" width="538" height="20" fill="white" stroke="#EFEFEF" stroke-width="0.5"/>
+            <text x="20" y="159" font-family="Arial, sans-serif" font-size="7.5" fill="#333">矯正歯科_検索_福岡</text>
+            <rect x="217" y="150" width="38" height="12" rx="2" fill="#E8F5E9"/>
+            <text x="236" y="159.5" font-family="Arial, sans-serif" font-size="6.5" fill="#2E7D32" text-anchor="middle">配信中</text>
+            <text x="296" y="159" font-family="Arial, sans-serif" font-size="7.5" fill="#333">14,203</text>
+            <text x="356" y="159" font-family="Arial, sans-serif" font-size="7.5" fill="#333">418</text>
+            <text x="416" y="159" font-family="Arial, sans-serif" font-size="7.5" fill="#333">22</text>
+            <text x="460" y="159" font-family="Arial, sans-serif" font-size="7.5" fill="#333">¥1,982</text>
+            <text x="505" y="159" font-family="Arial, sans-serif" font-size="7.5" fill="#333">¥43.6K</text>
+            <rect x="12" y="166" width="538" height="20" fill="#FAFAFA" stroke="#EFEFEF" stroke-width="0.5"/>
+            <text x="20" y="179" font-family="Arial, sans-serif" font-size="7.5" fill="#333">ホワイトニング_検索_福岡</text>
+            <rect x="217" y="170" width="38" height="12" rx="2" fill="#E8F5E9"/>
+            <text x="236" y="179.5" font-family="Arial, sans-serif" font-size="6.5" fill="#2E7D32" text-anchor="middle">配信中</text>
+            <text x="296" y="179" font-family="Arial, sans-serif" font-size="7.5" fill="#333">10,618</text>
+            <text x="356" y="179" font-family="Arial, sans-serif" font-size="7.5" fill="#333">325</text>
+            <text x="416" y="179" font-family="Arial, sans-serif" font-size="7.5" fill="#333">16</text>
+            <text x="460" y="179" font-family="Arial, sans-serif" font-size="7.5" fill="#333">¥2,432</text>
+            <text x="505" y="179" font-family="Arial, sans-serif" font-size="7.5" fill="#333">¥38.9K</text>
+            <rect x="12" y="186" width="538" height="20" fill="#F8F8F8" stroke="#E5E5E5" stroke-width="0.5"/>
+            <text x="20" y="199" font-family="Arial, sans-serif" font-size="7" fill="#666" font-weight="bold">合計（2キャンペーン）</text>
+            <text x="296" y="199" font-family="Arial, sans-serif" font-size="7" fill="#555">24,821</text>
+            <text x="356" y="199" font-family="Arial, sans-serif" font-size="7" fill="#555">743</text>
+            <text x="416" y="199" font-family="Arial, sans-serif" font-size="7" fill="#FF0033" font-weight="bold">38</text>
+            <text x="460" y="199" font-family="Arial, sans-serif" font-size="7" fill="#555">¥2,184</text>
+            <text x="505" y="199" font-family="Arial, sans-serif" font-size="7" fill="#555">¥83K</text>
           </svg>
+          <div class="work-thumb-overlay"></div>
         </div>
         <div class="work-info">
-          <span class="work-num">001</span>
-          <div class="work-title">さくら整骨院 LP制作</div>
-          <span class="work-tag">LP制作</span>
+          <span class="work-num">014</span>
+          <div class="work-title">ソレイユ歯科クリニック LINEヤフー広告 運用支援</div>
+          <p class="work-desc">矯正・ホワイトニング訴求の検索広告を構成。媒体社カスタマーサポートで培った18,000件以上の運用アドバイス実績をもとに、地域ターゲティング×入札戦略を設計。</p>
+          <span class="work-tag">LINEヤフー広告</span>
         </div>
       </div>
-      <div class="work-card reveal reveal-delay-1">
+      <!-- 012: ソレイユ歯科クリニック LP -->
+      <div class="work-card reveal reveal-delay-1" onclick="openSitePreview('https://foresy-lp-dental-clinic.vercel.app/','ソレイユ歯科クリニック LP')" style="cursor:pointer;">
         <div class="work-thumb">
-          <svg width="100%" height="100%" viewBox="0 0 400 190" preserveAspectRatio="xMidYMid slice">
-            <rect width="400" height="190" fill="#E5E1D8"/>
-            <rect x="20" y="18" width="200" height="130" rx="6" fill="white" stroke="#C8D9CC"/>
-            <rect x="30" y="28" width="180" height="40" rx="3" fill="#F5F3EE"/>
-            <rect x="30" y="78" width="80" height="10" rx="2" fill="#C8D9CC"/>
-            <rect x="30" y="94" width="160" height="8" rx="2" fill="#EDEAE3"/>
-            <rect x="30" y="108" width="130" height="8" rx="2" fill="#EDEAE3"/>
-            <rect x="30" y="126" width="60" height="14" rx="3" fill="#C96B3A"/>
-            <rect x="238" y="18" width="142" height="130" rx="6" fill="white" stroke="#C8D9CC"/>
-            <circle cx="309" cy="66" r="24" fill="none" stroke="#4A7A5A" stroke-width="6" stroke-dasharray="90 60"/>
-            <text x="309" y="71" font-family="DM Mono" font-size="10" fill="#1A1A18" text-anchor="middle">68%</text>
+          <svg width="100%" height="100%" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice">
+            <rect width="560" height="220" fill="#F0FAF9"/>
+            <rect x="0" y="0" width="560" height="34" fill="#FFFFFF"/>
+            <rect x="16" y="11" width="72" height="12" rx="3" fill="#2A9D8F" opacity="0.25"/>
+            <text x="52" y="21" font-family="DM Mono" font-size="8" fill="#2A9D8F" text-anchor="middle">SOLEIL</text>
+            <rect x="424" y="9" width="116" height="16" rx="4" fill="#E8826A"/>
+            <text x="482" y="21" font-family="DM Mono" font-size="8" fill="white" text-anchor="middle">無料カウンセリング</text>
+            <rect x="0" y="34" width="300" height="186" fill="#F0FAF9"/>
+            <text x="24" y="64" font-family="serif" font-size="9" fill="#2A9D8F" letter-spacing="3">Orthodontics &amp; Whitening</text>
+            <rect x="24" y="72" width="240" height="16" rx="3" fill="#1C2B2A" opacity="0.85"/>
+            <rect x="24" y="94" width="200" height="12" rx="3" fill="#1C2B2A" opacity="0.55"/>
+            <rect x="24" y="112" width="180" height="10" rx="3" fill="#4A6260" opacity="0.35"/>
+            <rect x="24" y="130" width="2" height="28" rx="1" fill="#2A9D8F"/>
+            <rect x="32" y="134" width="180" height="8" rx="2" fill="#4A6260" opacity="0.4"/>
+            <rect x="32" y="148" width="140" height="8" rx="2" fill="#4A6260" opacity="0.4"/>
+            <rect x="24" y="168" width="136" height="28" rx="14" fill="#E8826A"/>
+            <text x="92" y="186" font-family="DM Mono" font-size="8.5" fill="white" text-anchor="middle">無料相談はこちら →</text>
+            <rect x="300" y="34" width="260" height="186" fill="#E0F4F2"/>
+            <rect x="316" y="52" width="228" height="150" rx="8" fill="#FFFFFF" opacity="0.7"/>
+            <rect x="332" y="68" width="80" height="80" rx="6" fill="#A8DDD8" opacity="0.5"/>
+            <rect x="336" y="72" width="72" height="6" rx="2" fill="#2A9D8F" opacity="0.4"/>
+            <rect x="336" y="84" width="60" height="6" rx="2" fill="#2A9D8F" opacity="0.3"/>
+            <ellipse cx="372" cy="120" rx="18" ry="14" fill="#2A9D8F" opacity="0.18"/>
+            <ellipse cx="372" cy="116" rx="10" ry="8" fill="white" opacity="0.8"/>
+            <rect x="362" y="122" width="20" height="10" rx="2" fill="white" opacity="0.6"/>
+            <rect x="426" y="68" width="102" height="48" rx="6" fill="white"/>
+            <text x="436" y="84" font-family="DM Mono" font-size="7" fill="#8AADAA">インビザライン認定医</text>
+            <text x="436" y="100" font-family="DM Mono" font-size="11" fill="#2A9D8F">在籍中</text>
+            <rect x="426" y="124" width="102" height="38" rx="6" fill="#C9A462" opacity="0.15"/>
+            <text x="436" y="139" font-family="DM Mono" font-size="7" fill="#C9A462">天神駅 徒歩2分</text>
+            <text x="436" y="155" font-family="DM Mono" font-size="8" fill="#1C2B2A">天神院</text>
           </svg>
+          <div class="work-thumb-overlay"></div>
         </div>
         <div class="work-info">
-          <span class="work-num">002</span>
-          <div class="work-title">地域サロン向けLPリニューアル＋広告連動</div>
-          <span class="work-tag">LP制作</span>
+          <span class="work-num">012</span>
+          <div class="work-title">ソレイユ歯科クリニック LP制作</div>
+          <p class="work-desc">福岡天神の矯正・ホワイトニング専門歯科向けHP。インビザライン訴求と無料カウンセリングへの予約導線を最適化し、ブランドイメージに合わせたデザインで制作。</p>
+          <span class="work-tag">HP制作</span>
+          <a href="javascript:void(0)" style="display:inline-block;margin-top:10px;font-family:var(--font-mono);font-size:10px;color:var(--forest);text-decoration:none;letter-spacing:0.04em;" onclick="event.stopPropagation();openSitePreview('https://foresy-lp-dental-clinic.vercel.app/','ソレイユ歯科クリニック LP')">サイトを見る →</a>
         </div>
       </div>
-      <div class="work-card reveal reveal-delay-2">
+      <!-- 011: 広告月次レポート -->
+      <div class="work-card reveal reveal-delay-2" onclick="openSitePreview('https://foresy-report.vercel.app/','広告月次レポート サンプル')" style="cursor:pointer;">
         <div class="work-thumb">
-          <svg width="100%" height="100%" viewBox="0 0 400 190" preserveAspectRatio="xMidYMid slice">
-            <rect width="400" height="190" fill="#E5E1D8"/>
-            <rect x="20" y="14" width="360" height="162" rx="6" fill="white" stroke="#C8D9CC"/>
-            <rect x="30" y="24" width="100" height="8" rx="2" fill="#C8D9CC"/>
-            <rect x="30" y="44" width="340" height="1" fill="#EDEAE3"/>
-            <rect x="30" y="54" width="60" height="88" rx="3" fill="#F5F3EE" stroke="#EDEAE3"/>
-            <rect x="98" y="54" width="60" height="88" rx="3" fill="#F5F3EE" stroke="#EDEAE3"/>
-            <rect x="166" y="54" width="60" height="88" rx="3" fill="#F5F3EE" stroke="#EDEAE3"/>
-            <rect x="234" y="54" width="60" height="88" rx="3" fill="#F5F3EE" stroke="#EDEAE3"/>
-            <rect x="302" y="54" width="58" height="88" rx="3" fill="#F5F3EE" stroke="#EDEAE3"/>
-            <rect x="44" y="104" width="28" height="30" rx="2" fill="#C8D9CC"/>
-            <rect x="112" y="94"  width="28" height="40" rx="2" fill="#C8D9CC"/>
-            <rect x="180" y="84"  width="28" height="50" rx="2" fill="#4A7A5A" opacity="0.55"/>
-            <rect x="248" y="74"  width="28" height="60" rx="2" fill="#4A7A5A" opacity="0.75"/>
-            <rect x="316" y="64"  width="28" height="70" rx="2" fill="#4A7A5A"/>
-            <text x="60"  y="158" font-family="DM Mono" font-size="7" fill="#9B9991" text-anchor="middle">1月</text>
-            <text x="128" y="158" font-family="DM Mono" font-size="7" fill="#9B9991" text-anchor="middle">2月</text>
-            <text x="196" y="158" font-family="DM Mono" font-size="7" fill="#9B9991" text-anchor="middle">3月</text>
-            <text x="264" y="158" font-family="DM Mono" font-size="7" fill="#9B9991" text-anchor="middle">4月</text>
-            <text x="331" y="158" font-family="DM Mono" font-size="7" fill="#9B9991" text-anchor="middle">5月</text>
+          <svg width="100%" height="100%" viewBox="0 0 560 220" preserveAspectRatio="xMidYMid slice">
+            <rect width="560" height="220" fill="#E5E1D8"/>
+            <rect x="20" y="16" width="520" height="188" rx="8" fill="white" stroke="#C8D9CC"/>
+            <rect x="20" y="16" width="520" height="36" rx="8" fill="#F5F3EE"/>
+            <rect x="20" y="40" width="520" height="12" fill="#F5F3EE"/>
+            <rect x="34" y="25" width="130" height="8" rx="2" fill="#EDEAE3"/>
+            <rect x="408" y="22" width="114" height="18" rx="4" fill="#2563eb" opacity="0.1"/>
+            <text x="465" y="34" font-family="DM Mono" font-size="7.5" fill="#2563eb" text-anchor="middle">広告月次レポート</text>
+            <rect x="34" y="56" width="80" height="14" rx="3" fill="#2563eb"/>
+            <text x="74" y="66" font-family="DM Mono" font-size="7" fill="white" text-anchor="middle">Google広告</text>
+            <rect x="122" y="56" width="80" height="14" rx="3" fill="none" stroke="#EDEAE3"/>
+            <text x="162" y="66" font-family="DM Mono" font-size="7" fill="#9B9991" text-anchor="middle">LINEヤフー</text>
+            <rect x="34" y="78" width="100" height="46" rx="4" fill="#F5F3EE"/>
+            <text x="44" y="92" font-family="DM Mono" font-size="6.5" fill="#9B9991">CV件数</text>
+            <text x="44" y="113" font-family="DM Sans" font-size="18" fill="#1A1A18" font-weight="200">117</text>
+            <text x="86" y="110" font-family="DM Mono" font-size="8" fill="#9B9991">件</text>
+            <rect x="142" y="78" width="110" height="46" rx="4" fill="#F5F3EE"/>
+            <text x="152" y="92" font-family="DM Mono" font-size="6.5" fill="#9B9991">CPA</text>
+            <text x="152" y="113" font-family="DM Sans" font-size="18" fill="#C96B3A" font-weight="200">¥2,705</text>
+            <rect x="260" y="78" width="100" height="46" rx="4" fill="#F5F3EE"/>
+            <text x="270" y="92" font-family="DM Mono" font-size="6.5" fill="#9B9991">CTR</text>
+            <text x="270" y="113" font-family="DM Sans" font-size="18" fill="#1A1A18" font-weight="200">2.60</text>
+            <text x="316" y="110" font-family="DM Mono" font-size="8" fill="#9B9991">%</text>
+            <rect x="368" y="78" width="110" height="46" rx="4" fill="#4A7A5A" opacity="0.07" stroke="#4A7A5A" stroke-width="0.8" stroke-opacity="0.3"/>
+            <text x="378" y="92" font-family="DM Mono" font-size="6.5" fill="#7A9E87">IS</text>
+            <text x="378" y="113" font-family="DM Sans" font-size="18" fill="#4A7A5A" font-weight="200">66.2</text>
+            <text x="422" y="110" font-family="DM Mono" font-size="8" fill="#7A9E87">%</text>
+            <rect x="34" y="132" width="444" height="60" rx="4" fill="#F5F3EE" stroke="#EDEAE3"/>
+            <text x="44" y="145" font-family="DM Mono" font-size="6.5" fill="#9B9991">日別クリック数推移（4月）</text>
+            <polyline points="50,182 65,178 80,179 95,175 110,180 125,181 140,178 155,179 170,176 185,177 200,174 215,179 230,180 245,178 260,179 275,178 290,179 305,176 320,181 335,182 350,178 365,178 380,176 395,177 400,176 415,175 430,179 445,178 460,177 475,174" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <polyline points="50,188 65,186 80,186 95,185 110,187 125,188 140,186 155,187 170,186 185,186 200,185 215,187 230,188 245,187 260,186 275,186 290,186 305,185 320,187 335,188 350,186 365,186 380,185 395,186 400,185 415,185 430,186 445,186 460,185 475,185" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-dasharray="3,2"/>
+            <rect x="360" y="141" width="8" height="3" rx="1" fill="#2563eb"/>
+            <text x="372" y="145" font-family="DM Mono" font-size="6" fill="#5C5B56">Google</text>
+            <rect x="408" y="141" width="8" height="3" rx="1" fill="#f59e0b"/>
+            <text x="420" y="145" font-family="DM Mono" font-size="6" fill="#5C5B56">Yahoo</text>
           </svg>
+          <div class="work-thumb-overlay"></div>
         </div>
         <div class="work-info">
-          <span class="work-num">003</span>
-          <div class="work-title">Looker Studioによるレポート自動化</div>
-          <span class="work-tag">Looker Studio</span>
+          <span class="work-num">011</span>
+          <div class="work-title">広告月次レポート（サンプル）</div>
+          <p class="work-desc">Google広告・LINEヤフー広告の日別データを可視化したサンプルレポート。2026年4月実績：合計CV 163件・平均CPA ¥2,772。クライアントへの定例報告用ダッシュボードとして設計。</p>
+          <span class="work-tag">データ分析</span>
+          <span class="work-tag">Google広告</span>
+          <span class="work-tag">LINEヤフー広告</span>
+          <a href="javascript:void(0)" style="display:inline-block;margin-top:10px;font-family:var(--font-mono);font-size:10px;color:var(--forest);text-decoration:none;letter-spacing:0.04em;" onclick="event.stopPropagation();openSitePreview('https://foresy-report.vercel.app/','広告月次レポート サンプル')">レポートを見る →</a>
         </div>
       </div>
     </div>
@@ -1516,7 +1615,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="pricing-desc">アカウント開設からキャンペーン設計まで、広告スタートの準備をすべて代行します。</p>
         <div class="pricing-amount">
           <p class="pricing-amount-label">初期設定費（税別・一回のみ）</p>
-          <p class="pricing-amount-num">¥50,000<span class="pricing-amount-unit"></span></p>
+          <p class="pricing-amount-num">¥30,000<span class="pricing-amount-unit"></span></p>
         </div>
         <ul class="pricing-features">
           <li>Google広告アカウント開設・設定</li>
@@ -1524,7 +1623,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li>Google タグマネージャー設定</li>
           <li>Looker Studio ダッシュボード構築</li>
         </ul>
-        <a href="contact.html" class="pricing-cta">相談する →</a>
       </div>
 
       <!-- 固定制プラン（おすすめ） -->
@@ -1544,7 +1642,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li>Looker Studio レポート共有</li>
           <li>チャットサポート</li>
         </ul>
-        <a href="contact.html" class="pricing-cta">相談する →</a>
       </div>
 
       <!-- 手数料制プラン -->
@@ -1562,7 +1659,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li>媒体費 ¥150,000/月超えで移行可能</li>
           <li>最低保証 ¥30,000/月</li>
         </ul>
-        <a href="contact.html" class="pricing-cta">相談する →</a>
       </div>
 
     </div>
@@ -1570,6 +1666,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       ※ PLAN 01（初期設定費）はPLAN 02開始時に一回のみ発生します。<br>
       ※ 媒体費（広告費）は含まれません。お客様のクレジットカードより直接お支払いいただきます。
     </p>
+    <div class="reveal" style="text-align:center;margin-top:48px;padding-top:40px;border-top:1px solid var(--mist);">
+      <p style="font-family:var(--font-jp);font-size:14px;color:var(--text-secondary);line-height:1.9;margin-bottom:24px;">各プランの詳細内容や、<strong style="color:var(--text-primary);font-weight:400;">広告費を入力して月額費用を確認できる料金シミュレーション</strong>はサービスページでご覧いただけます。</p>
+      <a href="services.html#pricing" class="btn-primary">詳しい料金プランとシミュレーションはこちら →</a>
+    </div>
   </div>
 </section>
 
@@ -1697,9 +1797,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ─── FOOTER CTA ─────────────────────────────── -->
 <section id="footer-cta">
   <div class="footer-cta-inner">
-    <span class="footer-cta-eyebrow">CONTACT · 無料相談受付中</span>
-    <p class="footer-cta-text">まずは気軽に、<br><em>話してみませんか。</em></p>
-    <a href="contact.html" class="btn-cta-large">無料相談はこちら（0円）</a>
+    <span class="footer-cta-eyebrow">CONTACT · 無料診断受付中</span>
+    <p class="footer-cta-text">注文やお問合せ数、伸び悩んでいる。<br>広告費は出しているのに成果が見えない。<br>そのお悩み、一度聞かせてください。</p>
+    <a href="contact.html" class="btn-cta-large">無料診断はこちら</a>
   </div>
 </section>
 
@@ -1817,122 +1917,72 @@ const io = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal, .stat-item').forEach(el => io.observe(el));
 document.getElementById('why-items') && io.observe(document.getElementById('why-items'));
 
-/* ── ナビゲーションロゴ アニメーション（スクロール双方向連動） ── */
+/* ── ナビゲーションロゴ モーションロゴ（デザインファイル準拠） ── */
 (function () {
-  var NL_FS = 38; // ナビ用固定フォントサイズ (px)
-  var NL_F_AUTO_END = 0.26;
-  var NL_F_AUTO_MS  = 1100;
-  var nlCurrentT = 0;
-  var nlStartTime = null;
+  'use strict';
 
-  var NL_LETTER_TIMING = {
-    'nl-l-o': [0.30, 0.48],
-    'nl-l-r': [0.40, 0.56],
-    'nl-l-e': [0.50, 0.66],
-    'nl-l-s': [0.60, 0.76],
-    'nl-l-y': [0.70, 0.86],
+  var LETTER_TIMING = {
+    'nl-l-o': [0.28, 0.46],
+    'nl-l-r': [0.38, 0.54],
+    'nl-l-e': [0.48, 0.64],
+    'nl-l-s': [0.58, 0.74],
+    'nl-l-y': [0.68, 0.84],
   };
-  var NL_F_SEGS_DEF = [
-    { id: 'nl-F-stem', phase: [0.00, 0.14] },
-    { id: 'nl-F-top',  phase: [0.04, 0.16] },
-    { id: 'nl-F-mid',  phase: [0.14, 0.26] },
-    { id: 'nl-F-foot', phase: [0.20, 0.28] },
-  ];
 
-  function nlEase(t) { return t < 0.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; }
-  function nlEaseOut(t) { return 1-Math.pow(1-t,4); }
-  function nlClamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
-  function nlLocal(t, s, e) { return nlClamp((t-s)/(e-s)); }
+  var F_AUTO_END = 0.26; /* ロード時に F をここまで自動描画 */
+  var F_AUTO_MS  = 1000;
+  var currentT   = 0;
+  var startTime  = null;
 
-  var nlSegsData = [];
+  var elF     = document.getElementById('nl-letter-F');
+  var letters = ['nl-l-o', 'nl-l-r', 'nl-l-e', 'nl-l-s', 'nl-l-y'];
 
-  function nlSetup() {
-    var fs = NL_FS;
-    var sw = Math.max(1.5, fs * 0.046);
-    var capH  = fs;
-    var svgW  = fs * 0.62;
-    var stemX = sw * 0.5;
-    var topY  = sw * 0.5;
-    var botY  = capH - sw * 0.5;
-    var midY  = capH * 0.50;
-    var rightX = svgW - sw * 0.5;
-    var midRX  = svgW * 0.72;
-    var footRX = svgW * 0.30;
+  function easeInOutCubic(t) { return t < 0.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; }
+  function easeOutQuart(t)   { return 1-Math.pow(1-t,4); }
+  function clamp(v)          { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function localT(t, s, e)   { return clamp((t-s)/(e-s)); }
 
-    var svgF = document.getElementById('nl-svg-F');
-    svgF.setAttribute('width',  svgW);
-    svgF.setAttribute('height', capH);
-    svgF.style.width  = svgW + 'px';
-    svgF.style.height = capH + 'px';
+  function render(t) {
+    /* F: clip-path ワイプ（右端が100%→0%） */
+    var fT    = easeInOutCubic(localT(t, 0, F_AUTO_END));
+    var right = (1 - fT) * 100;
+    elF.style.clipPath = 'inset(0 ' + right.toFixed(2) + '% 0 0)';
 
-    var defs = {
-      'nl-F-stem': 'M '+stemX+','+topY+' L '+stemX+','+botY,
-      'nl-F-top':  'M '+stemX+','+topY+' L '+rightX+','+topY,
-      'nl-F-mid':  'M '+stemX+','+midY+' L '+midRX+','+midY,
-      'nl-F-foot': 'M '+stemX+','+botY+' L '+footRX+','+botY,
-    };
-
-    nlSegsData = NL_F_SEGS_DEF.map(function(def) {
-      var el = document.getElementById(def.id);
-      el.setAttribute('d', defs[def.id]);
-      el.setAttribute('stroke-width', def.id === 'nl-F-foot' ? sw*0.55 : sw);
-      var len = 0;
-      try { len = el.getTotalLength(); } catch(e) {}
-      if (len < 1) len = 100;
-      el.style.strokeDasharray  = len;
-      el.style.strokeDashoffset = len;
-      return { el: el, len: len, phase: def.phase };
-    });
-
-    /* oresy フォントサイズ設定 */
-    ['nl-l-o','nl-l-r','nl-l-e','nl-l-s','nl-l-y'].forEach(function(id) {
-      var el = document.getElementById(id);
-      el.style.fontSize = fs + 'px';
-      el.style.letterSpacing = (fs * 0.01) + 'px';
-    });
-  }
-
-  function nlRender(t) {
-    /* F パス描画 */
-    nlSegsData.forEach(function(seg) {
-      var lt = nlEase(nlLocal(t, seg.phase[0], seg.phase[1]));
-      seg.el.style.strokeDashoffset = seg.len * (1 - lt);
-    });
-    /* oresy フェード＋スライド */
-    Object.keys(NL_LETTER_TIMING).forEach(function(id) {
-      var timing = NL_LETTER_TIMING[id];
-      var lt = nlEaseOut(nlLocal(t, timing[0], timing[1]));
+    /* oresy: フェード＋右スライドイン */
+    letters.forEach(function (id) {
+      var timing = LETTER_TIMING[id];
+      var lt = easeOutQuart(localT(t, timing[0], timing[1]));
       var el = document.getElementById(id);
       if (!el) return;
       el.style.opacity   = lt;
-      el.style.transform = 'translateX(' + ((1-lt)*10) + 'px)';
+      el.style.transform = 'translateX(' + ((1-lt)*20) + 'px)';
     });
   }
 
-  /* F自動描画（ページロード時） */
-  function nlAutoPlay() {
+  /* ページロード時に F を自動描画 */
+  function autoPlay() {
     var now = Date.now();
-    if (!nlStartTime) nlStartTime = now;
-    var prog = Math.min((now - nlStartTime) / NL_F_AUTO_MS, 1);
-    nlCurrentT = nlEase(prog) * NL_F_AUTO_END;
-    nlRender(nlCurrentT);
-    if (prog < 1) setTimeout(nlAutoPlay, 16);
-    else nlCurrentT = NL_F_AUTO_END;
+    if (!startTime) startTime = now;
+    var prog = Math.min((now - startTime) / F_AUTO_MS, 1);
+    currentT = easeInOutCubic(prog) * F_AUTO_END;
+    render(currentT);
+    if (prog < 1) setTimeout(autoPlay, 16);
+    else { currentT = F_AUTO_END; render(currentT); }
   }
 
   /* スクロール連動（上下双方向） */
-  var NL_SCROLL_END = 250; /* このpx分スクロールで全文字表示 */
-  function nlOnScroll() {
-    var frac = nlClamp(window.scrollY / NL_SCROLL_END);
-    nlCurrentT = NL_F_AUTO_END + frac * (1 - NL_F_AUTO_END);
-    nlRender(nlCurrentT);
+  var NL_SCROLL_END = 300; /* このpx分スクロールで全文字表示 */
+  function onScroll() {
+    var frac = clamp(window.scrollY / NL_SCROLL_END);
+    currentT = F_AUTO_END + frac * (1 - F_AUTO_END);
+    render(currentT);
   }
 
-  setTimeout(function() {
-    nlSetup();
-    nlAutoPlay();
-    window.addEventListener('scroll', nlOnScroll, { passive: true });
-  }, 80);
+  setTimeout(function () {
+    autoPlay();
+    onScroll(); /* ページリフレッシュ時の初期スクロール位置に対応 */
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }, 60);
 }());
 
 /* ── Magnetic Buttons ── */
