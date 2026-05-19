@@ -2,4 +2,3 @@
 .env
 node_modules/
 reports/service-account*.json
-reports/output/*.html
