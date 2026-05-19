@@ -102,7 +102,12 @@ nav { position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdr
   .pricing-row{grid-template-columns:1fr 1fr;gap:12px;}
   .pricing-row.header{display:none;}
   .pricing-btn{grid-column:1/-1;}
+  #sim-cards{grid-template-columns:1fr !important;}
+  #sim-adcost{font-size:28px !important;width:160px !important;}
 }
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+input[type=number]{-moz-appearance:textfield;}
 
 .nav-right{display:flex;align-items:center;gap:12px;}
 .nav-qr-btn{width:36px;height:36px;border-radius:6px;border:1px solid var(--mist);background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 200ms;}
@@ -142,6 +147,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5H8HNCPR');</script>
 <!-- End Google Tag Manager -->
+<script>if(!localStorage.getItem('va-disable')){var s=document.createElement('script');s.defer=true;s.src='/_vercel/insights/script.js';document.head.appendChild(s);}</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -198,6 +204,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li>入札戦略・キーワード・クリエイティブ最適化</li>
         <li>月次レポート + Looker Studio ダッシュボード</li>
       </ul>
+      <p style="font-size:13px;color:var(--text-muted);font-family:var(--font-jp);line-height:1.8;margin-top:16px;">LINEヤフー株式会社でのカスタマーサポート担当として18,000件超の広告主をサポート。成果が出ない広告の「よくあるパターン」を熟知しています。</p>
     </div>
     <div class="service-visual">
       <svg width="100%" viewBox="0 0 480 320" fill="none">
@@ -357,51 +364,133 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <!-- PRICING -->
-<div class="pricing-section">
+<div class="pricing-section" id="pricing">
   <div class="section-inner">
     <p class="tag-label" style="margin-bottom:12px;">PRICING</p>
     <h2 class="section-title">料金プラン</h2>
     <div class="pricing-table">
       <div class="pricing-row header">
         <span class="pricing-row-label">プラン</span>
-        <span class="pricing-row-label">月額料金</span>
-        <span class="pricing-row-label">こんな方に</span>
+        <span class="pricing-row-label">料金（税別）</span>
+        <span class="pricing-row-label">内容・対象</span>
         <span></span>
       </div>
       <div class="pricing-row">
         <div>
-          <div class="pricing-plan">スタート</div>
-          <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);margin-top:4px;">初期費用 0円</div>
+          <div class="pricing-plan">PLAN 01　初期設定</div>
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);margin-top:4px;">一回のみ</div>
         </div>
-        <div class="pricing-price">応相談<span> /月</span></div>
-        <div class="pricing-desc">広告費〜30万円。はじめてデジタル広告に取り組む方・スモールスタートをご希望の方に。</div>
+        <div class="pricing-price">¥30,000</div>
+        <div class="pricing-desc">広告スタートの準備を一式代行します。
+          <ul style="margin:8px 0 0 14px;font-size:12px;color:var(--text-muted);line-height:1.9;">
+            <li>ヒアリング・KPI目標設定</li>
+            <li>広告アカウント設計・キャンペーン構築</li>
+            <li>GTM設定・コンバージョンタグ実装</li>
+            <li>GA4設定・計測動作確認</li>
+            <li>月次レポート初期設定</li>
+          </ul>
+        </div>
         <div class="pricing-btn"><a href="contact.html" class="btn-outline">相談する</a></div>
       </div>
       <div class="pricing-row recommended">
         <div>
-          <div class="pricing-plan">スタンダード<span class="pricing-badge">おすすめ</span></div>
-          <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);margin-top:4px;">初期費用 0円</div>
+          <div class="pricing-plan">PLAN 02　固定制</div>
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);margin-top:4px;">最低契約期間 3ヶ月〜</div>
         </div>
-        <div class="pricing-price">応相談<span> /月</span></div>
-        <div class="pricing-desc">広告費30〜100万円。本格的に広告運用を強化したい方・計測体制も整えたい方に。</div>
+        <div class="pricing-price">¥30,000<span> /月</span></div>
+        <div class="pricing-desc">毎月定額で運用・最適化・レポートをすべておまかせ。週次チェック・Looker Studioレポート・チャットサポート込み。</div>
         <div class="pricing-btn"><a href="contact.html" class="btn-primary">相談する</a></div>
       </div>
       <div class="pricing-row">
         <div>
-          <div class="pricing-plan">カスタム</div>
-          <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);margin-top:4px;">初期費用 0円</div>
+          <div class="pricing-plan">PLAN 03　手数料制</div>
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);margin-top:4px;">媒体費 ¥150,000/月超で移行可</div>
         </div>
-        <div class="pricing-price" style="font-size:20px;">応相談</div>
-        <div class="pricing-desc">広告費100万円超。制作・自動化・複数媒体を込みでご依頼の方・本格的な体制を構築したい方に。</div>
+        <div class="pricing-price" style="font-size:20px;">媒体費の20%</div>
+        <div class="pricing-desc">媒体費が月15万円を超えたタイミングで、成果に連動した料金体系へ移行。最低保証 ¥30,000/月。</div>
         <div class="pricing-btn"><a href="contact.html" class="btn-outline">相談する</a></div>
       </div>
     </div>
-    <p class="pricing-note">※ 料金は広告費規模・業種・依頼内容により変動します。まずはお気軽にご相談ください。<br>※ 広告費の手数料制・定額制いずれにも対応可能です。</p>
+    <p class="pricing-note">※ PLAN 01（初期設定費）はPLAN 02開始時に一回のみ発生します。<br>※ 媒体費（広告費）は含まれません。お客様のクレジットカードより直接お支払いいただきます。</p>
+    <p class="pricing-note" style="margin-top:8px;">※ 月額のめやす（広告費＋代理店費の合計・税別）：広告費¥50,000の場合は月¥80,000 / ¥100,000の場合は月¥130,000。初月のみ初期設定費（¥30,000）が別途発生します。</p>
+  </div>
+</div>
+
+<!-- PRICING SIMULATOR -->
+<div style="background:var(--bg-secondary);padding:80px 40px;">
+  <div class="section-inner">
+    <p class="tag-label" style="margin-bottom:12px;">SIMULATOR</p>
+    <h2 class="section-title" style="margin-bottom:12px;">料金シミュレーション</h2>
+    <p style="font-family:var(--font-jp);font-size:14px;color:var(--text-secondary);margin-bottom:48px;line-height:1.8;">月の広告費（媒体費）を入力すると、毎月のトータル費用の目安がわかります。金額はすべて税別です。</p>
+    <div style="max-width:900px;margin:0 auto;">
+
+      <!-- 入力エリア -->
+      <div style="background:var(--bg-primary);border:1px solid var(--mist);border-radius:12px;padding:32px;margin-bottom:24px;">
+        <label style="font-family:var(--font-mono);font-size:10px;color:var(--sage);letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:16px;">月の広告費（媒体費）</label>
+        <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:28px;">
+          <span style="font-family:var(--font-sans);font-size:28px;font-weight:200;color:var(--text-muted);">¥</span>
+          <input type="number" id="sim-adcost" value="50000" min="0" max="500000" step="10000"
+            style="font-family:var(--font-sans);font-weight:200;font-size:40px;color:var(--text-primary);border:none;border-bottom:2px solid var(--mist);background:transparent;outline:none;padding:4px 0;width:220px;transition:border-color 150ms;"
+            oninput="updateSim(this.value)" onfocus="this.style.borderBottomColor='var(--forest)'" onblur="this.style.borderBottomColor='var(--mist)'">
+          <span style="font-family:var(--font-jp);font-size:15px;color:var(--text-muted);">円 / 月</span>
+        </div>
+        <input type="range" id="sim-slider" min="0" max="300000" step="10000" value="50000"
+          style="width:100%;accent-color:var(--forest);cursor:pointer;display:block;margin-bottom:6px;"
+          oninput="syncSlider(this.value)">
+        <div style="display:flex;justify-content:space-between;position:relative;">
+          <span style="font-family:var(--font-mono);font-size:9px;color:var(--text-muted);">¥0</span>
+          <div style="position:absolute;left:50%;transform:translateX(-50%);text-align:center;">
+            <div style="width:1px;height:6px;background:var(--sage);margin:0 auto 3px;"></div>
+            <span style="font-family:var(--font-mono);font-size:9px;color:var(--sage);white-space:nowrap;">¥150,000（プラン切替）</span>
+          </div>
+          <span style="font-family:var(--font-mono);font-size:9px;color:var(--text-muted);">¥300,000</span>
+        </div>
+      </div>
+
+      <!-- 適用プラン表示 -->
+      <div style="text-align:center;margin-bottom:20px;">
+        <span style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.08em;background:var(--bg-tertiary);border-radius:20px;padding:6px 16px;color:var(--text-secondary);">
+          <span id="sim-plan-dot" style="width:6px;height:6px;border-radius:50%;background:var(--forest);flex-shrink:0;display:inline-block;transition:background 300ms;"></span>
+          <span id="sim-plan-text">固定制プラン（PLAN 02）が適用されます</span>
+        </span>
+      </div>
+
+      <!-- 結果カード -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" id="sim-cards">
+        <!-- 初月 -->
+        <div style="background:var(--bg-primary);border:1px solid var(--mist);border-radius:12px;padding:28px;">
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px;">初月のみ</div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--mist);">
+            <div style="display:flex;justify-content:space-between;font-family:var(--font-jp);font-size:13px;color:var(--text-secondary);"><span>広告費（媒体費）</span><span id="r1-ad">¥50,000</span></div>
+            <div style="display:flex;justify-content:space-between;font-family:var(--font-jp);font-size:13px;color:var(--text-secondary);"><span>代理店費</span><span id="r1-agency">¥30,000</span></div>
+            <div style="display:flex;justify-content:space-between;font-family:var(--font-jp);font-size:13px;color:var(--text-secondary);"><span>初期設定費（初月のみ）</span><span>¥30,000</span></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;">
+            <span style="font-family:var(--font-jp);font-size:12px;color:var(--text-muted);">合計（税別）</span>
+            <span id="r1-total" style="font-family:var(--font-sans);font-weight:200;font-size:30px;color:var(--text-primary);">¥130,000</span>
+          </div>
+        </div>
+        <!-- 2ヶ月目以降 -->
+        <div style="background:var(--bg-primary);border:2px solid var(--forest);border-radius:12px;padding:28px;">
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--sage);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px;">2ヶ月目以降 / 毎月</div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--mist);">
+            <div style="display:flex;justify-content:space-between;font-family:var(--font-jp);font-size:13px;color:var(--text-secondary);"><span>広告費（媒体費）</span><span id="r2-ad">¥50,000</span></div>
+            <div style="display:flex;justify-content:space-between;font-family:var(--font-jp);font-size:13px;color:var(--text-secondary);"><span>代理店費</span><span id="r2-agency">¥30,000</span></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;">
+            <span style="font-family:var(--font-jp);font-size:12px;color:var(--text-muted);">合計（税別）</span>
+            <span id="r2-total" style="font-family:var(--font-sans);font-weight:200;font-size:30px;color:var(--forest);">¥80,000</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="pricing-note" style="margin-top:16px;">※ 広告費¥150,000/月未満は固定制（代理店費 月¥30,000）、¥150,000以上は手数料制（広告費の20%、最低¥30,000）が適用されます。初期設定費¥30,000は契約初月のみ発生します。</p>
+    </div>
   </div>
 </div>
 
 <!-- FOOTER CTA -->
-<section style="background:#1A1A18;padding:72px 40px;text-align:center;"><p style="font-family:'DM Sans',sans-serif;font-weight:200;font-size:clamp(24px,3.5vw,44px);color:white;letter-spacing:-0.02em;margin-bottom:32px;line-height:1.2;">まずは気軽に、話してみませんか。</p><a href="contact.html" style="background:#C96B3A;color:white;border:none;border-radius:6px;padding:14px 32px;font-size:16px;cursor:pointer;text-decoration:none;display:inline-block;">無料相談はこちら（0円）</a></section>
+<section style="background:#1A1A18;padding:72px 40px;text-align:center;"><p style="font-family:'DM Sans',sans-serif;font-weight:200;font-size:clamp(16px,2.5vw,32px);color:white;letter-spacing:-0.02em;margin-bottom:32px;line-height:1.8;">注文やお問合せ数、伸び悩んでいる。<br>広告費は出しているのに成果が見えない。<br>そのお悩み、一度聞かせてください。</p><a href="contact.html" style="background:#C96B3A;color:white;border:none;border-radius:6px;padding:14px 32px;font-size:16px;cursor:pointer;text-decoration:none;display:inline-block;">無料診断はこちら</a></section>
 <footer style="background:#1A1A18;border-top:1px solid rgba(255,255,255,0.07);padding:40px 40px 28px;"><div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;"><div><div style="font-size:18px;color:white;font-weight:300;margin-bottom:14px;display:flex;align-items:center;gap:8px;"><img src="F_rogo.png" alt="Foresy" style="height:26px;width:auto;border-radius:4px;vertical-align:middle;">Foresy</div></div><div><div style="font-size:10px;color:#7A9E87;letter-spacing:0.1em;margin-bottom:18px;text-transform:uppercase;">PAGES</div><ul style="list-style:none;"><li style="margin-bottom:10px;"><a href="services.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">サービス</a></li><li style="margin-bottom:10px;"><a href="works.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">実績</a></li><li style="margin-bottom:10px;"><a href="about.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">会社概要</a></li><li style="margin-bottom:10px;"><a href="faq.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">FAQ</a></li><li style="margin-bottom:10px;"><a href="privacy.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">プライバシーポリシー</a></li><li><a href="terms.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">利用規約</a></li></ul></div><div><div style="font-size:10px;color:#7A9E87;letter-spacing:0.1em;margin-bottom:18px;text-transform:uppercase;">CONTACT</div><ul style="list-style:none;"><li style="margin-bottom:10px;"><a href="mailto:adforesy@gmail.com" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">adforesy@gmail.com</a></li><li><a href="contact.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">お問い合わせ・無料相談</a></li></ul></div></div><div style="max-width:1200px;margin:28px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;"><span style="font-size:11px;color:rgba(245,243,238,0.35);">&copy; 2026 Foresy. All rights reserved.</span><div style="display:flex;gap:16px;"><a href="privacy.html" style="font-size:11px;color:rgba(245,243,238,0.55);text-decoration:none;">プライバシーポリシー</a><a href="terms.html" style="font-size:11px;color:rgba(245,243,238,0.55);text-decoration:none;">利用規約</a></div></div></footer>
 <button id="back-to-top" aria-label="トップへ戻る">↑</button>
 <script>
@@ -410,6 +499,32 @@ document.addEventListener('click',(e)=>{if(!e.target.closest('.nav-qr-btn')&&!e.
 function toggleMenu(){document.getElementById('nav-mobile-menu').classList.toggle('open');document.getElementById('nav-hamburger').classList.toggle('open');}
 document.addEventListener('click',(e)=>{if(!e.target.closest('nav')&&!e.target.closest('.nav-mobile-menu')){document.getElementById('nav-mobile-menu')?.classList.remove('open');document.getElementById('nav-hamburger')?.classList.remove('open');}});
 const b=document.getElementById('back-to-top');window.addEventListener('scroll',()=>{b.classList.toggle('visible',window.scrollY>400);},{passive:true});b.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});
+
+/* ── 料金シミュレーター ── */
+function fmt(n){return '¥'+Math.round(n).toLocaleString('ja-JP');}
+function calcAgency(ad){
+  if(ad<150000) return {fee:30000,plan:'固定制プラン（PLAN 02）が適用されます',fixed:true};
+  return {fee:Math.max(ad*0.2,30000),plan:'手数料制プラン（PLAN 03）が適用されます',fixed:false};
+}
+function updateSim(val){
+  const ad=Math.max(0,parseInt(val)||0);
+  const slider=document.getElementById('sim-slider');
+  if(slider) slider.value=Math.min(ad,300000);
+  const {fee,plan,fixed}=calcAgency(ad);
+  document.getElementById('sim-plan-text').textContent=plan;
+  document.getElementById('sim-plan-dot').style.background=fixed?'var(--forest)':'var(--cta)';
+  document.getElementById('r1-ad').textContent=fmt(ad);
+  document.getElementById('r1-agency').textContent=fmt(fee);
+  document.getElementById('r1-total').textContent=fmt(ad+fee+30000);
+  document.getElementById('r2-ad').textContent=fmt(ad);
+  document.getElementById('r2-agency').textContent=fmt(fee);
+  document.getElementById('r2-total').textContent=fmt(ad+fee);
+  document.getElementById('r2-total').style.color=fixed?'var(--forest)':'var(--cta)';
+}
+function syncSlider(val){
+  document.getElementById('sim-adcost').value=val;
+  updateSim(val);
+}
 
 /* ── Scroll Reveal ── */
 const revealIO = new IntersectionObserver((entries) => {

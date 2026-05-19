@@ -110,6 +110,20 @@ nav{position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdrop
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(0.16,1,0.3,1),transform .65s cubic-bezier(0.16,1,0.3,1);}
 .reveal.in-view{opacity:1;transform:translateY(0);}
 .reveal-d1{transition-delay:.08s;}.reveal-d2{transition-delay:.16s;}.reveal-d3{transition-delay:.24s;}.reveal-d4{transition-delay:.32s;}
+
+/* GROVE AGENT TEAM */
+.grove-section{background:var(--bg-secondary);padding:80px 40px;}
+.grove-grid{max-width:1200px;margin:48px auto 0;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;}
+.agent-card{background:var(--bg-primary);border:1px solid var(--mist);border-radius:14px;padding:28px 20px 24px;text-align:center;transition:transform 220ms var(--ease-out),box-shadow 220ms;}
+.agent-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(74,122,90,0.12);}
+.agent-illust{width:100%;height:180px;margin:0 0 16px;border-radius:8px;overflow:hidden;}
+.agent-nick{display:none;}
+.agent-read{display:none;}
+.agent-eng{display:none;}
+.agent-role-badge{display:inline-block;font-family:var(--font-jp);font-size:14px;font-weight:400;color:var(--forest);background:rgba(74,122,90,0.1);border:1px solid rgba(74,122,90,0.2);border-radius:20px;padding:6px 18px;margin-bottom:14px;}
+.agent-desc{font-family:var(--font-jp);font-size:12px;color:var(--text-secondary);line-height:1.8;text-align:left;}
+@media(max-width:960px){.grove-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:600px){.grove-grid{grid-template-columns:repeat(2,1fr);}.grove-section{padding:60px 20px;}}
 </style>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -118,6 +132,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5H8HNCPR');</script>
 <!-- End Google Tag Manager -->
+<script>if(!localStorage.getItem('va-disable')){var s=document.createElement('script');s.defer=true;s.src='/_vercel/insights/script.js';document.head.appendChild(s);}</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -164,11 +179,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="profile-section">
   <div class="profile-grid">
     <div class="profile-illust reveal">
-      <img src="about.png" alt="代表イラスト" style="width:100%;border-radius:12px;display:block;">
+      <img src="profile.png" alt="Foresy 代表 森大記" style="width:100%;border-radius:12px;display:block;">
       <div style="margin-top:20px;">
         <div class="profile-name">代表</div>
         <span class="profile-role">FOUNDER &amp; AD OPERATIONS</span>
-        <p class="profile-body">健康食品EC会社のWeb担当として広告運用・LP制作・CRM設計を担当。その後、LINEヤフー株式会社のカスタマーサクセスとして大手広告主の広告改善を支援。</p>
+        <p class="profile-body">健康食品EC会社のWeb担当として広告運用・LP制作・CRM設計を担当。その後、LINEヤフー株式会社のカスタマーサポートとして大手広告主の広告改善を支援。</p>
         <p class="profile-body">「報告するだけ」の代理店ではなく、広告主が本当に求めるアクションを先読みして提案する、伴走型の支援を実現するためにForesyを設立。</p>
       </div>
     </div>
@@ -188,7 +203,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="tl-year">2021–2026</div>
           <div class="tl-content">
             <div class="tl-title">LINEヤフー株式会社 広告運用</div>
-            <p class="tl-desc">大手広告主向けのYahoo!広告・LINEヤフー広告のカスタマーサクセスを担当。広告主NPSの改善プロジェクトに従事。媒体社側から支援の在り方を学ぶ。</p>
+            <p class="tl-desc">中小企業から大手広告主まで、LINEヤフー広告のカスタマーサポートを担当。顧客に寄り添い、運用課題が解決するまで丁寧にサポート。チームメンバーが価値ある提案を偏りなく展開できるよう、仕組みづくりにも従事。</p>
           </div>
         </div>
         <div class="tl-item reveal reveal-d2">
@@ -209,6 +224,78 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- GROVE AGENT TEAM -->
+<div class="grove-section">
+  <div style="max-width:1200px;margin:0 auto;">
+    <p class="tag-label reveal" style="margin-bottom:12px;">FORESY GROVE</p>
+    <h2 class="reveal reveal-d1" style="font-family:var(--font-sans);font-weight:300;font-size:clamp(24px,3vw,36px);letter-spacing:-0.02em;color:var(--text-primary);margin-bottom:16px;">Foresyチーム</h2>
+    <p class="reveal reveal-d2" style="font-family:var(--font-jp);font-size:15px;color:var(--text-secondary);line-height:1.9;max-width:600px;">Foresyの業務は、役割を持つ5つのメンバーが連携して動いています。それぞれが専門を活かし、森のように補い合うチームを「Foresy Grove」と呼んでいます。</p>
+  </div>
+  <div class="grove-grid">
+
+    <!-- 司（つかさ）Steward -->
+    <div class="agent-card reveal">
+      <div class="agent-illust">
+        <img src="Foresy_リーダー.png" alt="チームリーダー" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="agent-nick">ソウ</div>
+      <div class="agent-read"></div>
+      <div class="agent-eng">Steward</div>
+      <span class="agent-role-badge">チームリーダー</span>
+      <p class="agent-desc">チーム全体の指示・調整を統括するリーダー。各エージェントへのタスク割り振りと進捗管理を担う。</p>
+    </div>
+
+    <!-- 遼（りょう）Scout -->
+    <div class="agent-card reveal reveal-d1">
+      <div class="agent-illust">
+        <img src="Foresy_営業.png" alt="営業" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="agent-nick">カイ</div>
+      <div class="agent-read"></div>
+      <div class="agent-eng">Scout</div>
+      <span class="agent-role-badge">営業</span>
+      <p class="agent-desc">市場調査・競合分析・新規提案のリサーチを担当。クライアントのニーズを先読みして情報を持ち帰る。</p>
+    </div>
+
+    <!-- 燈（あかり）Torch -->
+    <div class="agent-card reveal reveal-d2">
+      <div class="agent-illust">
+        <img src="Foresy_戦略.png" alt="戦略" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="agent-nick">コウ</div>
+      <div class="agent-read"></div>
+      <div class="agent-eng">Torch</div>
+      <span class="agent-role-badge">戦略</span>
+      <p class="agent-desc">事業・広告の戦略立案を担当。データと目標をもとに施策の方向性を照らし、意思決定をサポートする。</p>
+    </div>
+
+    <!-- 巡（めぐる）Ranger -->
+    <div class="agent-card reveal reveal-d3">
+      <div class="agent-illust">
+        <img src="Foresy_管理.png" alt="管理" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="agent-nick">ジュン</div>
+      <div class="agent-read"></div>
+      <div class="agent-eng">Ranger</div>
+      <span class="agent-role-badge">管理</span>
+      <p class="agent-desc">タスク・スケジュール・進捗のトラッキングを担当。業務フローの整備と継続的な改善を行う。</p>
+    </div>
+
+    <!-- 護（まもる）Sentinel -->
+    <div class="agent-card reveal reveal-d4">
+      <div class="agent-illust">
+        <img src="Foresy_セキュリティ.png" alt="セキュリティ" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="agent-nick">ゴウ</div>
+      <div class="agent-read"></div>
+      <div class="agent-eng">Sentinel</div>
+      <span class="agent-role-badge">セキュリティ</span>
+      <p class="agent-desc">情報管理・リスク検知・ポリシー確認を担当。クライアント情報の安全な取り扱いを守り続ける。</p>
+    </div>
+
   </div>
 </div>
 
@@ -233,10 +320,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="company-row">
         <span class="company-key">EMAIL</span>
         <span class="company-val"><a href="contact.html" style="color:var(--forest);text-decoration:none;">adforesy@gmail.com</a></span>
-      </div>
-      <div class="company-row">
-        <span class="company-key">PHONE</span>
-        <span class="company-val">070-8401-1531</span>
       </div>
       <div class="company-row">
         <span class="company-key">SERVICES</span>
@@ -290,7 +373,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<section style="background:#1A1A18;padding:72px 40px;text-align:center;"><p style="font-family:'DM Sans',sans-serif;font-weight:200;font-size:clamp(24px,3.5vw,44px);color:white;letter-spacing:-0.02em;margin-bottom:32px;line-height:1.2;">まずは気軽に、話してみませんか。</p><a href="contact.html" style="background:#C96B3A;color:white;border:none;border-radius:6px;padding:14px 32px;font-size:16px;cursor:pointer;text-decoration:none;display:inline-block;">無料相談はこちら（0円）</a></section>
+<section style="background:#1A1A18;padding:72px 40px;text-align:center;"><p style="font-family:'DM Sans',sans-serif;font-weight:200;font-size:clamp(16px,2.5vw,32px);color:white;letter-spacing:-0.02em;margin-bottom:32px;line-height:1.8;">注文やお問合せ数、伸び悩んでいる。<br>広告費は出しているのに成果が見えない。<br>そのお悩み、一度聞かせてください。</p><a href="contact.html" style="background:#C96B3A;color:white;border:none;border-radius:6px;padding:14px 32px;font-size:16px;cursor:pointer;text-decoration:none;display:inline-block;">無料診断はこちら</a></section>
 <footer style="background:#1A1A18;border-top:1px solid rgba(255,255,255,0.07);padding:40px 40px 28px;"><div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;"><div><div style="font-size:18px;color:white;font-weight:300;margin-bottom:14px;display:flex;align-items:center;gap:8px;"><img src="F_rogo.png" alt="Foresy" style="height:26px;width:auto;border-radius:4px;vertical-align:middle;">Foresy</div></div><div><div style="font-size:10px;color:#7A9E87;letter-spacing:0.1em;margin-bottom:18px;text-transform:uppercase;">PAGES</div><ul style="list-style:none;"><li style="margin-bottom:10px;"><a href="services.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">サービス</a></li><li style="margin-bottom:10px;"><a href="works.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">実績</a></li><li style="margin-bottom:10px;"><a href="about.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">会社概要</a></li><li style="margin-bottom:10px;"><a href="faq.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">FAQ</a></li><li style="margin-bottom:10px;"><a href="privacy.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">プライバシーポリシー</a></li><li><a href="terms.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">利用規約</a></li></ul></div><div><div style="font-size:10px;color:#7A9E87;letter-spacing:0.1em;margin-bottom:18px;text-transform:uppercase;">CONTACT</div><ul style="list-style:none;"><li style="margin-bottom:10px;"><a href="mailto:adforesy@gmail.com" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">adforesy@gmail.com</a></li><li><a href="contact.html" style="color:rgba(245,243,238,0.55);text-decoration:none;font-size:14px;">お問い合わせ・無料相談</a></li></ul></div></div><div style="max-width:1200px;margin:28px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;"><span style="font-size:11px;color:rgba(245,243,238,0.35);">&copy; 2026 Foresy. All rights reserved.</span><div style="display:flex;gap:16px;"><a href="privacy.html" style="font-size:11px;color:rgba(245,243,238,0.55);text-decoration:none;">プライバシーポリシー</a><a href="terms.html" style="font-size:11px;color:rgba(245,243,238,0.55);text-decoration:none;">利用規約</a></div></div></footer>
 <button id="back-to-top" aria-label="トップへ戻る">↑</button>
 <script>
